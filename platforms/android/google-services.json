@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "182449567513",
+    "firebase_url": "https://catatani-ba229.firebaseio.com",
+    "project_id": "catatani-ba229",
+    "storage_bucket": "catatani-ba229.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182449567513:android:5126137def9ad20b",
+        "android_client_info": {
+          "package_name": "com.example.crossdov"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "182449567513-q12in4vuvekpec6tgnuctcc12pg3nnko.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.crossdov",
+            "certificate_hash": "881549f99f51e4ec24ff7ac5e8eca6a42f2cdb13"
+          }
+        },
+        {
+          "client_id": "182449567513-g2m60q25mh7vl1q43ftej3dm4edekq5b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuD4zc577ea0dwLM0rIZRDJ7N5x9CQxgc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "182449567513-g2m60q25mh7vl1q43ftej3dm4edekq5b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

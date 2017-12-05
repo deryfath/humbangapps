@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+    <link rel="stylesheet" href="css/vegetable-card.css">
+    <link rel="stylesheet" href="css/form-style.css">
+    <!-- Path to ionic icon -->
+    <link rel=stylesheet href="css/ionic_icon/css/ionicons.css">
+    <link rel="stylesheet" href="css/framework7-icons.css">
+
+    <!-- CSS SHAKE -->
+    <link rel="stylesheet" type="text/css" href="css/csshake.min.css">
+
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/tab_design/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/tab_design/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/tab_design/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="css/tab_design/tabstyles.css" /> -->
+
+
+
+  </head>
+  <body>
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal" style="background:rgb(32, 55, 63);">
+      <div class="content-block">
+
+      <div id="panel_overlay"></div>
+
+      </div>
+    </div>
+    <!-- Right panel with cover effect-->
+    <div class="panel panel-right panel-cover">
+      <div class="content-block">
+        <p>Right panel content goes here</p>
+      </div>
+    </div>
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar">
+          <div class="navbar-inner" style="background: #313131;box-shadow:0 0px 20px 4px #212020;">
+          <div class="left">
+              <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="icon f7-icons" style="color:white;font-weight: bold;">bars</i></a>
+            </div>
+            <!-- We have home navbar without left link-->
+            <div class="center sliding" style="color:white;">Greenshop</div>
+            <div class="right notification_div" >
+                <!-- <i class="icon f7-icons" id="notification_seller_index" style="display:none;margin-top: 9px;margin-right: 9px;color:white;    margin-left: -32px;" >email_fill<span class="badge bg-red notification-total" style="margin-top: -7px;" >0</span></i>
+                <i class="icon f7-icons" id="notification_comodity_index" style="display:none;margin-top: 9px;margin-right: 9px;color:white;margin-left: -73px;" >bell_fill<span class="badge bg-red notification-comodity-total" style="margin-top: -7px;" >0</span> --></i>
+            </div>
+          </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Page, data-page contains page name-->
+          <div class="page" data-page="index">
+            <!-- Scrollable page content-->
+            <div class="page-content" id="index" style="overflow-x: hidden;overflow-y:hidden;max-width: 100%;max-height:100%;">
+            <!-- <div class="content-block">
+              <p><a href="#" class="button button-big color-navy"><i class="icon ion-ios-pricetags" style="font-size: x-large;"></i><span>Jual</span></a></p>
+                <p><a href="#" class="button button-big color-navy" style="margin-left: 2px;"><i class="icon ion-ios-cart" style="font-size: x-large;"></i><span>Beli</span></a></p>
+            </div> -->
+
+            <!-- tab design -->
+           <!--  <section>
+            <div class="tabs tabs-style-bar tabs-design">
+              <nav>
+                <ul>
+                  <li><a href="#section-bar-1" class="icon icon-gift"><span style="display: block;margin-top: -11px;">Belanja</span></a></li>
+                  <li><a href="#section-bar-2" class="icon icon-box"><span style="display: block;margin-top: -11px;">Jual</span></a></li>
+                </ul>
+              </nav>
+              <div class="content-wrap">
+                <section id="section-bar-1"><p>1</p></section>
+                <section id="section-bar-2"><p>2</p></section>
+              </div>
+            </div>
+            </section> -->
+
+            <!-- new menu command -->
+             <!-- <div class="card demo-card-header-pic">
+                <div style="background-image:url(img/pexels-photo-701969.jpeg);height: 69vw;text-align:center;" valign="bottom" class="card-header color-white no-border"><div id="shapeImageBase"><div style="text-align: -webkit-center;margin-top: -23px;"><div id="circle"><span><img src="img/shopping-bag.svg" style="max-width: 50%;margin-top: 7px;" /><div style="color:black;font-size: 13px;font-weight: bold;">Beli</div></span></div></div></div>
+               </div>
+                
+              </div>
+              <div class="card demo-card-header-pic">
+                <div style="background-image:url(img/fruit-2703463_1280.jpg);height: 69vw;text-align:center;" valign="bottom" class="card-header color-white no-border"><div id="shapeImageBase"><div style="text-align: -webkit-center;margin-top: -23px;"><div id="circle"><span><img src="img/tag.svg" style="max-width: 50%;margin-top: 7px;" /><div style="color:black;font-size: 13px;font-weight: bold;margin-top: -5px;">Jual</div></span></div></div></div>
+               </div>
+                
+              </div> -->
+
+              <!-- new command menu 2 -->
+              <!--   <div class="row"><div id="belanja" style="width: 100%;background: #c53636;text-align:center;box-shadow:0 0px 20px 4px #212020;z-index: 2;"><img src="img/shopping-bag-icon.png" style="max-width:58%;margin-top: 24px;"/><div style="color:white;margin-top: -41px;font-size: 22px;">Belanja</div></div>
+                </div>
+                <div class="row"><div id="jualan" style="width: 100%;background: green;text-align:center;" ><img src="img/price-tag-icon.png" style="max-width:58%;margin-top: 24px;"/><div style="color:white;margin-top: -46px;font-size: 22px;">Jualan</div></div>
+                </div> -->
+
+
+                <!-- seller menu  -->
+               <!--  <div class="row">
+                  <div style="width:100%;height:100%;z-index:-1;position: absolute;"><img style="max-width: 200%;" src="img/background.jpg" /></div> 
+                  <div style="text-align:center;"><img src="img/user-background.png"/>
+                    <div style="margin-top: -23%;font-weight: bold;color: gray;">Sujono</div><div style="color: gray;">Green Farm</div> <div style="text-align:right;margin-top: -3%;margin-right: 10px;"><i class="icon f7-icons">gear_fill</i></div></div>
+                  
+                </div>
+
+                 <div class="row no-gutter" style="margin-top: 14%;">
+                    <div class="col-50" style="text-align: center;"><img style="max-width: 50%;    margin-right: -33px;" src="img/pesanan.png" /><div><span class="badge bg-red notification-comodity-total" style="margin-top: -25%;position: absolute;z-index: 2;margin-left: 9%;font-size: 14px;">0</span></div></div>
+                    <div class="col-50" style="text-align: center;"><img style="max-width: 50%;    margin-left: -33px;" src="img/notifikasi.png" /><div><span class="badge bg-red notification-comodity-total" style="margin-top: -25%;position: absolute;z-index: 2;margin-left: -3%;font-size: 14px;">0</span></div></div>
+                  </div>
+
+                   <div class="row no-gutter" style="margin-top: 27px;">
+                    <div class="col-50" style="text-align: center;"><img style="max-width: 50%;    margin-right: -33px;" src="img/komoditas.png" /></div>
+                    <div class="col-50" style="text-align: center;"><img style="max-width: 50%;    margin-left: -33px;" src="img/lokasi.png" /></div>
+                  </div> -->
+
+                <!-- consumer menu -->
+                <!-- <div class="row">
+                  <div style="width:100%;height:100%;z-index:-1;position: absolute;"><img style="max-width: 200%;" src="img/background-consumer.jpg" /></div> 
+                  <div style="text-align:center;"><img src="img/user-background.png"/>
+                    <div style="margin-top: -23%;font-weight: bold;color: gray;">Sujono</div><div style="color: gray;">Green Farm</div> <div style="text-align:right;margin-top: -3%;margin-right: 10px;"><i class="icon f7-icons">gear_fill</i></div></div>
+                  
+                </div>
+
+                <div class="row no-gutter" style="margin-top: 14%;">
+                    <div class="col-50" style="text-align: center;"><img style="max-width: 50%;    margin-right: -33px;" src="img/belanja.png" /></div>
+                    <div class="col-50" style="text-align: center;"><img style="max-width: 50%;    margin-left: -33px;" src="img/pesanan-konsumen.png" /></div>
+                  </div>
+
+                   <div class="row no-gutter" style="margin-top: 27px;">
+                    <div class="col-50" style="text-align: center;"><img style="max-width: 50%;    margin-right: -33px;" src="img/keranjang.png" /></div>
+                    <div class="col-50" style="text-align: center;"><img style="max-width: 50%;    margin-left: -33px;" src="img/pengiriman.png" /></div>
+                  </div> -->
+
+              <!-- welcome title -->
+              <!-- <div style="position: absolute;z-index: 99;width:100%;left: 24%;top: 32%;">
+                  <img style="width: 50%;" src="img/green-text.png" alt="Home" />
+
+              </div> -->
+
+              <!-- <div style="position: absolute;z-index: 99;">
+                <text id="temp_test" style="font-size: large;font-weight: bold;background-color: dodgerblue;padding: 11px;">00</text>
+              </div> -->
+
+            <!-- button for seller or consumer -->
+            <div id="command-home-button"></div>  
+
+
+                <!-- image swiper -->
+                <!-- <div class="swiper-container swiper-init swiper-no-swiping" data-pagination=".swiper-pagination" data-loop="true"  data-autoplay="1000" data-effect="fade" style="margin-top: -1px;height: 100%; margin-bottom: -2px;    filter: blur(2px);">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" data-swiper-autoplay="3000"><img style="height:112%;max-width:210%;" src="img/fruit-basket-1114060_1920.jpg"></div>
+                    <div class="swiper-slide" data-swiper-autoplay="3000"><img style="height:112%;max-width:210%;" src="img/raspberry-1465988_1920.jpg"></div>
+                    <div class="swiper-slide" data-swiper-autoplay="3000"><img style="height:112%;max-width:210%;" src="img/vegetables-2179867_1920.jpg"></div>
+                  </div>
+                </div>  -->
+
+                <!-- <img style="height:99%;max-width:210%;" src="img/6dba818f-97d7-4728-8002-7d77edb36731.jpg">
+
+                <div style=" height: 0;width: 0;border-left: 250px solid #e2ebed;border-right: 1000px solid #e3e3e3;border-bottom: 100px solid #28e0f0;border-top: 100px solid #526771;opacity: 0.5;position: absolute;z-index: 91;margin-top: -141%;">
+                  
+                </div> -->
+
+
+                <!-- <div class="swiper-container swiper-init" data-pagination=".swiper-pagination" data-loop="true"  data-autoplay="1000" data-autoplayDisableOnInteraction="false" data-effect="fade" style="margin-top: -1px;height: 39%;">
+                  <div class="swiper-pagination"></div>
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" data-swiper-autoplay="3000"><img src="img/vegetables-752153_1920.jpg"></div>
+                    <div class="swiper-slide" data-swiper-autoplay="3000"><img src="img/vegetables-791892_1920.jpg"></div>
+                    <div class="swiper-slide" data-swiper-autoplay="3000"><img src="img/paprika-65270_1920.jpg" style="margin-top: -50px;"></div>
+                  </div>
+                </div> -->
+
+
+                <!-- <p class="buttons-row" style="margin-top: -18%;z-index: 99;position: absolute;width: 100%;background: #0e0e0e;height: 9%;border-radius: 50px;">
+                  <a href="#" class="button button-big button-fill" style="background: #044266;"><i class="icon ion-ios-pricetags" style="font-size: x-large;"></i><span>Jual</span></a>
+                  <a href="#" class="button button-big button-fill" style="margin-left: 2px;background: #044266;"><i class="icon ion-ios-cart" style="font-size: x-large;"></i><span>Beli</span></a>
+                </p> -->
+
+                <!-- <div class="card" style="    margin: -30px 0px 38px;">
+                  <div class="card-header">Card header</div>
+                  <div class="card-content">
+                    <div class="card-content-inner">Card with header and footer. Card header is used to display card title and footer for some additional information or for custom actions.</div>
+                  </div>
+                  <div class="card-footer">Card Footer</div>
+                </div>
+
+                <div class="card" style="    margin: -30px 0px 38px;">
+                  <div class="card-header">Card header</div>
+                  <div class="card-content">
+                    <div class="card-content-inner">Card with header and footer. Card header is used to display card title and footer for some additional information or for custom actions.</div>
+                  </div>
+                  <div class="card-footer">Card Footer</div>
+                </div>
+
+                <div class="card" style="    margin: -30px 0px 38px;">
+                  <div class="card-header">Card header</div>
+                  <div class="card-content">
+                    <div class="card-content-inner">Card with header and footer. Card header is used to display card title and footer for some additional information or for custom actions.</div>
+                  </div>
+                  <div class="card-footer">Card Footer</div>
+                </div>
+
+                <div class="card" style="    margin: -30px 0px 38px;">
+                  <div class="card-header">Card header</div>
+                  <div class="card-content">
+                    <div class="card-content-inner">Card with header and footer. Card header is used to display card title and footer for some additional information or for custom actions.</div>
+                  </div>
+                  <div class="card-footer">Card Footer</div>
+                </div>  -->
+              <!-- content item grid -->
+              <!-- <div id="item_grid_list"></div> --> 
+
+            </div>
+          </div>
+        </div>  
+
+
+        <!-- LOGIN POPUP -->
+        <div class="popup popup-login" style="overflow-x: hidden;overflow-y:hidden;max-width: 100%;max-height:100%;">
+          <!-- <div class="content-block"> -->
+
+
+             <div class="row">
+
+                <div style="width: 100%;background-image:url(img/background-login.jpg);height: 300vw;text-align:center;box-shadow:0 0px 20px 4px #212020;z-index: 2;">
+
+
+                  <div class="row">
+                    <div class="col-20">
+                    </div>
+                    <div class="col-20">
+                    </div>
+                    <div class="col-20">
+                    </div>
+                    <div class="col-20">
+                    </div>
+                    <div class="col-20" style="margin-right: -1px;margin-top: -2px;">
+                      <a href="#" style="background: #36a09a;border-color: transparent;color: white;font-weight: bold;" class="button close-popup">X</a>
+                    </div>
+                  </div>  
+
+                  <img src="img/simbol.png" style="max-width:58%;margin-top: 30%;"/>
+
+
+                   <div style="margin-top: 42px;padding: 6px;border-bottom-style: solid;margin-right: 53px;margin-left: 53px;border-bottom-width: thin;border-bottom-color: #7ebfa0;"><i class="icon f7-icons" style="position: absolute;color:white;">person</i><input class="example-two" type="text" style="background: transparent;border: none;font-size: 19px;color: white;margin-left: 37px;" id="username_login" placeholder="username"></div>
+
+                   <div style="margin-top: 15px;padding: 6px;border-bottom-style: solid;margin-right: 53px;margin-left: 53px;border-bottom-width: thin;border-bottom-color: #7ebfa0;"><i class="icon f7-icons" style="position: absolute;color:white;">lock_fill</i><input class="example-two" type="password" style="background: transparent;border: none;font-size: 19px;color: white;margin-left: 37px;" id="password_login" placeholder="password"></div>
+
+                    <div style="margin: 49px;"><a href="#" class="button button-big color-red button-fill" style="background: #d64949;" id="login_btn" >Login</a></div>
+
+                     <div style="margin: -35px 49px;"><a href="#" class="button button-big color-red button-fill" style="background: #299dd1;" id="daftar_btn">Daftar</a></div>
+
+
+                </div>
+            </div>
+            
+
+            <!-- <p><div class="buttons-row" style="margin-left: -18px;margin-right: -18px;margin-top: -36px;margin-bottom: -20px;">
+              <a href="#tab_login_list" style="height: 48px;padding: 10px;" id="tab_login" class="button tab-link active"><i class="icon f7-icons">login</i><span>Login</span></a>
+              <a href="#tab_register_list" style="height: 48px;padding: 10px;" id="tab_register" class="button tab-link"><i class="icon f7-icons">compose</i><span>Register</span></a>
+            </div></p>
+            <p><div class="tabs">
+               <div class="tab active" id="tab_login_list">
+
+               <div class="list-block">
+                    <ul style="font-size:14px;">
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">person</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:41%;">Username</div>
+                            <div class="item-input">
+                              <input type="text" style="font-size:14px;" id="username_login" >
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">lock</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:41%;">Password</div>
+                            <div class="item-input">
+                              <input type="password" style="font-size:14px;" id="password_login" >
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      
+                    </ul>
+                    <div class="row" style="margin-top: 25px;">
+                          <div class="col-50">
+                            <a href="#" class="button close-popup" id="close_popup_login">Batal</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#" class="button button-fill" id="login_btn">Masuk</a>
+                          </div>
+                        </div>     
+
+                </div>
+
+               </div>
+
+               <div class="tab" id="tab_register_list">
+               <div class="list-block">
+
+                <p><div class="buttons-row theme-gray" style="margin-left: -9px;margin-right: -9px;margin-top: -28px;margin-bottom: -19px;">
+                <a href="#tab_farmer" style="height: 48px;padding: 10px;" id="tab_farmer_register" class="button tab-link active">Petani</a>
+                <a href="#tab_consumer" style="height: 48px;padding: 10px;" id="tab_consumer_register" class="button tab-link">Konsumen</a>
+              </div></p>
+
+              <p><div class="tabs">
+               <div class="tab active" id="tab_farmer">
+                  <div class="list-block">
+                     <ul style="font-size: 14px;">
+                   
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">person</i></div>
+                            <div class="item-inner">
+                              <div class="item-title label" style="width:49%;">Nama</div>
+                              <div class="item-input">
+                                <input type="text" style="font-size:14px;" id="name_farmer_register" >
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li id="farm_name_div">
+                            <div class="item-content">
+                              <div class="item-media"><i class="icon f7-icons">persons</i></div>
+                              <div class="item-inner">
+                                <div class="item-title label" style="width:49%;">Nama Usaha</div>
+                                <div class="item-input">
+                                  <input type="text" style="font-size:14px;" id="farm_name_register" >
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                         
+                       
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">lock</i></div>
+                            <div class="item-inner">
+                              <div class="item-title label" style="width:49%;">Password</div>
+                              <div class="item-input">
+                                <input type="password" style="font-size:14px;" id="password_farmer_register">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                         <li>
+                            <div class="item-content">
+                              <div class="item-media"><i class="icon f7-icons">layers_fill</i></div>
+                              <div class="item-inner">
+                                <div class="item-title label" style="width:49%;">Komoditas</div>
+                                <div class="item-input" >
+                                  <select class="minimal" style="margin-left:28px;"></select>
+                                  <select style="font-size:14px;margin-top: -42px;" id="comodity_type_register">
+                                    <option>Organik</option>
+                                    <option>Hidroponik</option>
+                                    <option>Konvensional</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li id="farm_name_div">
+                            <div class="item-content">
+                              <div class="item-media"><i class="icon f7-icons">document_text_fill</i></div>
+                              <div class="item-inner">
+                                <div class="item-title label" style="width:49%;">No. Sertifikat</div>
+                                <div class="item-input">
+                                  <input type="text" style="font-size:14px;" id="certificate_register" >
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">email</i></div>
+                            <div class="item-inner">
+                              <div class="item-title label" style="width:49%;">E-mail</div>
+                              <div class="item-input">
+                                <input type="email" style="font-size:14px;" id="email_farmer_register" >
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">home</i></div>
+                            <div class="item-inner">
+                              <div class="item-title label" style="width:49%;">Alamat</div>
+                              <div class="item-input">
+                                <textarea style="font-size:14px;" id="address_farmer_register"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">phone_round</i></div>
+                            <div class="item-inner">
+                              <div class="item-title label" style="width:49%;">No.Telp</div>
+                              <div class="item-input">
+                                <input type="text" style="font-size:14px;" id="phone_farmer_register" >
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                         
+                      </ul>
+                       <div class="row" style="margin-top: 25px;">
+                            <div class="col-50">
+                              <a href="#" class="button close-popup" id="close_popup_login">Batal</a>
+                            </div>
+                            <div class="col-50">
+                              <a href="#" class="button button-fill" id="register_farmer_btn">Daftar</a>
+                            </div>
+                          </div>  
+
+                    </div> 
+               </div>
+               <div class="tab" id="tab_consumer">
+                    <div class="list-block">
+                  <ul style="font-size: 14px;">
+                      <li style="display:none;">
+                        <input type="text" style="font-size:14px;" id="user_type_consumer_register" value="consumer" >
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">person</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;">Nama</div>
+                            <div class="item-input">
+                              <input type="text" style="font-size:14px;" id="name_consumer_register" >
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">lock</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;">Password</div>
+                            <div class="item-input">
+                              <input type="password" style="font-size:14px;" id="password_consumer_register">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">email</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;">E-mail</div>
+                            <div class="item-input">
+                              <input type="email" style="font-size:14px;" id="email_consumer_register" >
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">home</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;">Alamat</div>
+                            <div class="item-input">
+                              <textarea style="font-size:14px;" id="address_consumer_register"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">phone_round</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;">No.Telp</div>
+                            <div class="item-input">
+                              <input type="text" style="font-size:14px;" id="phone_consumer_register" >
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                       
+                    </ul>
+                     <div class="row" style="margin-top: 25px;">
+                          <div class="col-50">
+                            <a href="#" class="button close-popup" id="close_popup_login">Batal</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#" class="button button-fill" id="register_consumer_btn">Daftar</a>
+                          </div>
+                        </div>     
+
+                </div>
+
+               </div>
+
+               </div>
+               </p>
+
+
+                     
+
+                </div>
+
+               </div>
+
+          
+          </div></p> -->
+          <!-- </div> -->
+        </div>
+
+
+         <div class="popup popup-register" style="overflow-x: hidden;overflow-y:hidden;max-width: 100%;max-height:100%;">
+          <!-- <div class="content-block"> -->
+
+
+                 <div class="row">
+
+                    <div style="width: 100%;background-image:url(img/background-login.jpg);height: 300vw;text-align:center;box-shadow:0 0px 20px 4px #212020;z-index: 2;">
+
+
+                      <div class="row">
+                        <div class="col-20">
+                        </div>
+                        <div class="col-20">
+                        </div>
+                        <div class="col-20">
+                        </div>
+                        <div class="col-20">
+                        </div>
+                        <div class="col-20" style="margin-right: -1px;margin-top: -2px;">
+                          <a href="#" style="background: #36a09a;border-color: transparent;color: white;font-weight: bold;" class="button close-popup">X</a>
+                        </div>
+                      </div>  
+
+                      <img src="img/simbol.png" style="max-width:58%;margin-top: 15%;"/>
+
+
+                      <div>
+                         
+                            <img src="img/daftar-pembeli.png" id="daftar_pembeli" style="max-width:50%;margin-top: 10%;"/>
+                            <img src="img/daftar-penjual.png" id="daftar_penjual" style="max-width:50%;margin-top: 10%;"/>
+                      </div>
+
+                      
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        <div class="popup popup-register-penjual" style="overflow-x: hidden;max-width: 100%;">
+          <!-- <div class="content-block"> -->
+
+
+             <div class="row">
+
+                <div style="width: 100%;background-image:url(img/background-login.jpg);text-align:center;box-shadow:0 0px 20px 4px #212020;z-index: 2;height: 216vw;">
+
+
+                  <div class="row">
+                    <div class="col-20">
+                    </div>
+                    <div class="col-20">
+                    </div>
+                    <div class="col-20">
+                    </div>
+                    <div class="col-20">
+                    </div>
+                    <div class="col-20" style="margin-right: -1px;margin-top: -2px;">
+                      <a href="#" style="background: #36a09a;border-color: transparent;color: white;font-weight: bold;" class="button close-popup">X</a>
+                    </div>
+                  </div>  
+
+                  <img src="img/simbol.png" style="max-width:58%;margin-top: 9%;"/>
+
+                      <div class="list-block">
+                     <ul style="font-size: 16px;background: transparent;color: white;margin-left: 16px;margin-right: 16px;">
+                   
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">person</i></div>
+                            <div class="item-inner">
+                              <div class="item-title label" style="width:49%;text-align: left;">Nama</div>
+                              <div class="item-input">
+                                <input type="text" style="font-size:14px;color:white;" id="name_farmer_register" >
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li id="farm_name_div">
+                            <div class="item-content">
+                              <div class="item-media"><i class="icon f7-icons">persons</i></div>
+                              <div class="item-inner">
+                                <div class="item-title label" style="width:49%;text-align: left;">Nama Usaha</div>
+                                <div class="item-input">
+                                  <input type="text" style="font-size:14px;color:white;" id="farm_name_register" >
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                         
+                       
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">lock_fill</i></div>
+                            <div class="item-inner">
+                              <div class="item-title label" style="width:49%;text-align: left;">Password</div>
+                              <div class="item-input">
+                                <input type="password" style="font-size:14px;color:white;" id="password_farmer_register">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                         <li>
+                            <div class="item-content">
+                              <div class="item-media"><i class="icon f7-icons">layers_fill</i></div>
+                              <div class="item-inner">
+                                <div class="item-title label" style="width:49%;text-align: left;">Komoditas</div>
+                                <div class="item-input" >
+                                  <select class="minimal" style="margin-left:28px;"></select>
+                                  <select style="font-size:14px;margin-top: -42px;color:white;" id="comodity_type_register">
+                                    <option style="color:white;background:#448e64">Organik</option>
+                                    <option style="color:white;background:#448e64">Hidroponik</option>
+                                    <option style="color:white;background:#448e64">Konvensional</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li id="farm_name_div">
+                            <div class="item-content">
+                              <div class="item-media"><i class="icon f7-icons">document_text_fill</i></div>
+                              <div class="item-inner">
+                                <div class="item-title label" style="width:49%;text-align: left;">No. Sertifikat</div>
+                                <div class="item-input">
+                                  <input type="text" style="font-size:14px;color:white;" id="certificate_register" >
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">email_fill</i></div>
+                            <div class="item-inner">
+                              <div class="item-title label" style="width:49%;text-align: left;">E-mail</div>
+                              <div class="item-input">
+                                <input type="email" style="font-size:14px;color:white;" id="email_farmer_register" >
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">home_fill</i></div>
+                            <div class="item-inner">
+                              <div class="item-title label" style="width:49%;text-align: left;">Alamat</div>
+                              <div class="item-input">
+                                <textarea style="font-size:14px;color:white;" id="address_farmer_register"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">phone_round_fill</i></div>
+                            <div class="item-inner">
+                              <div class="item-title label" style="width:49%;text-align: left;">No.Telp</div>
+                              <div class="item-input">
+                                <input type="text" style="font-size:14px;color:white;" id="phone_farmer_register" >
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                         
+                      </ul>
+                       
+
+                    </div> 
+                   
+
+                     <div style="margin:38px 49px;"><a href="#" class="button button-big color-red button-fill" style="background: #144d7d;" id="register_farmer_btn">Daftar</a></div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="popup popup-register-pembeli" style="overflow-x: hidden;overflow-y:hidden;max-width: 100%;">
+          <!-- <div class="content-block"> -->
+
+
+             <div class="row">
+
+                <div style="width: 100%;background-image:url(img/background-login.jpg);text-align:center;box-shadow:0 0px 20px 4px #212020;z-index: 2;height: 216vw;">
+
+
+                  <div class="row">
+                    <div class="col-20">
+                    </div>
+                    <div class="col-20">
+                    </div>
+                    <div class="col-20">
+                    </div>
+                    <div class="col-20">
+                    </div>
+                    <div class="col-20" style="margin-right: -1px;margin-top: -2px;">
+                      <a href="#" style="background: #36a09a;border-color: transparent;color: white;font-weight: bold;" class="button close-popup">X</a>
+                    </div>
+                  </div>  
+
+                  <img src="img/simbol.png" style="max-width:58%;margin-top: 21%;"/>
+
+                      <div class="list-block">
+                     <ul style="font-size: 16px;background: transparent;color: white;margin-left: 16px;margin-right: 16px;">
+                   
+                        <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">person_fill</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;text-align:left;">Nama</div>
+                            <div class="item-input">
+                              <input type="text" style="font-size:14px;color:white;" id="name_consumer_register" >
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">lock_fill</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;text-align:left;">Password</div>
+                            <div class="item-input">
+                              <input type="password" style="font-size:14px;color:white;" id="password_consumer_register">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">email_fill</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;text-align:left;">E-mail</div>
+                            <div class="item-input">
+                              <input type="email" style="font-size:14px;color:white;" id="email_consumer_register" >
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">home_fill</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;text-align:left;">Alamat</div>
+                            <div class="item-input">
+                              <textarea style="font-size:14px;color:white;" id="address_consumer_register"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">phone_round_fill</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;text-align:left;">No.Telp</div>
+                            <div class="item-input">
+                              <input type="text" style="font-size:14px;color:white;" id="phone_consumer_register" >
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                         
+                      </ul>
+                       
+
+                    </div> 
+                   
+
+                     <div style="margin:38px 49px;"><a href="#" class="button button-big color-red button-fill" style="background: #144d7d;" id="register_consumer_btn">Daftar</a></div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- COMODITY INIT POPUP -->
+        <div class="popup popup-comodity-item">
+          <div class="content-block">
+              <div id="title_comodity" style="font-size: 18px;text-align: center;margin-bottom: -23px;font-weight: bold;margin-top: -18px;"></div> <div class="item-media" id="remove_comodity_btn" style="text-align: right;margin-bottom: -25px;display:none;"><i class="icon f7-icons" style="font-size:24px;">trash_fill</i></div>
+                        
+            <p>
+
+               <div class="list-block">
+                      <ul>
+                        
+                        <li style="text-align: center;">
+                          <img id="image_comodity" style="margin-top: 10px;border-radius: 11px;max-width:60%;">
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              <div class="item-title label" style="font-size:15px;width:52%;">Jenis</div>
+                              <div class="item-input">
+                                <input type="text" id="type_comodity" style="font-size:15px;">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li id="origin_comodity_grid_text" style="display:none;">
+                          <div class="item-content" style="margin-bottom: -5px;font-size: 15px;"><div class="item-media"><i class="icon f7-icons" style="font-size:24px;margin-right: 6px;">world_fill</i>Asal Daerah
+                          </div>
+                        </li>
+                        <li id="origin_comodity_grid" style="display:none;">
+                          <div class="item-content">
+                            <div class="item-inner" style="margin-left: 5px;">
+                              <div class="item-input">
+                                <select class="minimal" style="margin-left:28px;"></select>
+                                  <select style="font-size:15px;margin-top: -42px;" id="origin_comodity">
+                                    <option>Sumatera - Dolok Sanggul</option>
+                                    <option>Jawa Barat - Manglayang</option>
+                                    <option>Jawa Barat - Gunung Tilu</option>
+                                    <option>Jawa Barat - Garut</option>
+                                    <option>lainnya<span><input type="text" id="other_origin_comodity" style="font-size:15px;display:none;border: 1px solid #cfc1c1;text-align: center;"></span></option>
+                                  </select>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li id="process_comodity_grid" style="display:none;">
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              <div class="item-title label" style="font-size:15px;width:52%;">Cara Olah</div>
+                              <div class="item-input">
+                                 <select class="minimal" style="margin-left:28px;"></select>
+                                  <select style="font-size:15px;margin-top: -42px;" id="process_comodity">
+                                    <option>Semi Wash</option>
+                                    <option>Honey</option>
+                                    <option>Fermentasi</option>
+                                    <option>lainnya</option>
+                                  </select>
+                              </div>
+
+                            </div>
+                          </div>
+                        </li>
+                        <li id="other_process_comodity" style="display:none;">
+                          <div class="item-content">
+                          <div class="item-inner">
+                          <input id="other_process_comodity_input" type="text" style="font-size:15px;border: 1px solid #cfc1c1;text-align: center;">
+                          </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              <div class="item-title label" style="font-size:15px;width:52%;">Kuantitas (Kg)</div>
+                              <div class="item-input">
+                                <input type="text" id="total_comodity" style="font-size:15px;">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              <div class="item-title label" style="font-size:15px;width:52%;">Tinggi (CM)</div>
+                              <div class="item-input">
+                                <input type="text" id="height_comodity" style="font-size:15px;">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              <div class="item-title label" style="font-size:15px;width:52%;">Berat/unit (Kg)</div>
+                              <div class="item-input">
+                                <input type="text" id="weight_comodity" style="font-size:15px;">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content" style="margin-bottom: -5px;font-size: 15px;"><div class="item-media"><i class="icon f7-icons" style="font-size:24px;margin-right: 6px;">money_dollar_fill</i>Harga/Kg (Rp)
+                          </div>
+
+                          <!-- <div class="item-content">
+                            <div class="item-media" ><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              <div class="item-title label" style="font-size:15px;">Unit</div>
+                              <div class="item-input">
+                                <select id="unit_comodity">
+                                  <option value="kg">Kg</option>
+                                  <option value="ton">Ton</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div> -->
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-input">
+                              <div class="row">
+                                <div class="col-auto">
+                                    <input type="text" id="min_price_comodity" style="font-size:15px;border: 1px solid #cfc1c1;height: 37px;text-align: center;" placeholder="Minimum">
+                                </div>-
+                                <div class="col-auto">
+                              
+                                  <input type="text" id="max_price_comodity" style="font-size:15px;    border: 1px solid #cfc1c1;height: 37px;text-align: center;" placeholder="Maksimum">
+                                </div>
+                              </div>
+                             </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content" style="margin-bottom: -13px;font-size: 15px;">Tanggal Tanam
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">calendar</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              
+                              <div class="item-input">
+                                <input type="text" id="plan_comodity" style="font-size:15px;">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content" style="margin-bottom: -13px;font-size: 15px;">Tanggal Panen
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">calendar</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              
+                              <div class="item-input">
+                                <input type="text" id="harvest_comodity" style="font-size:15px;">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content" style="margin-bottom: -13px;font-size: 15px;"><div class="item-media"><i class="icon f7-icons" style="font-size:24px;margin-right: 6px;">compose_fill</i> Deskripsi</div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-inner" style="margin-left: 5px;">
+                              
+                              <div class="item-input">
+                                <textarea id="desc_comodity"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        </ul>
+
+                        <div class="row" style="margin-top: 25px;">
+                          <div class="col-50">
+                            <a href="#" class="button button-fill close-popup cancel-comodity">Batal</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#" class="button button-fill submit-comodity">Konfirmasi</a>
+                          </div>
+                        </div>     
+                  
+                  </div>
+              
+              </p>
+         
+
+          </div>
+      </div>
+
+
+      <!-- SHOP COMODITY -->
+      <div class="popup popup-shop-comodity-item">
+          <div class="content-block">
+              <div id="title_shop_comodity" style="font-size: 18px;text-align: center;margin-bottom: -23px;font-weight: bold;margin-top: -18px;"></div>
+                        
+            <p>
+
+               <div class="list-block">
+                      <ul style="font-size: 14px;">
+                        
+                        <li style="text-align: center;">
+                          <img id="image_shop_comodity" style="margin-top: 10px;border-radius: 11px;max-width:60%;">
+                        </li>
+                        <li>
+                            <div class="item-content">
+                              <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                              <div class="item-inner" style="margin-left: 5px;">
+                                <div class="item-title label" style="width:49%;">Komoditas</div>
+                                <div class="item-input" >
+                                  <select class="minimal" style="margin-left:28px;"></select>
+                                  <select style="font-size:14px;margin-top: -42px;" id="shop_comodity_type">
+                                    <option>Organik</option>
+                                    <option>Hidroponik</option>
+                                    <option>Konvensional</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="item-content">
+                              <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                              <div class="item-inner" style="margin-left: 5px;">
+                                <div class="item-title label" style="width:49%;">Grade</div>
+                                <div class="item-input" >
+                                  <select class="minimal" style="margin-left:28px;"></select>
+                                  <select style="font-size:14px;margin-top: -42px;" id="shop_comodity_grade">
+                                    <option>A</option>
+                                    <option>B</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        <li>
+                          <div class="item-content" style="margin-bottom: -5px;"><div class="item-media"><i class="icon f7-icons" style="font-size:24px;margin-right: 6px;">layers_fill</i>Kuantitas(Kg)  (maksimal:<div id="shop_comodity_max" style="font-weight: bold;"></div> Kg)
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-input">
+                              <div class="row">
+                                <div class="col-auto">
+                                    <input type="text" id="shop_comodity_quantity" style="font-size:15px;border: 1px solid #cfc1c1;height: 37px;text-align: center;margin-top: 10px;">
+                                </div>
+                                <div class="col-auto" style="width: 29%;margin-right: 49px;">
+                              
+                                  <p class="buttons-row">
+                                     <a class="button button-small button-round button-fill color-red inc-shop-comodity-qty" style="margin-left: 11px;">+</a>
+                                      <a class="button button-small button-round button-fill color-black dec-shop-comodity-qty" >-</a>
+                                  </p>  
+                                </div>
+                              </div>
+                             </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              <div class="item-title label" style="width:49%;">Harga/Kg (Rp)</div>
+                              <div class="item-input">
+                                <input type="text" id="shop_comodity_price" style="font-size:15px;">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        
+                        </ul>
+
+                        <div class="row" style="margin-top: 25px;">
+                          <div class="col-50">
+                            <a href="#" class="button button-fill close-popup cancel-shop-comodity">Batal</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#" class="button button-fill submit-shop-comodity">Konfirmasi</a>
+                          </div>
+                        </div>     
+                  
+                  </div>
+              
+              </p>
+         
+
+          </div>
+      </div>
+
+      <!-- COMODITY NON PRIORITY POP UP -->
+      <div class="popup popup-comodity-non-priority-item">
+          <div class="content-block">
+              <div id="non_priority_comodity_title" style="font-size: 18px;text-align: center;margin-bottom: -23px;font-weight: bold;margin-top: -18px;"></div>
+              <div id="non_priority_comodity_type" style="margin-top: 21px;text-align: center;margin-bottom: -31px;">
+                
+              </div>
+                        
+            <p>
+
+               <div class="list-block">
+                      <ul style="font-size: 14px;">
+                        
+                        <li style="text-align: center;">
+                          <img id="non_priority_comodity_image" style="margin-top: 10px;border-radius: 11px;max-width:60%;">
+                        </li>
+                        <li>
+                          <div class="item-content" style="margin-bottom: -13px;font-size: 15px;">Tanggal Tanam
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">calendar</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              
+                              <div class="item-input">
+                                <input type="text" id="non_priority_comodity_plan" style="font-size:15px;">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                       <li>
+                          <div class="item-content" style="margin-bottom: -13px;font-size: 15px;">Tanggal Panen
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">calendar</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              
+                              <div class="item-input">
+                                <input type="text" id="non_priority_comodity_harvest" style="font-size:15px;">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content" style="margin-bottom: -5px;"><div class="item-media"><i class="icon f7-icons" style="font-size:24px;margin-right: 6px;">layers_fill</i>Kuantitas
+                          </div></div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-input">
+                              <div class="row">
+                                <div class="col-auto">
+                                    <input type="text" id="non_priority_comodity_quantity" style="font-size:15px;border: 1px solid #cfc1c1;height: 37px;text-align: center;margin-top: 10px;" readonly>
+                                </div>
+                                <div class="col-auto" style="width: 29%;margin-right: 49px;">
+                              
+                                  <p class="buttons-row">
+                                     <a class="button button-small button-round button-fill color-red inc-non-comodity-priority-qty" style="margin-left: 11px;">+</a>
+                                      <a class="button button-small button-round button-fill color-black dec-non-comodity-priority-qty" >-</a>
+                                  </p>  
+                                </div>
+                              </div>
+                             </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content" style="margin-bottom: -5px;"><div class="item-media"><i class="icon f7-icons" style="font-size:24px;margin-right: 6px;">layers_fill</i>Estimasi Panen
+                          </div></div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-input">
+                              <div class="row">
+                                <div class="col-auto">
+                                    <input type="text" id="non_priority_comodity_estimate" style="font-size:15px;border: 1px solid #cfc1c1;height: 37px;text-align: center;margin-top: 10px;" readonly>
+                                </div>
+                                <div class="col-auto" style="width: 29%;margin-right: 49px;">
+                              
+                                  <p class="buttons-row">
+                                     <a class="button button-small button-round button-fill color-red inc-non-comodity-priority-estimate" style="margin-left: 11px;">+</a>
+                                      <a class="button button-small button-round button-fill color-black dec-non-comodity-priority-estimate" >-</a>
+                                  </p>  
+                                </div>
+                              </div>
+                             </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content" style="margin-bottom: -5px;"><div class="item-media"><i class="icon f7-icons" style="font-size:24px;margin-right: 6px;">layers_fill</i>Kena Hama
+                          </div></div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-input">
+                              <div class="row">
+                                <div class="col-auto">
+                                    <input type="text" id="non_priority_comodity_damage" style="font-size:15px;border: 1px solid #cfc1c1;height: 37px;text-align: center;margin-top: 10px;" readonly>
+                                </div>
+                                <div class="col-auto" style="width: 29%;margin-right: 49px;">
+                              
+                                  <p class="buttons-row">
+                                     <a class="button button-small button-round button-fill color-red inc-non-comodity-priority-damage" style="margin-left: 11px;">+</a>
+                                      <a class="button button-small button-round button-fill color-black dec-non-comodity-priority-damage" >-</a>
+                                  </p>  
+                                </div>
+                              </div>
+                             </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content" style="margin-bottom: -5px;"><div class="item-media"><i class="icon f7-icons" style="font-size:24px;margin-right: 6px;">layers_fill</i>Jumlah Yang Akan Dipanen
+                          </div></div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-input">
+                              <div class="row">
+                                <div class="col-auto">
+                                    <input type="text" id="non_priority_comodity_harvest_quantity" style="font-size:15px;border: 1px solid #cfc1c1;height: 37px;text-align: center;margin-top: 10px;" readonly>
+                                </div>
+                                <div class="col-auto" style="width: 29%;margin-right: 49px;">
+                              
+                                  <p class="buttons-row">
+                                     <a class="button button-small button-round button-fill color-red inc-non-comodity-priority-harvest-qty" style="margin-left: 11px;">+</a>
+                                      <a class="button button-small button-round button-fill color-black dec-non-comodity-priority-harvest-qty" >-</a>
+                                  </p>  
+                                </div>
+                              </div>
+                             </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content" style="margin-bottom: -5px;"><div class="item-media"><i class="icon f7-icons" style="font-size:24px;margin-right: 6px;">layers_fill</i>Jumlah Setelah Kena Hama
+                          </div></div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-input">
+                              <div class="row">
+                                <div class="col-auto">
+                                    <input type="text" id="non_priority_comodity_quantity_after_damage" style="font-size:15px;border: 1px solid #cfc1c1;height: 37px;text-align: center;margin-top: 10px;" readonly>
+                                </div>
+                                <div class="col-auto" style="width: 29%;margin-right: 49px;">
+                              
+                                  <p class="buttons-row">
+                                     <a class="button button-small button-round button-fill color-red inc-non-comodity-priority-qty-after-damage" style="margin-left: 11px;">+</a>
+                                      <a class="button button-small button-round button-fill color-black dec-non-comodity-priority-qty-after-damage" >-</a>
+                                  </p>  
+                                </div>
+                              </div>
+                             </div>
+                          </div>
+                        </li>
+                        </ul>
+
+                        <div class="row" style="margin-top: 25px;">
+                          <div class="col-50">
+                            <a href="#" class="button button-fill close-popup cancel-non-comodity-priority">Batal</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#" class="button button-fill submit-non-comodity-priority">Konfirmasi</a>
+                          </div>
+                        </div>     
+                  
+                  </div>
+              
+              </p>
+         
+
+          </div>
+      </div>
+
+      <!-- POPUP SHOPPING -->
+
+       <div class="popup popup-shop-item">
+           <div id="main_shop_item_list"></div>
+       </div>
+
+
+        <!-- FAB SHOPPING -->
+        <!--  <div class="speed-dial" id="fab" style="bottom: 31px;">
+            <a href="#" id="fab_btn" class="floating-button" style="bottom: 40px;">
+            <i class="icon f7-icons">data_fill</i>
+              <i class="icon f7-icons">arrow_up_fill</i>
+            </a>
+            <div class="speed-dial-buttons">
+              <div>
+                <a href="#" id="shop_sell_index_btn" style="bottom: 35px;">
+                  <i class="icon ion-ios-pricetags" style="font-size: x-large;"></i>
+                </a>
+              </div>
+              <div>
+                 <a href="#" id="shop_buy_index_btn" style="bottom: 45px;">
+                  <i class="icon ion-ios-cart" style="font-size: x-large;"></i>
+                </a>
+              </div>
+             
+              <div id="buy_text" style="margin-bottom: 12px;margin-left: -35px;background-color: #007aff;width: 108%;color: white;border-radius: 13px;padding-left: 10px;padding-top: 7px;padding-bottom: 7px;">
+                  Beli 
+              </div>
+              <div id="sell_text" style="margin-bottom: -82px;margin-left: -35px;background-color: #007aff;width: 108%;color: white;border-radius: 13px;padding-left: 10px;padding-top: 7px;padding-bottom: 7px;">
+                  Jual
+              </div>
+
+            </div>
+
+          </div> -->
+
+        <!-- Bottom Toolbar-->
+        <div class="toolbar tabbar tabbar-labels" id="tabbar_home" style="display:none;">
+          <div class="toolbar-inner toolbar-inner-home"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="cordova.js"></script>
+
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to Template7 Library JS-->
+    <script type="text/javascript" src="js/template7/template7.min.js"></script>
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-messaging.js"></script>
+    
+    
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+    
+    <!-- module -->
+    <script type="text/javascript" src="js/module/custom.js"></script>
+
+    <!-- Database -->
+    <script type="text/javascript" src="js/config.js"></script>
+    
+
+    <!-- jquery -->
+    <script src="js/jquery/jquery-2.1.4.js"></script>
+
+    <!-- moment.js -->
+    <script src="js/moment.min.js"></script>
+
+    <!-- velocity -->
+    <script src="js/velocity.js"></script>
+    <script src="js/velocity.ui.min.js"></script>
+
+    <!-- REQUIRE -->
+    <script src="js/require.js"></script>
+
+    <!-- TAB DESIGN
+    <script src="js/tab_design/modernizr.custom.js"></script>
+    <script src="js/tab_design/cbpFWTabs.js"></script>
+    <script type="text/javascript">
+      (function() {
+
+        [].slice.call( document.querySelectorAll( '.tabs-design' ) ).forEach( function( el ) {
+          new CBPFWTabs( el );
+        });
+
+      })();
+    </script> -->
+
+    <!-- GOOGLE MAP API -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Wkun7HEb1LxrGSGoxcloqrASp0UMlIM&libraries=places"></script>
+    
+    <script type="text/javascript" src="js/module/ajax.js"></script>
+    <script type="text/javascript" src="js/module/index.js"></script>
+    <script type="text/javascript" src="js/module/shop/main_shop.js"></script>
+    <script type="text/javascript" src="js/module/shop/shop_comodity.js"></script>
+    <script type="text/javascript" src="js/module/shop/cart_shop.js"></script>
+    <script type="text/javascript" src="js/module/shop/delivery_shop.js"></script>
+    <script type="text/javascript" src="js/module/shop/order_final_shop.js"></script>
+    <script type="text/javascript" src="js/module/shop/check_status_order.js"></script>
+    <script type="text/javascript" src="js/module/seller/comodity_init.js"></script>
+    <script type="text/javascript" src="js/module/seller/comodity_notification.js"></script>
+    <script type="text/javascript" src="js/module/seller/comodity_register_first.js"></script>
+    <script type="text/javascript" src="js/module/seller/comodity_choose.js"></script>
+    <script type="text/javascript" src="js/module/seller/farm_location.js"></script>
+    <script type="text/javascript" src="js/module/seller/profile_seller.js"></script>
+    <script type="text/javascript" src="js/module/seller/notification_seller.js"></script>
+    <script type="text/javascript" src="js/module/consumer/profile_consumer.js"></script>
+    
+
+  </body>
+</html>

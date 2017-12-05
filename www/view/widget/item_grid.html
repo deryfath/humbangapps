@@ -1,0 +1,92 @@
+<script id="item-grid-template" type="text/template7">
+<div class="content-block-inner" >
+
+  <div class="card-grid" id="card-grid-shop">
+
+    {{#each data}} 
+
+                  <div class="card-wrap card-main-shop">
+                    <div class="card" style="margin-right:1px;margin-left:1px;">
+
+                    {{#if ready_stock}}
+                      <img src="img/badge.png" style="width: 26%;position: absolute;margin-left: 70%;-webkit-backface-visibility: hidden;" />
+
+                    {{else}}
+                      <img src="img/panen.png" onclick="myApp.alert('item yang dipilih masih dalam masa tanam','notifikasi')" style="width: 26%;position: absolute;margin-left: 70%;-webkit-backface-visibility: hidden;"/>
+
+                    {{/if}}
+
+                   
+                      <p class="stok-label-shop-{{id}}" style="position: absolute;z-index:99;margin-top: 86%;background: black;width: 58%;font-size: small;opacity: 0.75;color: white;display:block;-webkit-backface-visibility: hidden;">Stock : {{total}} Kg</p>
+                    
+                      <img id="img_shop_{{id}}" src="{{image}}" style="margin-bottom: -5px;border-top-left-radius: 4px;border-top-right-radius: 4px;-webkit-backface-visibility: hidden;"/>
+
+                    <!--<label class="label-checkbox item-content special-request" data-startharvest="{{startHarvest}}" data-finishharvest="{{finishHarvest}}">
+                    <input type="checkbox" class="checkbox-special" name="checkbox-special-request" id="special_request_{{id}}" value="{{id}}">
+                    <div class="item-media" style="margin-left: 12px;margin-top: 5px;margin-bottom: 20px;">
+                      <i class="icon icon-form-checkbox"></i>
+                    </div><div style="margin-top: -39px;margin-left: 40px;margin-bottom: 5px;font-size: small;">Special Request</div></label>-->
+
+
+                      <div class="flip-container-shop flip-container-shop-{{id}}" >
+
+                      <div class="front-shop" id="front_shop_{{id}}">
+                        
+                          <div class="card-footer" style="height: 0vh;padding:0px;">
+                            <div class="list-block media-list">
+                              <ul>
+                                <li class="item-content">
+                                  <div class="item-inner" style="margin-left:-15px;">
+                                    <div class="item-title-row" >
+                                      <div class="item-title" style="width: 42vw;font-size: 13px;font-weight: bolder;">{{name}}</div>
+                                    </div>
+                                    <div class="item-subtitle" style="font-size:12px;">{{comodity_type}}</div>
+                                    <div class="item-subtitle" style="font-size:12px;">{{item_farm}}</div>
+                                  </div>
+                                </li>
+                                
+                              </ul>
+                            </div>
+                          </div>
+
+                          {{#if quantity_kg}}
+                            <div class="card-footer" style="height: 0vh;padding:0px;">
+                              <p class="color-gray" style="font-weight: bold;color:red;font-size: medium;">Rp {{item_price_show}}<div id="quantity_label_{{id}}" style="font-size: smaller;margin-right: 16%;">/Kg</div></p>
+                            </div>
+                          {{else}}
+                            <div class="card-footer" style="height: 0vh;padding:0px;">
+                              <p class="color-gray" style="font-weight: bold;color:red;font-size: medium;">Rp {{item_price_show}}<div id="quantity_label_{{id}}" style="font-size: smaller;margin-right: -6%;">/250 Gram</div></p>
+                            </div>
+
+                          {{/if}}
+
+                        <div class="card-footer" id="card_footer_btn_{{id}}" style="height:0vh;padding:0px;">
+                          <p class="buttons-row" style="width:100%;margin: 0 auto;">
+                              <a href="#" class="button button-fill color-red button-round" style="width: 30%;font-size:12px;"><span class="icon icon ion-star"></span></a>
+                              <a href="#" class="button button-small button-fill color-green button-round buy_btn" data-id="{{id}}" data-itemid="{{item_id}}" data-name="{{name}}" data-img="{{image}}" data-price="{{price}}" data-stock="{{total}}" data-quantitylabel="{{quantity_kg}}" data-ready="{{ready_stock}}" data-sellerid="{{user_id}}" data-startharvest="{{startHarvest}}" data-finishharvest="{{finishHarvest}}" data-farm="{{item_farm}}" style="font-size:13px;"><span class="icon icon ion-ios-cart" style="margin-right: 3px;"></span>Beli</a>
+                          </p>
+                        
+                        </div>
+
+                      </div>
+
+                      <div class="back-shop" id="back_shop_{{id}}">
+                        
+                      </div>
+                      
+
+                      </div>
+
+
+                    </div>
+                  </div>
+              
+
+
+      {{/each}}
+
+    </div>
+
+</div>
+
+</script>

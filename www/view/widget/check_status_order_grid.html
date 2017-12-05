@@ -1,0 +1,52 @@
+<script id="check-status-order-template" type="text/template7">
+
+	<div class="list-block accordion-list">
+                    <ul>
+
+                    {{#each data}} 
+                      <li class="accordion-item {{expanded}}"><a href="#" class="item-content item-link accordion-btn" id="{{trx_id}}" data-id="{{trx_id}}">
+                          <div class="item-inner">
+                            <div class="item-title-row"> 
+	                            <div class="item-title" style="font-size: small;font-weight: bold;width: 119%;">ID : {{trx_id}} &bull; {{created_time}}</div>
+	                            <div class="item-text" style="font-size: small;font-weight: bold;width: 119%;">Pembayaran : {{payment_method}}</div>
+                            </div>
+                          </div></a>
+                        <div class="accordion-item-content">
+                          <div class="content-block">
+                             <div class="list-block media-list">
+                                <ul>	
+
+                                {{#each data_cart}} 
+
+                                  <li>
+                                    <label class="label-radio item-content">
+                                      <div class="item-media"><a href="#"><img width="82" height="82" style="margin-top: 3px;" src="{{image}}"></a></div>
+                                      <div class="item-inner">
+                                        <div class="item-title-row">
+                                          <div class="item-title">{{name}}</div>
+                                        </div>
+                                        <div class="item-source" style="font-size: small;"><b>{{farm}}</b></div>   
+                                        <div class="item-text item-news" style="margin-bottom: -23px;font-size: small;">price : <b>{{price_show}} /Kg</b> </div>
+                                        <div class="item-text item-news" style="margin-bottom: -23px;font-size: small;">jumlah : <b>{{total}} Kg</b> </div>
+                                        <div class="item-text item-news" style="margin-bottom: -23px;font-size: small;">Tanggal Kirim : <b>{{delivery_time}}</b></div>
+                                        <div class="item-text item-news" style="margin-bottom: -23px;font-size: small;">Status : <b>{{status}}</b> </div>
+                                      </div>
+                                    </label>
+                                  </li>
+                                  	{{/each}}
+
+                                </ul>
+                            </div>
+                              
+		                       <div class="item-title" style="text-align: right;border-top-style: solid;font-size: medium;font-weight: bold;margin-bottom: 11px;">Total : {{transaction_total}}</div>
+		                          
+                          </div>
+                        </div>
+
+                      </li>
+                      {{/each}}
+                     
+                    </ul>
+                  </div> 
+
+</script>

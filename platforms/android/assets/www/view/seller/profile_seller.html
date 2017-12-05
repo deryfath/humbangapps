@@ -1,0 +1,183 @@
+<div class="navbar">
+  <div class="navbar-inner" style="background: #2f3031;">
+    <div class="left"><a href="index.html" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+    <div class="center sliding" style="color:white;">Profile</div>
+    <div class="right">
+        <!-- <a href="#" data-picker=".picker-issue-list" class="link open-picker" id="icon-list-issue">
+            <i class="icon ion-ios-more color-gray"></i>
+        </a> -->
+    </div>
+
+  </div>
+</div>
+
+<div class="pages navbar-through toolbar-through">
+          <!-- Page, data-page contains page name-->
+    <div class="page no-swipeback" data-page="profile_seller_list">
+            <!-- Scrollable page content-->
+            <div class="page-content" id="profile_seller_list" style="overflow-x: hidden;max-width: 100%;">
+
+           
+              <div class="content-block-title">Account Detail</div>
+
+              <!-- content item grid -->
+              <div class="list-block">
+                    <ul class="profile_property" style="font-size: 14px;">
+                      <li id="img_profile_li">
+                       <div style="text-align:center;">
+                         <img id="img_profile_seller" style="border-radius: 50%;margin-top:20px;">
+                       </div>
+                        
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">person</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;">Nama</div>
+                            <div class="item-input">
+                              <input type="text" style="font-size:14px;" id="name_profile_seller">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                       <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">persons</i></div>
+                            <div class="item-inner">
+                              <div class="item-title label" style="width:49%;">Nama Usaha</div>
+                              <div class="item-input">
+                                  <input type="text" style="font-size:14px;" id="farm_name_profile">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">persons</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;">Username</div>
+                            <div class="item-input">
+                              <input type="text" style="font-size:14px;" id="username_profile_seller">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">lock</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;">Password</div>
+                            <div class="item-input">
+                              <input type="password" style="font-size:14px;" id="password_profile_seller">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">email</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;">E-mail</div>
+                            <div class="item-input">
+                              <input type="email" style="font-size:14px;" id="email_profile_seller">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">home</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;">Alamat</div>
+                            <div class="item-input">
+                              <textarea id="address_profile_seller" style="font-size:14px;"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                       <li>
+                            <div class="item-content">
+                              <div class="item-media"><i class="icon f7-icons">layers_fill</i></div>
+                              <div class="item-inner">
+                                <div class="item-title label" style="width:49%;">Komoditas</div>
+                                <div class="item-input" >
+                                  <select class="minimal" style="margin-left:28px;"></select>
+                                  <select style="font-size:14px;margin-top: -42px;" id="comodity_type_profile_seller">
+                                    <option>Organik</option>
+                                    <option>Hidroponik</option>
+                                    <option>Konvensional</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li id="farm_name_div">
+                            <div class="item-content">
+                              <div class="item-media"><i class="icon f7-icons">document_text_fill</i></div>
+                              <div class="item-inner">
+                                <div class="item-title label" style="width:49%;">No. Sertifikat</div>
+                                <div class="item-input">
+                                  <input type="text" style="font-size:14px;" id="certificate_profile_seller" >
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">phone_round</i></div>
+                          <div class="item-inner">
+                            <div class="item-title label" style="width:49%;">No.Telp</div>
+                            <div class="item-input">
+                              <input type="text" style="font-size:14px;" id="phone_profile_seller">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    
+                      <li style="padding: 10px;">
+                        <p><a href="#" id="update_profile_btn" class="button button-fill active" style="width: 50%;margin: 0 auto;">Perbarui</a></p>          
+                      </li>
+                    </ul>
+                </div>
+
+
+                <div class="content-block-title">Komoditas</div>
+
+                <div class="list-block" id="list_comodity_profile_exist" style="display:none;">
+
+                  <ul>
+                    <li>
+                      <div class="item-content" style="margin-bottom: -36px;">
+                        <p id="edit_profile_comodity" style="margin: 0 14px 0 auto;"><i class="icon f7-icons">settings_fill</i></p>
+                      </div>
+                    </li>
+                  </ul>
+                   
+                </div>
+
+                <!-- COMODITAS-->
+              <div id="comodity_profile_list"></div>
+
+                <!-- LOKASI USAHA -->
+                <!-- <div class="content-block-title" style="margin-top: 29px;">Lokasi Usaha</div>
+                <div class="form-style-6" style="margin-top: 13px;">
+                  
+                  <form>
+
+                  <div id="input_container" style="position:relative;padding:0;margin:0;">
+                      <input style="margin:0;padding-left: 30px;" type="text" id="location_input_profile" placeholder="Cari Lokasi Usaha" value>
+                      <img style="position:absolute;bottom:11px;left:10px;width:15px;height:15px;" src="img/search.jpg" id="input_img">
+                  </div>
+
+                  </form>
+                </div>
+                <div id="map_profile" style="width: 100%; height: 70%;"></div>
+
+                <div class="content-block-title" style="margin-top: -3px;"></div> -->
+
+
+        </div>
+  </div>
+
+
+</div>

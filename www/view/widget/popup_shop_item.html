@@ -1,0 +1,102 @@
+<script id="shop-item-template" type="text/template7">
+
+		<div class="content-block">
+			<div id="title_comodity_shop_item" style="font-size: 18px;text-align: center;margin-bottom: -23px;font-weight: bold;margin-top: -18px;">{{name}}</div>
+
+			<div style="text-align: center;">
+                  <img id="image_comodity_shop_item" src="{{image}}" style="margin-top: 38px;margin-bottom: -26px;border-radius: 11px;max-width:60%;">
+                </div>
+
+             <div class="list-block media-list">
+                <ul>
+
+              {{#each data}} 
+
+                
+                  <li>
+                    <label class="label-radio item-content">
+
+                    {{#if checked}}
+                      <input type="radio" name="my-radio-shop-item" value="{{farm_name}}_{{total}}_{{price}}_{{user_id}}" checked="checked">
+                    {{else}}
+                    	<input type="radio" name="my-radio-shop-item" value="{{farm_name}}_{{total}}_{{price}}_{{user_id}}">
+                    {{/if}}
+                      <div class="item-inner">
+                        <div class="item-title-row">
+                          <div class="item-title" style="margin-bottom: 8px;">{{farm_name}}</div>
+                        </div>
+                        <div class="item-text" style="margin-bottom: -18px;">Harga    : <b>{{item_price_show}}</b></div>
+                        <div class="item-text" style="margin-bottom: -18px;">stock    : <b>{{total}}</b></div>
+                        {{#if ready_stock}}
+                          <div class="item-text" style="margin-bottom: -18px;">status   : <b>Siap Kirim</b></div>
+                        {{else}}
+                          <div class="item-text" style="margin-bottom: -18px;">status   : <b>Panen</b></div>
+                        {{/if}}
+                      </div>
+                    </label>
+                  </li>
+
+               {{/each}}
+
+
+                </ul>
+
+            </div>
+
+            <div class="list-block" style="margin-top: -36px;">
+
+                <ul>
+                <li>
+                  <label class="label-checkbox item-content special-request">
+                    <input type="checkbox" name="checkbox-special-request" id="special_request" value="{{id}}">
+                    <div class="item-media">
+                      <i class="icon icon-form-checkbox"></i>
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title" style="font-size:smaller;">Special Request</div>
+                    </div>
+                  </label>
+                </li>
+                 <li>
+                  <div class="item-content">
+                    <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                    <div class="item-inner" style="margin-left: 5px;height:11px;">
+                      <div class="item-title label" style="font-size:15px;width:50%;">Kuantitas (Kg)</div>
+                      <div class="item-input">
+                        <input type="text" id="total_shop_item_{{id}}" style="font-size:15px;" value="0">
+                      </div>
+                      <p class="buttons-row">
+                         <a class="button button-small button-round button-fill color-red inc-shop-item-qty" data-id="{{id}}" style="margin-left: 11px;">+</a>
+                          <a class="button button-small button-round button-fill color-black dec-shop-item-qty" data-id="{{id}}">-</a>
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                  <li>
+	                <div class="item-content">
+			            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">calendar</i></div>
+			            <div class="item-inner" style="margin-left: 5px;">
+			              <div class="item-title label" style="font-size:15px;width:50%;">Tanggal Kirim</div>
+			              <div class="item-input">
+			                <input type="text" class="delivery-time-shop-item" id="delivery_time_shop_item_{{id}}" style="font-size:15px;" >
+			              </div>
+			            </div>
+			          </div>
+		          </li>
+		        </ul>
+
+                <div class="row" style="margin-top: 18px;">
+                  <div class="col-50">
+                    <a href="#" class="button button-fill close-popup cancel-shop-item">Cancel</a>
+                  </div>
+                  <div class="col-50">
+                    <a href="#" class="button button-fill submit-shop-item" data-id="{{id}}" data-name="{{name}}" data-image="{{image}}">Submit</a>
+                  </div>
+                </div>     
+
+            </div>
+          </div>
+
+
+
+</script>

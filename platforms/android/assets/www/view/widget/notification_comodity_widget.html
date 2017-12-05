@@ -1,0 +1,32 @@
+<script id="notification-comodity-template" type="text/template7">
+
+	 	<div class="content-block-inner">
+                  <div class="list-block media-list">
+                    <ul id= "comodity-notification-grid-list">
+                    {{#each data}} 
+                      <li class="comodity-notification-item" data-id="{{id}}" data-weight="{{comodity_weight}}" data-height="{{comodity_height}}" data-type="{{comodity_type}}" data-desc="{{desc}}" data-farm="{{farm_name}}" data-finishharvest="{{finishHarvest}}" data-startharvest="{{startHarvest}}" data-startplan="{{startPlan}}" data-finishplan="{{finishPlan}}" data-grade="{{grade}}" data-image="{{image}}" data-isnotif="{{is_notif}}" data-ispriority="{{is_priority}}" data-itemid="{{item_id}}" data-itemtype="{{item_type}}" data-name="{{name}}" data-pricemin="{{price_min}}" data-pricemax="{{price_max}}" data-total="{{total}}" data-userid="{{user_id}}" data-cron2="{{cronFlag2}}" data-cron5="{{cronFlag5}}" data-harvesttotal="{{harvest_total}}" data-estimate="{{harvest_estimate_total}}" data-damagetotal="{{damage_total}}" data-damageafter="{{damage_after_total}}">
+                          <label class="label-radio item-content">
+                            <div class="item-media"><a href="#"><img width="100" height="100" style="margin-top: 3px;" src="{{image}}"></a></div>
+                            <div class="item-inner">
+                              <div class="item-title-row">
+                                <div class="item-title">{{name}}</div>
+
+                                {{#if cronFlag2}}
+
+                                <div class="item-after"><span id="notification_bell"> <i class="icon f7-icons" style="font-size:20px;color:red;">bell_fill</i></span></div>
+
+                                 {{/if}}
+                                
+                              </div>
+                              <div class="item-text item-news" style="margin-bottom: -23px;font-size: small;">Jumlah : {{total}} Kg</div>
+                              <div class="item-text item-news" style="margin-bottom: -23px;font-size: small;">Tanggal Panen : <b>{{startHarvest}}</b> </div>
+                              <div class="item-text item-news" style="margin-bottom: -23px;font-size: small;">Jenis : {{comodity_type}} </div>
+                            </div>
+                          </label>
+                        </li>
+                       	{{/each}}
+                     </ul>   
+                  </div>
+              </div>  
+
+</script>
