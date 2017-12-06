@@ -5,7 +5,7 @@ myApp.onPageInit('order_final_shop_list', function (page) {
 
 	$('#continue_shopping_btn').click(function(){
 		mainView.router.back({
-				url : 'view/shop/main_shop.html',
+				url : 'view/shop/shop_comodity.html',
 				force :true
 			});
 	})
