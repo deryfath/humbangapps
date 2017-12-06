@@ -180,34 +180,34 @@ myApp.onPageInit('main_shop_list', function (page) {
 
 				arrComodityShop = Template7.global.arrDataComodity;
 				console.log(arrComodityShop.length);
-				// var i = 0;
-				// var stop = false;
-				// var shopInterval = 0;
-				// Template7.global.arrFarmName = [];
+				var i = 0;
+				var stop = false;
+				var shopInterval = 0;
+				Template7.global.arrFarmName = [];
 
-	  	// 		shopInterval = setInterval(function(){
+	  			shopInterval = setInterval(function(){
 
-		  // 			while(i<arrComodityShop.length && !stop){
-		  // 				getFarmNameByUserId(arrComodityShop[i].user_id);
-		  // 				i++;
-		  // 			}
+		  			while(i<arrComodityShop.length && !stop){
+		  				getFarmNameByUserId(arrComodityShop[i].user_id);
+		  				i++;
+		  			}
 
-		  // 			console.log(arrComodityShop.length);
-				// 	console.log(Template7.global.arrFarmName.length);
+		  			console.log(arrComodityShop.length);
+					console.log(Template7.global.arrFarmName.length);
 
-				// 	showLoading();
+					showLoading();
 
-				// 	if(arrComodityShop.length==Template7.global.arrFarmName.length){
-				// 		console.log('test');
-				// 		stop = true;
-				// 		clearInterval(shopInterval);
-				// 		console.log(Template7.global.arrFarmName);
+					if(arrComodityShop.length==Template7.global.arrFarmName.length){
+						console.log('test');
+						stop = true;
+						clearInterval(shopInterval);
+						console.log(Template7.global.arrFarmName);
 						loadWidgetItemGridList(arrComodityShop,Template7.global.arrFarmName);
-				// 	}
+					}
 					
 					
 
-				// }, 100)
+				}, 100)
 
 			}
 
