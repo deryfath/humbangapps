@@ -86,7 +86,7 @@
 
 
 	var landingPageNotLogin = '<div class="row">'+
-								'<div id="belanja" onClick = "shopBuyButton();" style="width: 100%;background-image:url(img/background-menu-shop.jpg);text-align:center;box-shadow:0 0px 20px 4px #212020;z-index: 2;">'+
+								'<div id="belanja" onClick = "shopBuyButton();" style="width: 100%;background-image:url(img/background-menu-shop.jpg);text-align:center;z-index: 2;">'+
 								    '<img src="img/shopping-bag-icon.png" style="max-width:58%;margin-top: 30px;"/><div style="color:white;margin-top: -41px;font-size: 22px;">Belanja</div>'+
 								   '</div>'+
                 				'</div>'+
@@ -752,7 +752,7 @@
 				hideLoading();
 				myApp.alert("Username already register", "notice");
 			}else{
-				myApp.closeModal('.popup-login');
+				myApp.closeModal('.popup-register-penjual');
 
 				document.getElementById('name_farmer_register').value = "";
 				document.getElementById('farm_name_register').value = "";
@@ -911,7 +911,7 @@
 				hideLoading();
 				myApp.alert("Username already register", "notice");
 			}else{
-				myApp.closeModal('.popup-login');
+				myApp.closeModal('.popup-register-pembeli');
 
 				document.getElementById('name_farmer_register').value = "";
 				document.getElementById('farm_name_register').value = "";

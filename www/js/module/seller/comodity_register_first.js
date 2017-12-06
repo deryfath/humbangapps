@@ -1,4 +1,6 @@
 myApp.onPageInit('comodity_register_list', function (page) {
+		
+		$('#tabbar_home').css("display","block");
 
 		$('.toolbar-inner-home').html('<a href="#" class="next-choose-comodity-first" style="margin: 0 auto;"><i class="icon f7-icons" style="color: #143b41;">check_round_fill</i><span class="tabbar-label">Konfirmasi</span></a>');
 

@@ -1,6 +1,7 @@
 myApp.onPageInit('profile_seller_list', function (page) {
 
 	$('#fab').css("display","none");
+	$('#tabbar_home').css("display","none");
 
 	$('.back').click(function(){
 		mainView.router.back({
