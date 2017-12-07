@@ -23,6 +23,8 @@
         <allow-intent href="market:*" />
     </platform>
     <splash src="splash.png" />
+    <icon src="icon-app.png" />
+    <preference name="SplashScreenDelay" value="8000" />
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />

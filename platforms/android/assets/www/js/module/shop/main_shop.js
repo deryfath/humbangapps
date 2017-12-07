@@ -958,6 +958,7 @@ myApp.onPageInit('main_shop_list', function (page) {
 							
 							// }
 
+
 							document.getElementById('total_'+id).value = total;
 
 							e.stopPropagation();
@@ -1025,13 +1026,13 @@ myApp.onPageInit('main_shop_list', function (page) {
 	function addCartEvent(){
 
 				$('.add-to-cart-btn').unbind('click').click(function(e){
-					showLoading();
+					// showLoading();
 
-					setTimeout(function(){
-						hideLoading();
-					   mainView.router.reloadPage('view/shop/main_shop.html?itemId='+itemIdSearch+'&type='+typeSearch+'&grade='+gradeSearch+'&quantity='+quantitySearch+'&price='+priceSearch);
+					// setTimeout(function(){
+					// 	hideLoading();
+					//    mainView.router.reloadPage('view/shop/main_shop.html?itemId='+itemIdSearch+'&type='+typeSearch+'&grade='+gradeSearch+'&quantity='+quantitySearch+'&price='+priceSearch);
 				  	   
-					}, 2000);
+					// }, 2000);
 
 					calendarDeliveryRange.destroy();
 
@@ -1083,12 +1084,19 @@ myApp.onPageInit('main_shop_list', function (page) {
 						// }else{
 
 							//update max stock item quantity
-							stockCal = stock - total;
+							stockCal = parseInt($('#stok_label_main_shop_'+id).text()) - total;
+
+							console.log(stockCal);
 						// }
-						
+
+						$('#stok_label_main_shop_'+id).text(String(stockCal));	
+
+						console.log(document.getElementById('cart_total').innerHTML);	
+
+						cartTotalTmp = document.getElementById('cart_total').innerHTML;				
 						
 						//INSERT TO CART
-				  		cartItem(id,name,sellerId,farm,img,price,total,stockCal,quantityKg,delivery_time,specialRequest);
+				  		cartItem(id,name,sellerId,farm,img,price,total,stockCal,quantityKg,delivery_time,specialRequest,cartTotalTmp);
 
 						$('.flip-container-shop-'+id).toggleClass('flipped');
 
@@ -1098,7 +1106,8 @@ myApp.onPageInit('main_shop_list', function (page) {
 				  		e.preventDefault();
 
 				  		console.log(name);
-				  		
+
+
 				  		var cart = $('.cart-total');
 
 				        // var imgtodrag = [].slice.call(document.getElementById('card-grid-shop').getElementsByClassName('card-main-shop') );
@@ -1106,7 +1115,7 @@ myApp.onPageInit('main_shop_list', function (page) {
 				        var imgtodrag = $(this).parents().find('img').closest('#img_shop_'+id);
 				        var $flyerClone = $(imgtodrag).clone();
 
-				        flyToElement($(imgtodrag), cart, id, $flyerClone, $(this),itemId);
+				        flyToElement($(imgtodrag), cart, id, $flyerClone, $(this),itemId,cartTotalTmp);
 
 				        if ($flyerClone.is(":animated")) {
 						    console.log("animated");
@@ -1133,9 +1142,11 @@ myApp.onPageInit('main_shop_list', function (page) {
 					});
 	}
 
-	function flyToElement(flyer, flyingTo, id, flyerClone, obj, itemId) {
+	function flyToElement(flyer, flyingTo, id, flyerClone, obj, itemId, cartTotalTmp) {
 	    var $func = $(this);
 	    var divider = 3;
+
+	    $('.cart-total').html(cartTotalTmp);
 
 	    $(flyerClone).css({position: 'absolute',width: '50%', top: $(flyer).offset().top + "px", left: $(flyer).offset().left + "px", opacity: 1, 'z-index': 1000});
 	    $('.pages').append($(flyerClone));
@@ -1162,19 +1173,21 @@ myApp.onPageInit('main_shop_list', function (page) {
 	        	console.log('done animation');
 	        	// counterCart++;
 
-	        	getAllCart();
+	   //      	getAllCart();
 
-				setTimeout(function(){
-					console.log(Template7.global.lengthCart);
-					if(Template7.global.lengthCart>0){
-						$('.cart-total').html(Template7.global.lengthCart);
-						counterCart = Template7.global.lengthCart;
-						console.log(Template7.global.arrDataCart);
-					}else{
-						counterCart = 0;
-					}
+				// setTimeout(function(){
+				// 	console.log(Template7.global.lengthCart);
+				// 	if(Template7.global.lengthCart>0){
+				// 		$('.cart-total').html(Template7.global.lengthCart);
+				// 		counterCart = Template7.global.lengthCart;
+				// 		console.log(Template7.global.arrDataCart);
+				// 	}else{
+				// 		counterCart = 0;
+				// 	}
 
-				}, 300);
+				// 	hideLoading();
+
+				// }, 2000);
 	        	flyingTo.html(counterCart);
 	            obj.on('click',addCartEvent);
 	        }

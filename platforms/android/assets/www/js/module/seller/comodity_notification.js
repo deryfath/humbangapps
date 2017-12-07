@@ -11,7 +11,6 @@ myApp.onPageInit('comodity_notification_list', function (page) {
 
 	$('.back').click(function(){
 		console.log('test');
-		$('.toolbar-inner-home').html('');
 
 		Template7.global.arrComodityNonPriority = [];
 

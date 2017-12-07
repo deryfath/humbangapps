@@ -219,7 +219,7 @@ function comodity(item_id,name,image,total,priceMin,priceMax,start_harvest,finis
     insertComodity(postDataComodity);
 }
 
-function cartItem(item_id,name,seller_id,farm,image,price,total,totalMax,unit,delivery_time,special){
+function cartItem(item_id,name,seller_id,farm,image,price,total,totalMax,unit,delivery_time,special,cartTotal){
     var postDataCart = {
             item_id : item_id,
             name : name,
@@ -231,7 +231,8 @@ function cartItem(item_id,name,seller_id,farm,image,price,total,totalMax,unit,de
             totalMax : totalMax,
             unit : unit,
             delivery_time : delivery_time,
-            special : special
+            special : special,
+            cart_total : cartTotal
     };
 
     console.log(postDataCart);

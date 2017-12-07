@@ -2344,7 +2344,7 @@ function updateTotalComodityByUserId(comodityId,total,status,quantityKg){
           }
         },
         beforeSend : function(){
-           showLoading();
+           // showLoading();
         },
         success : function(data){
 
@@ -2556,13 +2556,15 @@ function insertCart(postData){
           }
         },
         beforeSend : function(){
-           showLoading();
+           // showLoading();
         },
         success : function(data){
 
             var result = JSON.parse(data);
 
             console.log(Object.keys(result).length);
+
+            console.log(result);
 
             var comodityIdTmp,totalTmp;
             var isSame = false;
@@ -2587,6 +2589,7 @@ function insertCart(postData){
               if(isSame){
                 //update total cart
 
+
                   var amountTotal;
 
                   // if(postData.unit){
@@ -2609,6 +2612,7 @@ function insertCart(postData){
                       dataType: "json",
                       success: function(data){
 
+                        document.getElementById("cart_total").innerHTML = String(postData.cart_total);
                         console.log(data);
                         
                       },
@@ -2680,6 +2684,8 @@ function insertCart(postData){
 }
 
 function insertCartExt(postData,userID){
+
+
   //insert cart
   var cartId = makeid();
   var created_time = getCurrentDate();
@@ -2726,6 +2732,9 @@ function insertCartExt(postData,userID){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
+
+                  postData.cart_total++;
+                  document.getElementById("cart_total").innerHTML= String(postData.cart_total);
 
                   console.log(data);
                   
@@ -2825,7 +2834,7 @@ function getAllCart(){
   }
 
   console.log('userID '+userID);
-  console.log('UUID '+device.uuid);
+  // console.log('UUID '+device.uuid);
 
   $$.ajax({
         url: "https://catatani-ba229.firebaseio.com/cart/data.json?orderBy=\"user_id\"&equalTo="+userID,
@@ -2855,7 +2864,7 @@ function getAllCart(){
               $$.each(result, function (index, value) {
                 console.log(result[index].name);
 
-                if(result[index].trx_id=="" && result[index].device_id == device.uuid ){ //&& result[index].device_id == device.uuid
+                if(result[index].trx_id=="" && result[index].device_id == device.uuid){ //&& result[index].device_id == device.uuid
                   Template7.global.arrDataCart.push({
                       id:result[index].id,
                       cart_id: result[index].cart_id,

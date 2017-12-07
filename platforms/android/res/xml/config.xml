@@ -48,6 +48,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <splash src="splash.png" />
+    <icon src="icon-app.png" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="KeepRunning" value="true" />
@@ -61,4 +62,5 @@
     <preference name="android-minSdkVersion" value="16" />
     <preference name="LoadUrlTimeoutValue" value="70000" />
     <preference name="orientation" value="portrait" />
+    <preference name="SplashScreenDelay" value="8000" />
 </widget>

@@ -340,6 +340,8 @@ myApp.onPageInit('cart_shop_list', function (page) {
 
 						if(special==0){
 
+							showLoading();
+
 							updateTotalComodityByUserId(comodityId,total,"increase",quantityKg);
 							//DELETE CART BY ID
 							removeCartById(cartUid);
@@ -353,6 +355,8 @@ myApp.onPageInit('cart_shop_list', function (page) {
 							// getAllComodityShopBySellerIdAndItemId(sellerId,itemId);
 
 						}else{
+
+							showLoading();
 
 							//DELETE CART BY ID
 							removeCartById(cartUid);
