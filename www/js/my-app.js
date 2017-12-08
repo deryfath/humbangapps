@@ -33,7 +33,8 @@ Template7.global = {
     arrComodityNonPriority:[],
     timerCronNonPriority:0,
     counterNonPriority:0,
-    arrTimerCronComodity:[]
+    arrTimerCronComodity:[],
+    backToMenuCart:false
 }
 
 // Add view
@@ -317,6 +318,15 @@ var mainView = myApp.addView('.view-main', {
                     $("#consumer_name_profile").text(Template7.global.userdata.fullname);
                     $("#consumer_address_profile").text(Template7.global.userdata.address);
 
+                    getAllCart();
+
+                    setTimeout(function(){
+                        hideLoading();
+
+                        $('.cart-landing-total').html(Template7.global.arrDataCart.length);
+
+                    }, 1000);
+
                   }, 1000);
 
                 }
@@ -369,6 +379,14 @@ var mainView = myApp.addView('.view-main', {
                             $("#consumer_name_profile").text(Template7.global.userdata.fullname);
                             $("#consumer_address_profile").text(Template7.global.userdata.address);
 
+                            getAllCart();
+
+                            setTimeout(function(){
+                                hideLoading();
+
+                                $('.cart-landing-total').html(Template7.global.arrDataCart.length);
+
+                            }, 1000);
                         }
 
                     }else{
@@ -403,6 +421,72 @@ var mainView = myApp.addView('.view-main', {
                     force : true,
                     reload : true
                 });
+
+            //CART SHOP LANDING
+            }else if(mainView.activePage.name=="cart_shop_landing_page"){
+                
+                $('#tabbar_home').css("display","none");
+                getSession();
+
+                showLoading();
+
+                setTimeout(function() {
+
+                    console.log(Template7.global.lengthSession);
+
+                    if(Template7.global.lengthSession==1){
+                        if(Template7.global.userdata.usertype=="seller"){
+                        //CHECK PESANAN /NOTIFIKASI
+                        getCartItemByFarmNameAndUserId();
+                
+                        setTimeout(function() {
+                            hideLoading();
+                            $('#command-home-button').html(landingPageSeller);
+
+                            $("#seller_name_profile").text(Template7.global.userdata.fullname);
+                            $("#seller_farm_profile").text(Template7.global.userdata.farm_name);
+
+                            
+                            if(Template7.global.arrDataCart.length > 0 ){
+
+                                $('.notification-total').html(Template7.global.arrDataCart.length);
+                            }
+
+                            getCounterNotificationNonPriorityComodity();
+
+                        }, 1000);
+
+                        }else{
+                            hideLoading();
+                            $('#command-home-button').html(landingPageConsumer);
+
+                            $("#consumer_name_profile").text(Template7.global.userdata.fullname);
+                            $("#consumer_address_profile").text(Template7.global.userdata.address);
+
+                            getAllCart();
+
+                            setTimeout(function(){
+                                hideLoading();
+
+                                $('.cart-landing-total').html(Template7.global.arrDataCart.length);
+
+                            }, 1000);
+                        }
+
+                    }else{
+                        hideLoading();
+                        $('#command-home-button').html(landingPageNotLogin);
+
+                        heightScreen = $(window).height()/2;
+                        $('#belanja').css('height',heightScreen-20);
+                        $('#jualan').css('height',heightScreen);
+
+                        console.log($('#belanja').innerHeight());
+                        console.log($('#jualan').innerHeight());
+
+                    }
+
+                }, 300);
 
             //DELIVERY SHOP
             }else if(mainView.activePage.name=="delivery_shop_list"){
@@ -453,6 +537,15 @@ var mainView = myApp.addView('.view-main', {
 
                         $("#consumer_name_profile").text(Template7.global.userdata.fullname);
                         $("#consumer_address_profile").text(Template7.global.userdata.address);
+
+                        getAllCart();
+
+                        setTimeout(function(){
+                            hideLoading();
+
+                            $('.cart-landing-total').html(Template7.global.arrDataCart.length);
+
+                        }, 1000);
 
                       }, 1000);
                 }

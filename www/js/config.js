@@ -2763,7 +2763,7 @@ function insertCart(postData){
             if(Object.keys(result).length>0){
               $$.each(result, function (index, value) {
 
-                   if(result[index].seller_id==postData.seller_id && result[index].item_id==postData.item_id && result[index].delivery_time==postData.delivery_time && result[index].special==postData.special && result[index].trx_id=="" && result[index].status=="" && result[index].device_id == device.uuid){ //&& result[index].device_id == device.uuid
+                   if(result[index].seller_id==postData.seller_id && result[index].item_id==postData.item_id && result[index].delivery_time==postData.delivery_time && result[index].special==postData.special && result[index].trx_id=="" && result[index].status=="" ){ //&& result[index].device_id == device.uuid
                       isSame = true;
                       comodityIdTmp = result[index].id;
                       totalTmp = result[index].total;
@@ -2881,8 +2881,8 @@ function insertCartExt(postData,userID){
   var cartId = makeid();
   var created_time = getCurrentDate();
   var trxID = "";
-  // var deviceId = "test";
-  var deviceId = device.uuid;
+  var deviceId = "test";
+  // var deviceId = device.uuid;
 
      var dataSend = {
                   cart_id : cartId,
@@ -3055,7 +3055,7 @@ function getAllCart(){
               $$.each(result, function (index, value) {
                 console.log(result[index].name);
 
-                if(result[index].trx_id=="" && result[index].device_id == device.uuid){ //&& result[index].device_id == device.uuid
+                if(result[index].trx_id=="" ){ //&& result[index].device_id == device.uuid
                   Template7.global.arrDataCart.push({
                       id:result[index].id,
                       cart_id: result[index].cart_id,

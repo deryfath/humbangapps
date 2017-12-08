@@ -1,20 +1,70 @@
-myApp.onPageInit('cart_shop_list', function (page) {
+myApp.onPageInit('cart_shop_landing_page', function (page) {
 
 	$('#tabbar_home').css("display","block");
-
-	console.log(itemIdSearch);
-	console.log(typeSearch);
-	console.log(gradeSearch);
-	console.log(quantitySearch);
-	console.log(priceSearch);
 	
-	$('.back-cart').click(function(){
+	$('.back-cart-landing-page').click(function(){
 		$('#tabbar_home').css("display","none");
-		mainView.router.back({
-			url : 'view/shop/main_shop.html?itemId='+itemIdSearch+'&type='+typeSearch+'&grade='+gradeSearch+'&quantity='+quantitySearch+'&price='+priceSearch,
-			force : true,
-			reload : true
-		});
+		getSession();
+
+		showLoading();
+
+		setTimeout(function() {
+
+			console.log(Template7.global.lengthSession);
+
+			if(Template7.global.lengthSession==1){
+				if(Template7.global.userdata.usertype=="seller"){
+				//CHECK PESANAN /NOTIFIKASI
+				getCartItemByFarmNameAndUserId();
+		
+				setTimeout(function() {
+					hideLoading();
+					$('#command-home-button').html(landingPageSeller);
+
+					$("#seller_name_profile").text(Template7.global.userdata.fullname);
+					$("#seller_farm_profile").text(Template7.global.userdata.farm_name);
+
+					
+					if(Template7.global.arrDataCart.length > 0 ){
+
+						$('.notification-total').html(Template7.global.arrDataCart.length);
+					}
+
+					getCounterNotificationNonPriorityComodity();
+
+				}, 1000);
+
+				}else{
+					hideLoading();
+					$('#command-home-button').html(landingPageConsumer);
+
+					$("#consumer_name_profile").text(Template7.global.userdata.fullname);
+					$("#consumer_address_profile").text(Template7.global.userdata.address);
+
+					getAllCart();
+
+					setTimeout(function(){
+						hideLoading();
+
+						$('.cart-landing-total').html(Template7.global.arrDataCart.length);
+
+					}, 1000);
+				}
+
+			}else{
+				hideLoading();
+				$('#command-home-button').html(landingPageNotLogin);
+
+				heightScreen = $(window).height()/2;
+				$('#belanja').css('height',heightScreen-20);
+				$('#jualan').css('height',heightScreen);
+
+				console.log($('#belanja').innerHeight());
+				console.log($('#jualan').innerHeight());
+
+			}
+
+		}, 300);
 	})
 
 	var cartInitEmpty = '<div class="content-block-inner">'+
@@ -459,7 +509,7 @@ myApp.onPageInit('cart_shop_list', function (page) {
 
 						showLoading();
 
-						Template7.global.backToMenuCart = false;
+						Template7.global.backToMenuCart = true;
 
 						setTimeout(function() {
 								console.log(Template7.global.lengthSession);	

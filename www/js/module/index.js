@@ -124,7 +124,7 @@
 			                  '</div>'+
 
 			                   '<div class="row no-gutter" style="margin-top: 27px;">'+
-			                    '<div class="col-50" style="text-align: center;" onClick = "cartBtn();"><img style="max-width: 50%;    margin-right: -33px;" src="img/keranjang.png" /></div>'+
+			                    '<div class="col-50" style="text-align: center;" onClick = "cartBtn();"><img style="max-width: 50%;    margin-right: -33px;" src="img/keranjang.png" /><div><span class="badge bg-red cart-landing-total" style="margin-top: -28%;position: absolute;z-index: 2;margin-left: 9%;font-size: 14px;">0</span></div></div>'+
 			                    '<div class="col-50" style="text-align: center;" onClick = "deliveryBtn();"><img style="max-width: 50%;    margin-left: -33px;" src="img/pengiriman.png" /></div>'+
 			                  '</div>';
 	
@@ -356,8 +356,6 @@
 
 				}else{
 					console.log('test');
-					hideLoading();
-
 					
 					$$('#panel_overlay').html(consumerHtmlElementPanel);
 					// $('#notification_seller_index').css('display','none');
@@ -367,6 +365,15 @@
 
 					$("#consumer_name_profile").text(Template7.global.userdata.fullname);
 					$("#consumer_address_profile").text(Template7.global.userdata.address);
+
+					getAllCart();
+
+					setTimeout(function(){
+						hideLoading();
+
+						$('.cart-landing-total').html(Template7.global.arrDataCart.length);
+
+					}, 1000);
 
 				}	
 
@@ -469,10 +476,10 @@
 	}
 
 	function cartBtn(){
-		// mainView.router.load({
-		//   url: 'view/shop/cart_shop.html',
-		//   animatePages: true
-		// });
+		mainView.router.load({
+		  url: 'view/shop/cart_shop_landing_page.html',
+		  animatePages: true
+		});
 	}
 
 	function deliveryBtn(){
@@ -656,7 +663,7 @@
 
 						Template7.global.timerCronComodity.clear();
 					}
-					hideLoading();
+
 					$$('#panel_overlay').html(consumerHtmlElementPanel);
 					// $('#notification_seller_index').css('display','none');
 					// $('#notification_comodity_index').css('display','none');
@@ -664,6 +671,17 @@
 
 					$("#consumer_name_profile").text(Template7.global.userdata.fullname);
 					$("#consumer_address_profile").text(Template7.global.userdata.address);
+
+					getAllCart();
+
+					setTimeout(function(){
+						hideLoading();
+
+						$('.cart-landing-total').html(Template7.global.arrDataCart.length);
+
+					}, 1000);
+
+					
 
 				}
 
@@ -828,6 +846,15 @@
 					$("#consumer_name_profile").text(Template7.global.userdata.fullname);
 					$("#consumer_address_profile").text(Template7.global.userdata.address);
 
+					getAllCart();
+
+					setTimeout(function(){
+						hideLoading();
+
+						$('.cart-landing-total').html(Template7.global.arrDataCart.length);
+
+					}, 1000);
+
 				}
 
 				//CHECK CART 
@@ -986,6 +1013,15 @@
 
 					$("#consumer_name_profile").text(Template7.global.userdata.fullname);
 					$("#consumer_address_profile").text(Template7.global.userdata.address);
+
+					getAllCart();
+
+					setTimeout(function(){
+						hideLoading();
+
+						$('.cart-landing-total').html(Template7.global.arrDataCart.length);
+
+					}, 1000);
 
 				}
 
