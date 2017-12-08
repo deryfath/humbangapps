@@ -71,7 +71,7 @@ myApp.onPageInit('location_list', function (page) {
 
 		hideLoading();
 
-		if(Template7.global.lengthLocation>0){
+		if(Template7.global.arrDataLocation.length>0){
 
 		    getMarkerFromDb();
 
@@ -83,28 +83,31 @@ myApp.onPageInit('location_list', function (page) {
 	function getMarkerFromDb(){
 		var marker1, i;
 	    var markerId;
-	    for (i = 0; i < Template7.global.lengthLocation; i++) {  
-	      markerId = Template7.global.arrDataLocation[i].location_id;
+	    for (i = 0; i < Template7.global.arrDataLocation.length; i++) {  
+	      markerId = Template7.global.arrDataLocation[i].id;
 	      marker1 = new google.maps.Marker({
 	        position: new google.maps.LatLng(Template7.global.arrDataLocation[i].latitude, Template7.global.arrDataLocation[i].longitude),
 	        map: map,
-	        id: 'marker_' + Template7.global.arrDataLocation[i].location_id
+	        id: 'marker_' + Template7.global.arrDataLocation[i].id
 	      });
 		  arrMarkers[markerId] = marker1;
-		  bindMarkerEvents(marker1,Template7.global.arrDataLocation[i].location_id);   
+		  bindMarkerEvents(marker1,Template7.global.arrDataLocation[i].id);   
 	    }
 	}
 
-	var bindMarkerEvents = function(marker,locationId) {
+	var bindMarkerEvents = function(marker,id) {
 	    google.maps.event.addListener(marker, "click", function (point) {
-	        var markerId = locationId // get marker id by using clicked point's coordinate
+	        var markerId = id // get marker id by using clicked point's coordinate
 	        var marker = arrMarkers[markerId]; // find marker
 	        console.log(arrMarkers);
 	        marker.setMap(null); // set markers setMap to null to remove it from map
 	    	delete arrMarkers[markerId]; // delete marker instance from markers object
 
 	        //remove DB
-		   	removeLocation(locationId);
+		   	removeLocation(id);
+
+		   	myApp.alert("Lokasi berhasil dihapus","notifikasi");
+
 	    });
 	};
 
@@ -176,8 +179,10 @@ myApp.onPageInit('location_list', function (page) {
 		        for (var i = 0, I = markers.length; i < I && markers[i] != marker; ++i);
 		        markers.splice(i, 1);
 
+		    	console.log(locationId);
+
 		    	//remove DB
-		    	removeLocation(locationId);
+		    	removeLocationByLocationId(locationId);
 
 		    	myApp.alert("Lokasi berhasil dihapus","notifikasi");
 
@@ -238,7 +243,7 @@ myApp.onPageInit('location_list', function (page) {
 
 			    markerClickEvent();
 
-			    if(Template7.global.lengthLocation>0){
+			    if(Template7.global.arrDataLocation.length>0){
 			    	getMarkerFromDb();
 			    }
 
