@@ -1,6 +1,12 @@
 myApp.onPageInit('cart_shop_list', function (page) {
 
 	$('#tabbar_home').css("display","block");
+
+	console.log(itemIdSearch);
+	console.log(typeSearch);
+	console.log(gradeSearch);
+	console.log(quantitySearch);
+	console.log(priceSearch);
 	
 	$('.back-cart').click(function(){
 		$('#tabbar_home').css("display","none");
@@ -443,13 +449,17 @@ myApp.onPageInit('cart_shop_list', function (page) {
 
 					Template7.global.totalCart = priceTotal;
 
-					$('.toolbar-inner-home').html('<div>Total :<b> Rp <a id="price_total_cart">'+comma_digits(priceTotal)+'</a> </b></div><div><a href="#" id="next_cart_btn"><i class="icon f7-icons" style="color: #143b41;">check_round_fill</i><span class="tabbar-label">CHECK OUT</span></a></div>')
+					$('.toolbar-inner-home').css('background','#ac312a');
+
+					$('.toolbar-inner-home').html('<div style="color:white;font-weight: bold;">Total :<b style="font-size: large;color: white;"> Rp <a id="price_total_cart" style="color:white;">'+comma_digits(priceTotal)+'</a> </b></div><div style="background: #0e344e;width: 22%;height: 100%;margin-right: -8px;"><a href="#" id="next_cart_btn" style="text-align: center;"><i class="icon f7-icons" style="color: #09a0cb;margin-top: 5px;">check_round_fill</i><span class="tabbar-label" style="font-weight: bolder;color: white;">CHECKOUT</span></a></div>')
 
 					$('#next_cart_btn').click(function(){
 
 						getSession();
 
 						showLoading();
+
+						Template7.global.backToMenuCart = false;
 
 						setTimeout(function() {
 								console.log(Template7.global.lengthSession);	

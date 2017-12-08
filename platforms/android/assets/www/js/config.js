@@ -2455,75 +2455,266 @@ function checkGrade(weight,height){
 ///////////////////////////////////// LOCATION ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function insertLocation(locationId, address,latitude,longitude){
+    
     var created_time = getCurrentDate();
     var userID = Template7.global.userdata.id;
-    var query = 'CREATE TABLE IF NOT EXISTS LOCATION ('+
-                            'location_id text,'+
-                            'created_time datetime,'+
-                            'address text,'+
-                            'latitude float,'+
-                            'longitude float,'+
-                            'user_id text'+
-                    ')';
+    // var query = 'CREATE TABLE IF NOT EXISTS LOCATION ('+
+    //                         'location_id text,'+
+    //                         'created_time datetime,'+
+    //                         'address text,'+
+    //                         'latitude float,'+
+    //                         'longitude float,'+
+    //                         'user_id text'+
+    //                 ')';
 
-    var query2 = 'INSERT INTO LOCATION (location_id, created_time, address, latitude, longitude, user_id) VALUES ("'+locationId+'", "'+created_time+'", "'+address+'", "'+latitude+'", "'+longitude+'", "'+userID+'")';
-    db.transaction(function (tx) {
-      tx.executeSql(query);
-      tx.executeSql(query2);
-    }, function(err) {
-      console.log('ERROR: ' + JSON.stringify(err.message));
+    // var query2 = 'INSERT INTO LOCATION (location_id, created_time, address, latitude, longitude, user_id) VALUES ("'+locationId+'", "'+created_time+'", "'+address+'", "'+latitude+'", "'+longitude+'", "'+userID+'")';
+    // db.transaction(function (tx) {
+    //   tx.executeSql(query);
+    //   tx.executeSql(query2);
+    // }, function(err) {
+    //   console.log('ERROR: ' + JSON.stringify(err.message));
+    // });
+
+
+    var dataSend = {
+                location_id : locationId,
+                created_time  : created_time,
+                address : address,
+                latitude : latitude,
+                longitude : longitude,
+                user_id : userID
+
+              }
+
+    $.ajax({
+        type: "POST",
+        url: "https://catatani-ba229.firebaseio.com/location/data.json",
+        // The key needs to match your method's input parameter (case-sensitive).
+        data: JSON.stringify(dataSend),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+
+          console.log(data.name);
+
+          $.ajax({
+              type: "PUT",
+              url: "https://catatani-ba229.firebaseio.com/location/data/"+data.name+"/id.json",
+              // The key needs to match your method's input parameter (case-sensitive).
+              data: JSON.stringify(data.name),
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              success: function(data){
+
+                console.log(data);
+                
+              },
+              failure: function(errMsg) {
+                  alert(errMsg);
+              }
+          });
+
+
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
     });
 }
 
 function removeLocation(id){
     var userID = Template7.global.userdata.id;
-    db.transaction(function (tx) {
-      tx.executeSql('DELETE FROM LOCATION WHERE location_id="'+id+'" AND user_id = "'+userID+'" ', [], function (tx, results) {
-          console.log(results);
-      });
+    // db.transaction(function (tx) {
+    //   tx.executeSql('DELETE FROM LOCATION WHERE location_id="'+id+'" AND user_id = "'+userID+'" ', [], function (tx, results) {
+    //       console.log(results);
+    //   });
+    // });
+
+    console.log(id);
+
+    
+    $.ajax({
+        type: "DELETE",
+        url: "https://catatani-ba229.firebaseio.com/location/data/"+id+".json",
+        // The key needs to match your method's input parameter (case-sensitive).
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+
+          console.log(data);
+          
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
     });
+
+    
+
+    
+}
+
+function removeLocationByLocationId(id){
+    var userID = Template7.global.userdata.id;
+    // db.transaction(function (tx) {
+    //   tx.executeSql('DELETE FROM LOCATION WHERE location_id="'+id+'" AND user_id = "'+userID+'" ', [], function (tx, results) {
+    //       console.log(results);
+    //   });
+    // });
+
+    console.log(id);
+
+    userID = '"'+userID+'"';
+
+    $$.ajax({
+        url: "https://catatani-ba229.firebaseio.com/location/data.json?orderBy=\"user_id\"&equalTo="+userID,
+        statusCode: {
+          404: function (xhr) {
+            alert('error request data');
+          },
+          500: function(xhr){
+            alert('internal server error');
+            hideLoading();
+          }
+        },
+        beforeSend : function(){
+           // showLoading();
+        },
+        success : function(data){
+
+            var result = JSON.parse(data);  
+
+            if(result != null){
+              console.log(Object.keys(result).length);
+
+              
+              if(Object.keys(result).length>0){
+                $$.each(result, function (index, value) {
+                  
+                  if(value.location_id==id){
+                      $.ajax({
+                          type: "DELETE",
+                          url: "https://catatani-ba229.firebaseio.com/location/data/"+value.id+".json",
+                          // The key needs to match your method's input parameter (case-sensitive).
+                          contentType: "application/json; charset=utf-8",
+                          dataType: "json",
+                          success: function(data){
+
+                            console.log(data);
+                            
+                          },
+                          failure: function(errMsg) {
+                              alert(errMsg);
+                          }
+                      });
+                   }
+
+                })
+
+                  
+                }
+              }
+
+            }
+            
+
+
+      });
+
+    
+
+    
 }
 
 function getAllLocation(){
 
   var userID = Template7.global.userdata.id;
-  var query = 'CREATE TABLE IF NOT EXISTS LOCATION ('+
-                            'location_id text,'+
-                            'created_time datetime,'+
-                            'address text,'+
-                            'latitude float,'+
-                            'longitude float,'+
-                            'user_id text'+
-                    ')';
-  var query2 = 'SELECT * FROM LOCATION WHERE user_id = "'+userID+'"';
-  db.transaction(function (tx) {
-      tx.executeSql(query);
-      tx.executeSql(query2,[], function (tx, results){
-          var len = results.rows.length, i;
+  // var query = 'CREATE TABLE IF NOT EXISTS LOCATION ('+
+  //                           'location_id text,'+
+  //                           'created_time datetime,'+
+  //                           'address text,'+
+  //                           'latitude float,'+
+  //                           'longitude float,'+
+  //                           'user_id text'+
+  //                   ')';
+  // var query2 = 'SELECT * FROM LOCATION WHERE user_id = "'+userID+'"';
+  // db.transaction(function (tx) {
+  //     tx.executeSql(query);
+  //     tx.executeSql(query2,[], function (tx, results){
+  //         var len = results.rows.length, i;
 
-          Template7.global.lengthLocation = len;
-          Template7.global.arrDataLocation = [];
+  //         Template7.global.lengthLocation = len;
+  //         Template7.global.arrDataLocation = [];
           
-          if(len > 0){
-            for (i = 0; i < len; i++){
-              Template7.global.arrDataLocation.push({
-                  location_id: results.rows.item(i).location_id,
-                  address: results.rows.item(i).address,
-                  latitude: results.rows.item(i).latitude,
-                  longitude: results.rows.item(i).longitude,
-                  user_id:results.rows.item(i).user_id
-              });
-            }
+  //         if(len > 0){
+  //           for (i = 0; i < len; i++){
+  //             Template7.global.arrDataLocation.push({
+  //                 location_id: results.rows.item(i).location_id,
+  //                 address: results.rows.item(i).address,
+  //                 latitude: results.rows.item(i).latitude,
+  //                 longitude: results.rows.item(i).longitude,
+  //                 user_id:results.rows.item(i).user_id
+  //             });
+  //           }
 
-            console.log(Template7.global.arrDataLocation);
+  //           console.log(Template7.global.arrDataLocation);
 
             
-          }
-      });
-  }, function(err) {
-    console.log('ERROR: ' + JSON.stringify(err.message));
-  });
+  //         }
+  //     });
+  // }, function(err) {
+  //   console.log('ERROR: ' + JSON.stringify(err.message));
+  // });
 
+
+  userID = '"'+userID+'"';
+
+  $$.ajax({
+        url: "https://catatani-ba229.firebaseio.com/location/data.json?orderBy=\"user_id\"&equalTo="+userID,
+        statusCode: {
+          404: function (xhr) {
+            alert('error request data');
+          },
+          500: function(xhr){
+            alert('internal server error');
+            hideLoading();
+          }
+        },
+        beforeSend : function(){
+           showLoading();
+        },
+        success : function(data){
+
+            console.log(data);
+            var result = JSON.parse(data);  
+
+            if(result != null){
+              console.log(Object.keys(result).length);
+              Template7.global.arrDataLocation = [];
+
+              
+              if(Object.keys(result).length>0){
+                $$.each(result, function (index, value) {
+                  
+                    Template7.global.arrDataLocation.push({
+                        location_id: result[index].location_id,
+                        address: result[index].address,
+                        latitude: result[index].latitude,
+                        longitude: result[index].longitude,
+                        user_id:result[index].user_id,
+                        id:result[index].id
+                    });
+
+                })
+
+                console.log(Template7.global.arrDataLocation);
+              }
+
+            }
+            
+
+        }
+      });
   
 }
 
@@ -2572,7 +2763,7 @@ function insertCart(postData){
             if(Object.keys(result).length>0){
               $$.each(result, function (index, value) {
 
-                   if(result[index].seller_id==postData.seller_id && result[index].item_id==postData.item_id && result[index].delivery_time==postData.delivery_time && result[index].special==postData.special && result[index].trx_id=="" && result[index].status=="" && result[index].device_id == device.uuid){ //&& result[index].device_id == device.uuid
+                   if(result[index].seller_id==postData.seller_id && result[index].item_id==postData.item_id && result[index].delivery_time==postData.delivery_time && result[index].special==postData.special && result[index].trx_id=="" && result[index].status=="" ){ //&& result[index].device_id == device.uuid
                       isSame = true;
                       comodityIdTmp = result[index].id;
                       totalTmp = result[index].total;
@@ -2690,8 +2881,8 @@ function insertCartExt(postData,userID){
   var cartId = makeid();
   var created_time = getCurrentDate();
   var trxID = "";
-  // var deviceId = "test";
-  var deviceId = device.uuid;
+  var deviceId = "test";
+  // var deviceId = device.uuid;
 
      var dataSend = {
                   cart_id : cartId,
@@ -2864,7 +3055,7 @@ function getAllCart(){
               $$.each(result, function (index, value) {
                 console.log(result[index].name);
 
-                if(result[index].trx_id=="" && result[index].device_id == device.uuid){ //&& result[index].device_id == device.uuid
+                if(result[index].trx_id=="" ){ //&& result[index].device_id == device.uuid
                   Template7.global.arrDataCart.push({
                       id:result[index].id,
                       cart_id: result[index].cart_id,

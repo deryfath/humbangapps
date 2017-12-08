@@ -7,18 +7,18 @@
 	<div class="card demo-card-header-pic">
 
                {{#if no_special_flag}}
-                <div style="position: absolute;margin-top: 50%;background: black;width: 40%;font-size: large;opacity: 0.75;color: white;z-index: 99;">Stock : {{max_stock}} Kg</div>
+                <div style="position: absolute;margin-top: 31%;background: black;width: 40%;font-size: large;opacity: 0.75;color: white;z-index: 99;">Stock : {{max_stock}} Kg</div>
                {{else}}
-                <div style="position: absolute;margin-top: 50%;background: black;width: 45%;font-size: large;opacity: 0.75;color: white;z-index: 99;">Special Request</div>
+                <div style="position: absolute;margin-top: 31%;background: black;width: 45%;font-size: large;opacity: 0.75;color: white;z-index: 99;">Special Request</div>
                {{/if}}
 
-                <div style="background-image:url({{image}});height: 58vw;" valign="bottom" class="card-header color-white no-border"></div>
+                <div style="background-image:url({{image}});height: 38vw;" valign="bottom" class="card-header color-white no-border"></div>
                 <div class="card-content" style="    height: 29vh;">
                   <div class="card-content-inner">
                     <p class="color-gray" style="font-size: x-large;text-align: center;font-weight: bold;margin-top: -15px;">{{name}}</p>
                     <p style="margin-top: -28px;text-align: center;">{{farm}}</p>
                     <p style="margin-top: -8px;">
-                        <div class="list-block" style="font-size: smaller;">
+                        <div class="list-block" style="font-size: smaller;margin-top: -27px;">
                           <ul>
                             <li>
                               <div class="item-content">
@@ -66,15 +66,15 @@
                   </div>
                 </div>
 
-                <div class="card-footer">
+                <div class="card-footer" style="margin-top: -15px;background: #1e3446;">
                   {{#if unit_kg}}
 
-                     <a href="#" style="font-size:large">{{price_show}}<span style="font-size:medium;color:gray;"> /Kg</span></a>
+                     <a href="#" style="font-weight: bolder;color: white;font-size:larger;">{{price_show}}<span style="font-size:medium;color:gray;"> /Kg</span></a>
 
                   {{else}}
-                     <a href="#" style="font-size:large">{{price_show}}<span style="font-size:medium;color:gray;"> /250 gram</span></a>
+                     <a href="#" style="font-size: large;color: white;font-weight: bolder;">{{price_show}}<span style="font-size:medium;color:gray;"> /250 gram</span></a>
                   {{/if}}
-                  <a href="#" class="remove_item_cart" data-id="{{cart_id}}" data-unitkg="{{unit_kg}}" data-cartuid="{{id}}" data-comodityid="{{comodity_id}}" data-itemid="{{item_id}}" data-name="{{name}}" data-sellerid="{{seller_id}}" data-special="{{special}}" data-delivery="{{delivery_time}}"><i class="icon f7-icons">trash_fill</i></a>
+                  <a href="#" class="remove_item_cart" data-id="{{cart_id}}" data-unitkg="{{unit_kg}}" data-cartuid="{{id}}" data-comodityid="{{comodity_id}}" data-itemid="{{item_id}}" data-name="{{name}}" data-sellerid="{{seller_id}}" data-special="{{special}}" data-delivery="{{delivery_time}}"><i class="icon f7-icons" style="    color: #ac3129;">close_round_fill</i></a>
                 </div>
 
               </div>

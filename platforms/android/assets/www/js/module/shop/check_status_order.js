@@ -59,6 +59,15 @@ myApp.onPageInit('check_status_order_page', function (page) {
 		        $("#consumer_name_profile").text(Template7.global.userdata.fullname);
 				$("#consumer_address_profile").text(Template7.global.userdata.address);
 
+				getAllCart();
+
+				setTimeout(function(){
+					hideLoading();
+
+					$('.cart-landing-total').html(Template7.global.arrDataCart.length);
+
+				}, 1000);
+				
 		      }, 1000);
 		}
 
