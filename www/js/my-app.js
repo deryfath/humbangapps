@@ -426,6 +426,12 @@ var mainView = myApp.addView('.view-main', {
             }else if(mainView.activePage.name=="cart_shop_landing_page"){
                 
                 $('#tabbar_home').css("display","none");
+
+                mainView.router.back({
+                        url:'index.html',
+                        force:true
+                });
+
                 getSession();
 
                 showLoading();
@@ -490,11 +496,27 @@ var mainView = myApp.addView('.view-main', {
 
             //DELIVERY SHOP
             }else if(mainView.activePage.name=="delivery_shop_list"){
-                mainView.router.back({
-                    url : 'view/shop/cart_shop.html',
-                    force : true,
-                    reload : true
-                }); 
+                
+                $('.toolbar-inner-home').html('');
+
+                if (Template7.global.backToMenuCart) {
+                    mainView.router.back({
+                        url : 'view/shop/cart_shop_landing_page.html',
+                        force : true,
+                        reload : true
+                    }); 
+                }else{
+                    mainView.router.back({
+                        url : 'view/shop/cart_shop.html',
+                        force : true,
+                        reload : true
+                    }); 
+                }
+                
+                $('.toolbar-inner-home').css('background','#ac312a');
+
+                $('.toolbar-inner-home').html('<div style="color:white;font-weight: bold;">Total :<b style="font-size: large;color: white;"> Rp <a id="price_total_cart" style="color:white;">'+comma_digits(priceTotal)+'</a> </b></div><div style="background: #0e344e;width: 22%;height: 100%;margin-right: -8px;"><a href="#" id="next_cart_btn" style="text-align: center;"><i class="icon f7-icons" style="color: #09a0cb;margin-top: 5px;">check_round_fill</i><span class="tabbar-label" style="font-weight: bolder;color: white;">CHECKOUT</span></a></div>')
+
 
             //CHECK STATUS ORDER
             }else if(mainView.activePage.name=="check_status_order_page"){

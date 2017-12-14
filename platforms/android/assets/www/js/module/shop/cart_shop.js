@@ -15,6 +15,7 @@ myApp.onPageInit('cart_shop_list', function (page) {
 			force : true,
 			reload : true
 		});
+
 	})
 
 	var cartInitEmpty = '<div class="content-block-inner">'+
@@ -40,6 +41,8 @@ myApp.onPageInit('cart_shop_list', function (page) {
 
 			$('#cart_grid_list').html(cartInitEmpty);
 			$('.toolbar-inner-home').html('');
+			$('#tabbar_home').css("display","none");
+
 
 		}else{
 
@@ -117,7 +120,10 @@ myApp.onPageInit('cart_shop_list', function (page) {
 							value.no_special_flag = false;
 						}
 
+						value.subtotal = parseInt(value.price) * parseInt(value.total);
+
 						// if(value.unit_kg){
+							value.price_subtotal_show = "Rp "+comma_digits(value.subtotal);	
 							value.price_show = "Rp "+comma_digits(value.price);	
 						// }else{
 						// 	value.price_show = "Rp "+comma_digits(value.price/4);	

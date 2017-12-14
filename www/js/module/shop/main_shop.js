@@ -157,409 +157,204 @@ myApp.onPageInit('main_shop_list', function (page) {
 	priceSearch = page.query.price;
 
 	console.log(itemIdSearch);
-
+	
 	getComoditySearch(itemIdSearch,typeSearch,gradeSearch,quantitySearch,priceSearch);
+
+	function getComoditySearch(itemId,type,grade,quantity,price){
+
+		  var userID = Template7.global.userdata.id;
+
+		  console.log(itemId);
+
+		  //find userId item by comodity type
+		  type = '"'+type+'"';
+
+		  $$.ajax({
+		        url: "https://catatani-ba229.firebaseio.com/user/data.json?orderBy=\"comodity_type\"&equalTo="+type,
+		        statusCode: {
+		          404: function (xhr) {
+		            alert('error request data');
+		          },
+		          500: function(xhr){
+		            alert('internal server error');
+		            hideLoading();
+		          }
+		        },
+		        beforeSend : function(){
+		           // showLoading();
+		        },
+		        success : function(data){
+
+		        	showLoading();
+		            var result = JSON.parse(data);  
+		            Template7.global.arrDataComodity = [];
+
+		            if(result != null){
+		              console.log(Object.keys(result).length);
+
+		              if(Object.keys(result).length>0){
+		                $$.each(result, function (index, value) {
+
+		                  if(result[index].user_id!=userID){
+
+		                      var userIdUrl = '"'+result[index].user_id+'"';
+		                      // type = '"'+type+'"';
+
+		                      // console.log(result[index].user_id);
+
+		                      $$.ajax({
+		                            url: "https://catatani-ba229.firebaseio.com/comodity/data.json?orderBy=\"user_id\"&equalTo="+userIdUrl,
+		                            
+		                            statusCode: {
+		                              404: function (xhr) {
+		                                alert('error request data');
+		                              },
+		                              500: function(xhr){
+		                                alert('internal server error');
+		                                hideLoading();
+		                              }
+		                            },
+		                            beforeSend : function(){
+		                               // showLoading();
+		                            },
+		                            success : function(data){
+
+		                                var result = JSON.parse(data);
+
+		                                // console.log(result);  
+
+		                                if(result != null){
+		                                  // console.log(Object.keys(result).length);
+		                                  
+		                                  if(Object.keys(result).length>0){
+		                                    $$.each(result, function (index, value) {
+		                                      // console.log(result[index].type);
+		                                      
+
+		                                      if(result[index].grade==grade && result[index].item_id==itemId){
+		                                        console.log('sama');
+		                                        Template7.global.arrDataComodity.push({
+		                                            id: result[index].id,
+		                                            item_id: result[index].item_id,
+		                                            name: result[index].name,
+		                                            image: result[index].image,
+		                                            total: result[index].total,
+		                                            item_type: result[index].type,
+		                                            farm_name : result[index].farm_name,
+		                                            startHarvest: result[index].start_harvest,
+		                                            finishHarvest: result[index].finish_harvest,
+		                                            startPlan: result[index].start_plan,
+		                                            finishPlan: result[index].finish_plan,
+		                                            user_id:result[index].user_id,
+		                                            is_notif : result[index].is_notif,
+		                                            price_min : result[index].price_min,
+		                                            price_max : result[index].price_max,
+		                                            comodity_type : result[index].comodity_type,
+		                                            comodity_height : result[index].comodity_height,
+		                                            comodity_weight : result[index].comodity_weight,
+		                                            desc : result[index].desc,
+		                                            is_priority : result[index].is_priority,
+		                                            grade : result[index].grade,
+		                                            origin : result[index].origin,
+		                                            process : result[index].process
+
+
+		                                        });
+		                                      }
+
+		                                    })
+
+		                                    
+		                                  }
+
+		                                  
+
+		                                }
+
+		                                if(Template7.global.arrDataComodity.length>0){
+		                                	loadWidgetItemGridList(Template7.global.arrDataComodity);
+		                                    
+		                                } else{
+
+		                                	hideLoading();
+		                                	$('#main_shop_grid_list').html(initEmptyShopItem);
+											$('#main_shop_grid_list_ext').html(initEmptyShopItem);
+		                                }
+		                                
+
+		                            }
+		                          });
+
+		                  }
+
+		                })
+
+
+		              }
+
+		            }
+		            
+
+		        }
+		      });
+
+		  
+		}
 
 	// getAllComodityShop();
 
 		// showLoading();
 
-		setTimeout(function() {
+		// setTimeout(function() {
 
-			if(Template7.global.arrDataComodity.length==0){
+		// 	if(Template7.global.arrDataComodity.length==0){
 
-				hideLoading();
-				$('#main_shop_grid_list').html(initEmptyShopItem);
-				$('#main_shop_grid_list_ext').html(initEmptyShopItem);
-			}else{
+		// 		hideLoading();
+		// 		$('#main_shop_grid_list').html(initEmptyShopItem);
+		// 		$('#main_shop_grid_list_ext').html(initEmptyShopItem);
+		// 	}else{
 
-				// myApp.addNotification({
-			 //        title: 'Notifikasi',
-			 //        message: 'Pengiriman dilakukan setiap hari senin, rabu dan sabtu'
-			 //    });
+		// 		// myApp.addNotification({
+		// 	 //        title: 'Notifikasi',
+		// 	 //        message: 'Pengiriman dilakukan setiap hari senin, rabu dan sabtu'
+		// 	 //    });
 
-				arrComodityShop = Template7.global.arrDataComodity;
-				console.log(arrComodityShop.length);
-				var i = 0;
-				var stop = false;
-				var shopInterval = 0;
-				Template7.global.arrFarmName = [];
+		// 		arrComodityShop = Template7.global.arrDataComodity;
 
-	  			shopInterval = setInterval(function(){
+		// 		console.log(arrComodityShop);
+		// 		// console.log(arrComodityShop.length);
+		// 		// var i = 0;
+		// 		// var stop = false;
+		// 		// var shopInterval = 0;
+		// 		// Template7.global.arrFarmName = [];
 
-		  			while(i<arrComodityShop.length && !stop){
-		  				getFarmNameByUserId(arrComodityShop[i].user_id);
-		  				i++;
-		  			}
+	 //  	// 		shopInterval = setInterval(function(){
 
-		  			console.log(arrComodityShop.length);
-					console.log(Template7.global.arrFarmName.length);
+		//   // 			while(i<arrComodityShop.length && !stop){
+		//   // 				getFarmNameByUserId(arrComodityShop[i].user_id);
+		//   // 				i++;
+		//   // 			}
 
-					showLoading();
+		//   // 			console.log(arrComodityShop.length);
+		// 		// 	console.log(Template7.global.arrFarmName.length);
 
-					if(arrComodityShop.length==Template7.global.arrFarmName.length){
-						console.log('test');
-						stop = true;
-						clearInterval(shopInterval);
-						console.log(Template7.global.arrFarmName);
-						loadWidgetItemGridList(arrComodityShop,Template7.global.arrFarmName);
-					}
+		// 		// 	showLoading();
+
+		// 		// 	if(arrComodityShop.length==Template7.global.arrFarmName.length){
+		// 		// 		console.log('test');
+		// 		// 		stop = true;
+		// 		// 		clearInterval(shopInterval);
+		// 		// 		console.log(Template7.global.arrFarmName);
+						
+		// 			// }
 					
 					
 
-				}, 100)
+		// 		// }, 100)
 
-			}
+		// 	}
 
-		}, 2000);
-
-
-	$('#tab_all_item_shop').click(function(){
-		$('.tab-shop-category').removeClass("active");
-		$(this).addClass("active");
-		document.getElementById('img_all_shop').src="img/allbar-blue.png";
-		document.getElementById('img_vegetable_shop').src="img/vegetablebar.png";
-		document.getElementById('img_fruit_shop').src="img/fruitbar.png";
-		document.getElementById('img_sembako_shop').src="img/sembako.png";
-		document.getElementById('img_olahan_shop').src="img/olahan.png";
-		document.getElementById('img_packet_shop').src="img/packet.png";
-
-		getAllComodityShop();
-
-		showLoading();
-
-		setTimeout(function() {
-
-			if(Template7.global.lengthComodity==0){
-
-				hideLoading();
-				$('#main_shop_grid_list').html(initEmptyShopItem);
-				$('#main_shop_grid_list_ext').html(initEmptyShopItem);
-			}else{
-				arrComodityShop = Template7.global.arrDataComodity;
-				console.log(arrComodityShop.length);
-				// var i = 0;
-				// var stop = false;
-				// var shopInterval = 0;
-				// Template7.global.arrFarmName = [];
-
-	  	// 		shopInterval = setInterval(function(){
-
-		  // 			while(i<arrComodityShop.length && !stop){
-		  // 				getFarmNameByUserId(arrComodityShop[i].user_id);
-		  // 				i++;
-		  // 			}
-
-		  // 			console.log(arrComodityShop.length);
-				// 	console.log(Template7.global.arrFarmName.length);
-
-				// 	// showLoading();
-
-				// 	if(arrComodityShop.length==Template7.global.arrFarmName.length){
-				// 		console.log('test');
-				// 		stop = true;
-				// 		clearInterval(shopInterval);
-				// 		console.log(Template7.global.arrFarmName);
-						loadWidgetItemGridList(arrComodityShop,Template7.global.arrFarmName);
-				// 	}
-					
-					
-
-				// }, 100)
-
-			}
-
-		}, 2000);
-
-	})
-
-	$('#tab_vegetable_shop').click(function(){
-			$('.tab-shop-category').removeClass("active");
-			$(this).addClass("active");
-			document.getElementById('img_all_shop').src="img/allbar.png";
-			document.getElementById('img_vegetable_shop').src="img/vegetablebar-blue.png";
-			document.getElementById('img_fruit_shop').src="img/fruitbar.png";
-			document.getElementById('img_sembako_shop').src="img/sembako.png";
-			document.getElementById('img_olahan_shop').src="img/olahan.png";
-			document.getElementById('img_packet_shop').src="img/packet.png";
-			
-			getAllComodityShopByType("sayuran");
-
-			showLoading();
-
-			setTimeout(function() {
-
-				if(Template7.global.lengthComodity==0){
-					hideLoading();
-					$('#main_shop_grid_list').html(initEmptyShopItem);
-					$('#main_shop_grid_list_ext').html(initEmptyShopItem);
-				}else{
-					arrComodityShop = Template7.global.arrDataComodity;
-					console.log(arrComodityShop.length);
-					// var i = 0;
-					// var stop = false;
-					// var shopInterval = 0;
-					// Template7.global.arrFarmName = [];
-
-		  	// 		shopInterval = setInterval(function(){
-
-			  // 			while(i<arrComodityShop.length && !stop){
-			  // 				getFarmNameByUserId(arrComodityShop[i].user_id);
-			  // 				i++;
-			  // 			}
-
-			  // 			console.log(arrComodityShop.length);
-					// 	console.log(Template7.global.arrFarmName.length);
-
-					// 	// showLoading();
-
-					// 	if(arrComodityShop.length==Template7.global.arrFarmName.length){
-					// 		console.log('test');
-					// 		stop = true;
-					// 		clearInterval(shopInterval);
-					// 		console.log(Template7.global.arrFarmName);
-							loadWidgetItemGridList(arrComodityShop,Template7.global.arrFarmName);
-					// 	}
-						
-						
-
-					// }, 100)
-
-				}
-
-			}, 2000);
-
-	})
-
-	$('#tab_fruit_shop').click(function(){
-		$('.tab-shop-category').removeClass("active");
-		$(this).addClass("active");
-		document.getElementById('img_all_shop').src="img/allbar.png";
-		document.getElementById('img_vegetable_shop').src="img/vegetablebar.png";
-		document.getElementById('img_fruit_shop').src="img/fruitbar-blue.png";
-		document.getElementById('img_sembako_shop').src="img/sembako.png";
-			document.getElementById('img_olahan_shop').src="img/olahan.png";
-		document.getElementById('img_packet_shop').src="img/packet.png";
-		getAllComodityShopByType("buah");
-
-			showLoading();
-
-			setTimeout(function() {
-				console.log(Template7.global.lengthComodity);
-				
-				if(Template7.global.lengthComodity==0){
-					hideLoading();
-					$('#main_shop_grid_list').html(initEmptyShopItem);
-					$('#main_shop_grid_list_ext').html(initEmptyShopItem);
-				}else{
-					arrComodityShop = Template7.global.arrDataComodity;
-					console.log(arrComodityShop.length);
-					// var i = 0;
-					// var stop = false;
-					// var shopInterval = 0;
-					// Template7.global.arrFarmName = [];
-
-		  	// 		shopInterval = setInterval(function(){
-
-			  // 			while(i<arrComodityShop.length && !stop){
-			  // 				getFarmNameByUserId(arrComodityShop[i].user_id);
-			  // 				i++;
-			  // 			}
-
-			  // 			console.log(arrComodityShop.length);
-					// 	console.log(Template7.global.arrFarmName.length);
-
-					// 	// showLoading();
-
-					// 	if(arrComodityShop.length==Template7.global.arrFarmName.length){
-					// 		console.log('test');
-					// 		stop = true;
-					// 		clearInterval(shopInterval);
-					// 		console.log(Template7.global.arrFarmName);
-							loadWidgetItemGridList(arrComodityShop,Template7.global.arrFarmName);
-					// 	}
-						
-						
-
-					// }, 100)
-
-				}
-
-			}, 2000);
-	})
-
-	$('#tab_sembako_shop').click(function(){
-		$('.tab-shop-category').removeClass("active");
-		$(this).addClass("active");
-		document.getElementById('img_all_shop').src="img/allbar.png";
-		document.getElementById('img_vegetable_shop').src="img/vegetablebar.png";
-		document.getElementById('img_fruit_shop').src="img/fruitbar.png";
-		document.getElementById('img_sembako_shop').src="img/sembako-blue.png";
-			document.getElementById('img_olahan_shop').src="img/olahan.png";
-		document.getElementById('img_packet_shop').src="img/packet.png";
-		getAllComodityShopByType("sembako");
-
-			showLoading();
-
-			setTimeout(function() {
-
-				if(Template7.global.lengthComodity==0){
-					hideLoading();
-					$('#main_shop_grid_list').html(initEmptyShopItem);
-					$('#main_shop_grid_list_ext').html(initEmptyShopItem);
-				}else{
-					arrComodityShop = Template7.global.arrDataComodity;
-					console.log(arrComodityShop.length);
-					// var i = 0;
-					// var stop = false;
-					// var shopInterval = 0;
-					// Template7.global.arrFarmName = [];
-
-		  	// 		shopInterval = setInterval(function(){
-
-			  // 			while(i<arrComodityShop.length && !stop){
-			  // 				getFarmNameByUserId(arrComodityShop[i].user_id);
-			  // 				i++;
-			  // 			}
-
-			  // 			console.log(arrComodityShop.length);
-					// 	console.log(Template7.global.arrFarmName.length);
-
-					// 	// showLoading();
-
-					// 	if(arrComodityShop.length==Template7.global.arrFarmName.length){
-					// 		console.log('test');
-					// 		stop = true;
-					// 		clearInterval(shopInterval);
-					// 		console.log(Template7.global.arrFarmName);
-							loadWidgetItemGridList(arrComodityShop,Template7.global.arrFarmName);
-
-					// 	}
-						
-			
-
-					// }, 100)
-
-				}
-
-			}, 2000);
-	})
-
-	$('#tab_olahan_shop').click(function(){
-		$('.tab-shop-category').removeClass("active");
-		$(this).addClass("active");
-		document.getElementById('img_all_shop').src="img/allbar.png";
-		document.getElementById('img_vegetable_shop').src="img/vegetablebar.png";
-		document.getElementById('img_fruit_shop').src="img/fruitbar.png";
-		document.getElementById('img_sembako_shop').src="img/sembako.png";
-			document.getElementById('img_olahan_shop').src="img/olahan-blue.png";
-		document.getElementById('img_packet_shop').src="img/packet.png";
-		getAllComodityShopByType("olahan");
-
-			showLoading();
-
-			setTimeout(function() {
-
-				if(Template7.global.lengthComodity==0){
-
-					hideLoading();
-					$('#main_shop_grid_list').html(initEmptyShopItem);
-					$('#main_shop_grid_list_ext').html(initEmptyShopItem);
-				}else{
-					arrComodityShop = Template7.global.arrDataComodity;
-					console.log(arrComodityShop.length);
-					// var i = 0;
-					// var stop = false;
-					// var shopInterval = 0;
-					// Template7.global.arrFarmName = [];
-
-		  	// 		shopInterval = setInterval(function(){
-
-			  // 			while(i<arrComodityShop.length && !stop){
-			  // 				getFarmNameByUserId(arrComodityShop[i].user_id);
-			  // 				i++;
-			  // 			}
-
-			  // 			console.log(arrComodityShop.length);
-					// 	console.log(Template7.global.arrFarmName.length);
-
-					// 	// showLoading();
-
-					// 	if(arrComodityShop.length==Template7.global.arrFarmName.length){
-					// 		console.log('test');
-					// 		stop = true;
-					// 		clearInterval(shopInterval);
-					// 		console.log(Template7.global.arrFarmName);
-							loadWidgetItemGridList(arrComodityShop,Template7.global.arrFarmName);
-					// 	}
-						
-						
-
-					// }, 100)
-
-				}
-
-			}, 2000);
-	})
-
-	$('#tab_packet_shop').click(function(){
-		$('.tab-shop-category').removeClass("active");
-
-		$(this).addClass("active");
-
-		document.getElementById('img_all_shop').src="img/allbar.png";
-		document.getElementById('img_vegetable_shop').src="img/vegetablebar.png";
-		document.getElementById('img_fruit_shop').src="img/fruitbar.png";
-		document.getElementById('img_sembako_shop').src="img/sembako.png";
-		document.getElementById('img_olahan_shop').src="img/olahan.png";
-		document.getElementById('img_packet_shop').src="img/packet-blue.png";
-		getAllComodityShopByType("paket");
-
-			showLoading();
-
-			setTimeout(function() {
-
-				
-				if(Template7.global.lengthComodity==0){
-					hideLoading();
-					$('#main_shop_grid_list').html(initEmptyShopItem);
-					$('#main_shop_grid_list_ext').html(initEmptyShopItem);
-				}else{
-					arrComodityShop = Template7.global.arrDataComodity;
-					console.log(arrComodityShop.length);
-					// var i = 0;
-					// var stop = false;
-					// var shopInterval = 0;
-					// Template7.global.arrFarmName = [];
-
-		  	// 		shopInterval = setInterval(function(){
-
-			  // 			while(i<arrComodityShop.length && !stop){
-			  // 				getFarmNameByUserId(arrComodityShop[i].user_id);
-			  // 				i++;
-			  // 			}
-
-			  // 			console.log(arrComodityShop.length);
-					// 	console.log(Template7.global.arrFarmName.length);
-
-					// 	// showLoading();
-
-					// 	if(arrComodityShop.length==Template7.global.arrFarmName.length){
-					// 		console.log('test');
-					// 		stop = true;
-					// 		clearInterval(shopInterval);
-					// 		console.log(Template7.global.arrFarmName);
-							loadWidgetItemGridList(arrComodityShop,Template7.global.arrFarmName);
-
-					// 	}
-						
-						
-					// }, 100)
-
-				}
-
-			}, 2000);
-	})
+		// }, 2000);
 
 	var calendarDeliveryRange = null;
 
@@ -594,7 +389,7 @@ myApp.onPageInit('main_shop_list', function (page) {
 
 	var specialRequest = 0;
 
-	function loadWidgetItemGridList(dataObject,arrFarmName){
+	function loadWidgetItemGridList(dataObject){
 
 
 		$$.ajax({
@@ -810,7 +605,7 @@ myApp.onPageInit('main_shop_list', function (page) {
 				  		$('#back_shop_'+id).html(
 				  			'<div class="card-footer" style="height: 0vh;padding:0px;">'+
 	                               
-	                            '<input class="item-title delivery-time-shop" id="delivery_time_'+id+'" type="text" placeholder="Delivery Date" style="width: 27vw;font-size: 13px;">'+
+	                            '<input class="item-title delivery-time-shop" id="delivery_time_'+id+'" type="text" style="width: 27vw;font-size: 13px;" value="Tanggal Kirim" onfocus="if(this.value==this.defaultValue)this.value="";">'+
 	                            '<a href="#" class="button button-small button-round close_quantity_shop_btn" data-id="'+id+'" >x</a>'+
 	                            
 	                          '</div>'+
@@ -1046,7 +841,13 @@ myApp.onPageInit('main_shop_list', function (page) {
 			  		sellerId = $(this).data('sellerid');
 			  		quantityKg = $(this).data('quantitylabel');
 			  		total = document.getElementById('total_'+id).value;
-			  		delivery_time = document.getElementById('delivery_time_'+id).value;
+
+			  		delivery_time = "";
+			  		
+			  		if(document.getElementById('delivery_time_'+id).value!="Tanggal Kirim"){
+			  			delivery_time = document.getElementById('delivery_time_'+id).value;
+			  		}
+			  		
 			  		specialRequest = document.getElementById('btn_inc_shop_'+id).value;
 
 			  		console.log(total);

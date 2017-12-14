@@ -1,5 +1,6 @@
 myApp.onPageInit('cart_shop_landing_page', function (page) {
 
+	$('.toolbar-inner-home').html('');
 	$('#tabbar_home').css("display","block");
 	
 	$('.back-cart-landing-page').click(function(){
@@ -89,7 +90,7 @@ myApp.onPageInit('cart_shop_landing_page', function (page) {
 		if(Template7.global.lengthCart==0){
 
 			$('#cart_grid_list').html(cartInitEmpty);
-			$('.toolbar-inner-home').html('');
+			$('#tabbar_home').css("display","none");
 
 		}else{
 
@@ -167,8 +168,12 @@ myApp.onPageInit('cart_shop_landing_page', function (page) {
 							value.no_special_flag = false;
 						}
 
+						value.subtotal = parseInt(value.price) * parseInt(value.total);
+
 						// if(value.unit_kg){
+							value.price_subtotal_show = "Rp "+comma_digits(value.subtotal);	
 							value.price_show = "Rp "+comma_digits(value.price);	
+
 						// }else{
 						// 	value.price_show = "Rp "+comma_digits(value.price/4);	
 						// }
@@ -219,7 +224,7 @@ myApp.onPageInit('cart_shop_landing_page', function (page) {
 						showLoading();
 						setTimeout(function(){
 							hideLoading();
-							mainView.router.reloadPage('view/shop/cart_shop.html');
+							mainView.router.reloadPage('view/shop/cart_shop_landing_page.html');
 
 						}, 1000);	
 					})
@@ -276,7 +281,7 @@ myApp.onPageInit('cart_shop_landing_page', function (page) {
 										
 										console.log(cartUid);
 										
-										mainView.router.reloadPage('view/shop/cart_shop.html');
+										mainView.router.reloadPage('view/shop/cart_shop_landing_page.html');
 
 
 									}, 1000);
@@ -295,7 +300,7 @@ myApp.onPageInit('cart_shop_landing_page', function (page) {
 
 									setTimeout(function(){
 										
-										mainView.router.reloadPage('view/shop/cart_shop.html');
+										mainView.router.reloadPage('view/shop/cart_shop_landing_page.html');
 
 									}, 1000);
 
@@ -340,7 +345,7 @@ myApp.onPageInit('cart_shop_landing_page', function (page) {
 								
 								setTimeout(function(){
 									
-									mainView.router.reloadPage('view/shop/cart_shop.html');
+									mainView.router.reloadPage('view/shop/cart_shop_landing_page.html');
 
 								}, 1000);
 
@@ -366,7 +371,7 @@ myApp.onPageInit('cart_shop_landing_page', function (page) {
 
 								setTimeout(function(){
 									
-									mainView.router.reloadPage('view/shop/cart_shop.html');
+									mainView.router.reloadPage('view/shop/cart_shop_landing_page.html');
 
 								}, 1000);
 
@@ -403,7 +408,7 @@ myApp.onPageInit('cart_shop_landing_page', function (page) {
 							removeCartById(cartUid);
 							
 							setTimeout(function(){
-								mainView.router.reloadPage('view/shop/cart_shop.html');
+								mainView.router.reloadPage('view/shop/cart_shop_landing_page.html');
 							}, 1000);
 
 
@@ -419,7 +424,7 @@ myApp.onPageInit('cart_shop_landing_page', function (page) {
 
 							setTimeout(function(){
 
-								mainView.router.reloadPage('view/shop/cart_shop.html');
+								mainView.router.reloadPage('view/shop/cart_shop_landing_page.html');
 							}, 1000);
 
 						}

@@ -24,6 +24,8 @@ myApp.onPageInit('comodity_confirm_list', function (page) {
 
 	console.log(Template7.global.backToProfile);
 
+	$('.toolbar-inner-home').html('');
+
 	$('#tabbar_home').css("display","block");
 
 	$('.back').click(function(){
@@ -111,9 +113,11 @@ myApp.onPageInit('comodity_confirm_list', function (page) {
 			$('.toolbar-inner-home').html('');	
 			$('#navbar_comodity_init').css('display','none');
 
-		}else{
+		}else{	
 
-			$('.toolbar-inner-home').html('<a href="#" class="add-new-comodity" style="margin: 0 auto;"><i class="icon f7-icons" style="color: #143b41;">add_round_fill</i><span style="text-align:center;" class="tabbar-label">Tambah</span></a>');
+			$('.toolbar-inner-home').css('background','#ac312a');
+
+			$('.toolbar-inner-home').html('<a href="#" class="add-new-comodity" style="margin: 0 auto;"><i class="icon f7-icons" style="color: white;">add_round_fill</i><span style="text-align:center;color:white;" class="tabbar-label">Tambah</span></a>');
 			$('#navbar_comodity_init').css('display','block');
 			console.log('NOT ZERO COMODITY');
 

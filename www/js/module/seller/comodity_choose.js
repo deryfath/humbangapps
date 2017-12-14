@@ -2,7 +2,9 @@ myApp.onPageInit('comodity_list', function (page) {
 
 		console.log(Template7.global.arrDataComodity);
 
-		$('.toolbar-inner-home').html('<a href="#" class="next-choose" style="margin: 0 auto;"><i class="icon f7-icons" style="color: #143b41;">check_round_fill</i><span class="tabbar-label">Konfirmasi</span></a>');
+		$('.toolbar-inner-home').css('background','#ac312a');
+
+		$('.toolbar-inner-home').html('<a href="#" class="next-choose" style="margin: 0 auto;"><i class="icon f7-icons" style="color: white;">check_round_fill</i><span class="tabbar-label" style="color:white;">Konfirmasi</span></a>');
 
 		$('.back').click(function(){
 

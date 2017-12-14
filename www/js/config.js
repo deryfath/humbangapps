@@ -1330,189 +1330,6 @@ function getTotalComodityByItemId(itemId){
   
 }
 
-function getComoditySearch(itemId,type,grade,quantity,price){
-
-  var userID = Template7.global.userdata.id;
-
-  console.log(itemId);
-
-  // var query = 'CREATE TABLE IF NOT EXISTS COMODITY ('+
-  //                           'item_id text,'+
-  //                           'created_time datetime,'+
-  //                           'name text,'+
-  //                           'image text,'+
-  //                           'total text,'+
-  //                           'price text,' +
-  //                           'type text,' +
-  //                           'start_harvest text,'+
-  //                           'finish_harvest text,'+
-  //                           'start_plan text,'+
-  //                           'finish_plan text,'+
-  //                           'user_id text'+
-  //                   ')';
-  // var query2 = 'SELECT * FROM COMODITY WHERE user_id = "'+userID+'" AND type = "'+type+'" ';
-  // db.transaction(function (tx) {
-  //     tx.executeSql(query);
-  //     tx.executeSql(query2,[], function (tx, results){
-  //         var len = results.rows.length, i;
-
-  //         Template7.global.lengthComodity = len;
-  //         Template7.global.arrDataComodity = [];
-          
-  //         if(len > 0){
-  //           for (i = 0; i < len; i++){
-  //             Template7.global.arrDataComodity.push({
-  //                 item_id: results.rows.item(i).item_id,
-  //                 name: results.rows.item(i).name,
-  //                 image: results.rows.item(i).image,
-  //                 total: results.rows.item(i).total,
-  //                 price: results.rows.item(i).price,
-  //                 item_type: results.rows.item(i).type,
-  //                 startHarvest: results.rows.item(i).start_harvest,
-  //                 finishHarvest: results.rows.item(i).finish_harvest,
-  //                 startPlan: results.rows.item(i).start_plan,
-  //                 finishPlan: results.rows.item(i).finish_plan,
-  //                 user_id:results.rows.item(i).user_id
-  //             });
-  //           }
-
-  //           console.log(Template7.global.arrDataComodity);
-
-            
-  //         }
-  //     });
-  // }, function(err) {
-  //   console.log('ERROR: ' + JSON.stringify(err.message));
-  // });
-  
-
-  //find userId item by comodity type
-  type = '"'+type+'"';
-
-  $$.ajax({
-        url: "https://catatani-ba229.firebaseio.com/user/data.json?orderBy=\"comodity_type\"&equalTo="+type,
-        statusCode: {
-          404: function (xhr) {
-            alert('error request data');
-          },
-          500: function(xhr){
-            alert('internal server error');
-            hideLoading();
-          }
-        },
-        beforeSend : function(){
-           // showLoading();
-        },
-        success : function(data){
-
-            var result = JSON.parse(data);  
-            Template7.global.arrDataComodity = [];
-
-            if(result != null){
-              console.log(Object.keys(result).length);
-
-              if(Object.keys(result).length>0){
-                $$.each(result, function (index, value) {
-
-                  if(result[index].user_id!=userID){
-
-                      var userIdUrl = '"'+result[index].user_id+'"';
-                      // type = '"'+type+'"';
-
-                      // console.log(result[index].user_id);
-
-                      $$.ajax({
-                            url: "https://catatani-ba229.firebaseio.com/comodity/data.json?orderBy=\"user_id\"&equalTo="+userIdUrl,
-                            statusCode: {
-                              404: function (xhr) {
-                                alert('error request data');
-                              },
-                              500: function(xhr){
-                                alert('internal server error');
-                                hideLoading();
-                              }
-                            },
-                            beforeSend : function(){
-                               // showLoading();
-                            },
-                            success : function(data){
-
-                                var result = JSON.parse(data);
-
-                                // console.log(result);  
-
-                                if(result != null){
-                                  // console.log(Object.keys(result).length);
-                                  
-                                  if(Object.keys(result).length>0){
-                                    $$.each(result, function (index, value) {
-                                      // console.log(result[index].type);
-                                    
-
-                                      if(result[index].grade==grade && result[index].item_id==itemId){
-                                        console.log('sama');
-                                        Template7.global.arrDataComodity.push({
-                                            id: result[index].id,
-                                            item_id: result[index].item_id,
-                                            name: result[index].name,
-                                            image: result[index].image,
-                                            total: result[index].total,
-                                            item_type: result[index].type,
-                                            farm_name : result[index].farm_name,
-                                            startHarvest: result[index].start_harvest,
-                                            finishHarvest: result[index].finish_harvest,
-                                            startPlan: result[index].start_plan,
-                                            finishPlan: result[index].finish_plan,
-                                            user_id:result[index].user_id,
-                                            is_notif : result[index].is_notif,
-                                            price_min : result[index].price_min,
-                                            price_max : result[index].price_max,
-                                            comodity_type : result[index].comodity_type,
-                                            comodity_height : result[index].comodity_height,
-                                            comodity_weight : result[index].comodity_weight,
-                                            desc : result[index].desc,
-                                            is_priority : result[index].is_priority,
-                                            grade : result[index].grade,
-                                            origin : result[index].origin,
-                                            process : result[index].process
-
-
-                                        });
-                                      }
-
-                                    })
-
-                                    console.log(Template7.global.arrDataComodity);
-
-                                    Template7.global.lengthComodity = Template7.global.arrDataComodity.length;
-
-                                  }else{
-                                    
-                                    Template7.global.lengthComodity = Object.keys(result).length;
-                                  }
-
-                                }
-                                
-
-                            }
-                          });
-
-                  }
-
-                })
-
-
-              }
-
-            }
-            
-
-        }
-      });
-
-  
-}
-
 function getComodityByType(type){
 
   var userID = Template7.global.userdata.id;
@@ -2763,7 +2580,7 @@ function insertCart(postData){
             if(Object.keys(result).length>0){
               $$.each(result, function (index, value) {
 
-                   if(result[index].seller_id==postData.seller_id && result[index].item_id==postData.item_id && result[index].delivery_time==postData.delivery_time && result[index].special==postData.special && result[index].trx_id=="" && result[index].status=="" ){ //&& result[index].device_id == device.uuid
+                   if(result[index].seller_id==postData.seller_id && result[index].item_id==postData.item_id && result[index].delivery_time==postData.delivery_time && result[index].special==postData.special && result[index].trx_id=="" && result[index].status=="" && result[index].device_id == device.uuid){ //&& result[index].device_id == device.uuid
                       isSame = true;
                       comodityIdTmp = result[index].id;
                       totalTmp = result[index].total;
@@ -2881,8 +2698,8 @@ function insertCartExt(postData,userID){
   var cartId = makeid();
   var created_time = getCurrentDate();
   var trxID = "";
-  var deviceId = "test";
-  // var deviceId = device.uuid;
+  // var deviceId = "test";
+  var deviceId = device.uuid;
 
      var dataSend = {
                   cart_id : cartId,
@@ -3055,7 +2872,7 @@ function getAllCart(){
               $$.each(result, function (index, value) {
                 console.log(result[index].name);
 
-                if(result[index].trx_id=="" ){ //&& result[index].device_id == device.uuid
+                if(result[index].trx_id=="" && result[index].device_id == device.uuid){ //&& result[index].device_id == device.uuid
                   Template7.global.arrDataCart.push({
                       id:result[index].id,
                       cart_id: result[index].cart_id,
@@ -3921,14 +3738,15 @@ function insertTransaction(total,paymentMethod){
     // }, function(err) {
     //   console.log('ERROR: ' + JSON.stringify(err.message));
     // });
-
+    
 
     var dataSend = {
                 trx_id : orderID,
                 created_time  : created_time,
                 payment_method : paymentMethod,
                 total : total,
-                user_id : userID
+                user_id : userID,
+                device_id : device.uuid
               }
 
     $.ajax({
@@ -4046,22 +3864,28 @@ function getAllTransactionByUserId(){
                   // console.log(result[index].type);
                   // console.log(type);
 
-                  // splitDate = result[index].created_time.split(" ");
-                  var dateSplit = result[index].created_time.split(" ");
-                  var splitDate = dateSplit[0].split("/");
-                  var newDate = splitDate[1]+"/"+splitDate[0]+"/"+splitDate[2];
-                  var newDatetime = newDate+" "+dateSplit[1];
+                  if(result[index].device_id==device.uuid){
 
-                  console.log(newDatetime);
+                    // splitDate = result[index].created_time.split(" ");
+                    var dateSplit = result[index].created_time.split(" ");
+                    var splitDate = dateSplit[0].split("/");
+                    var newDate = splitDate[1]+"/"+splitDate[0]+"/"+splitDate[2];
+                    var newDatetime = newDate+" "+dateSplit[1];
 
-                  Template7.global.arrTransaction.push({
-                      id : result[index].id,
-                      trx_id: result[index].trx_id,
-                      created_time: result[index].created_time,
-                      total: result[index].total,
-                      payment_method: result[index].payment_method,
-                      sord_date : newDatetime
-                  });
+                    console.log(newDatetime);
+
+                    Template7.global.arrTransaction.push({
+                        id : result[index].id,
+                        trx_id: result[index].trx_id,
+                        created_time: result[index].created_time,
+                        total: result[index].total,
+                        payment_method: result[index].payment_method,
+                        sord_date : newDatetime
+                    });
+                    
+                  }
+
+                  
 
                 })
 
