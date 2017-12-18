@@ -245,6 +245,7 @@ myApp.onPageInit('delivery_shop_list', function (page) {
     'padding: 8px;'+
 '}'+
 
+
 '</style>'+
 
 '</head>'+
@@ -346,6 +347,14 @@ myApp.onPageInit('delivery_shop_list', function (page) {
                   '</div>'+
 
                 '</div>'+
+
+                //  '<div style="background: white;text-align: center;padding: 10px;margin-top: -23px;">'+
+                  
+                //   '<div>'+
+                //      '<button onclick="window.open("catatani://", "_system")">Open the other app</button>'+
+                //   '</div>'+
+
+                // '</div>'+
                 
                 //======= start two column ======= 
                 
@@ -400,7 +409,7 @@ myApp.onPageInit('delivery_shop_list', function (page) {
 		  emailjs.send(service_id,template_id,{
 			 text:	emailTemplateHTML, 
 			 from:	"ioterateam2@gmail.com", 
-			 to:		"ioterateam2@gmail.com",
+			 to:		Template7.global.userdata.email,
 			 subject:	"CATATANI - ORDER DETAIL",
 			})
 			.then(
@@ -411,6 +420,8 @@ myApp.onPageInit('delivery_shop_list', function (page) {
 			    console.log("FAILED", error);
 			  }
 			);
+
+		
 
 	  
 

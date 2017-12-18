@@ -58,6 +58,14 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-customurlscheme.LaunchMyApp",
+    "file": "plugins/cordova-plugin-customurlscheme/www/android/LaunchMyApp.js",
+    "pluginId": "cordova-plugin-customurlscheme",
+    "clobbers": [
+      "window.plugins.launchmyapp"
+    ]
+  },
+  {
     "id": "cordova-plugin-fcm.FCMPlugin",
     "file": "plugins/cordova-plugin-fcm/www/FCMPlugin.js",
     "pluginId": "cordova-plugin-fcm",
@@ -124,6 +132,7 @@ module.exports.metadata =
   "cordova-plugin-buildinfo": "1.1.0",
   "cordova-plugin-camera": "2.4.0",
   "cordova-plugin-crosswalk-webview": "2.3.0",
+  "cordova-plugin-customurlscheme": "4.3.0",
   "cordova-plugin-fcm": "2.1.2",
   "cordova-plugin-geolocation": "2.4.3",
   "cordova-plugin-splashscreen": "4.1.0",

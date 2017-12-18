@@ -415,7 +415,7 @@ function insertRegister(postData){
             if(Object.keys(result).length>0){
               $$.each(result, function (index, value) {
 
-                   if(result[index].username==postData.username && result[index].password == postData.password){
+                   if(result[index].username==postData.username && result[index].password == postData.password ){
                       Template7.global.lengthRegister = 1;
                       isSame = true;
                       return false;
@@ -448,7 +448,6 @@ function insertRegister(postData){
                   insertSession(userIdGen,postData.username,postData.name,postData.address,postData.phone,postData.farm_name,postData.email,postData.usertype,postData.comodityType,postData.certificate,"");
                   
               }
-
 
             }else{
               insertUserExt(postData,userIdGen);
@@ -1009,8 +1008,11 @@ function insertComodity(postData){
       isPriority = true;
     }
 
-    var grade = checkGrade(postData.comodityWeight,postData.comodityHeight);
-
+    var grade = "";
+    if(Template7.global.userdata.comodity_type=="Konvensional"){
+      grade = checkGrade(postData.comodityWeight,postData.comodityHeight);
+    }
+    
     var dataSend = {
                 item_id : postData.item_id,
                 created_time  : created_time,
@@ -2580,7 +2582,7 @@ function insertCart(postData){
             if(Object.keys(result).length>0){
               $$.each(result, function (index, value) {
 
-                   if(result[index].seller_id==postData.seller_id && result[index].item_id==postData.item_id && result[index].delivery_time==postData.delivery_time && result[index].special==postData.special && result[index].trx_id=="" && result[index].status=="" && result[index].device_id == device.uuid){ //&& result[index].device_id == device.uuid
+                   if(result[index].seller_id==postData.seller_id && result[index].item_id==postData.item_id && result[index].delivery_time==postData.delivery_time && result[index].special==postData.special && result[index].trx_id=="" && result[index].status=="" && result[index].device_id == device.uuid ){ //&& result[index].device_id == device.uuid
                       isSame = true;
                       comodityIdTmp = result[index].id;
                       totalTmp = result[index].total;

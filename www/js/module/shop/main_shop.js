@@ -3,7 +3,8 @@ var itemIdSearch;
 var typeSearch;
 var gradeSearch;
 var quantitySearch;
-var priceSearch;	
+var priceSearchMin;	
+var priceSearchMax;	
 
 myApp.onPageInit('main_shop_list', function (page) {
 
@@ -154,13 +155,14 @@ myApp.onPageInit('main_shop_list', function (page) {
 	typeSearch = page.query.type;
 	gradeSearch = page.query.grade;
 	quantitySearch = page.query.quantity;
-	priceSearch = page.query.price;
+	priceSearchMin = page.query.priceMin;
+	priceSearchMax = page.query.priceMax;
 
-	console.log(itemIdSearch);
+	console.log(typeSearch);
 	
-	getComoditySearch(itemIdSearch,typeSearch,gradeSearch,quantitySearch,priceSearch);
+	getComoditySearch(itemIdSearch,typeSearch,gradeSearch,quantitySearch,priceSearchMin,priceSearchMax);
 
-	function getComoditySearch(itemId,type,grade,quantity,price){
+	function getComoditySearch(itemId,type,grade,quantity,priceMin,priceMax){
 
 		  var userID = Template7.global.userdata.id;
 
@@ -229,38 +231,143 @@ myApp.onPageInit('main_shop_list', function (page) {
 		                                  if(Object.keys(result).length>0){
 		                                    $$.each(result, function (index, value) {
 		                                      // console.log(result[index].type);
-		                                      
+		                                     
+		                                     if(type=="Konvensional"){
 
-		                                      if(result[index].grade==grade && result[index].item_id==itemId){
-		                                        console.log('sama');
-		                                        Template7.global.arrDataComodity.push({
-		                                            id: result[index].id,
-		                                            item_id: result[index].item_id,
-		                                            name: result[index].name,
-		                                            image: result[index].image,
-		                                            total: result[index].total,
-		                                            item_type: result[index].type,
-		                                            farm_name : result[index].farm_name,
-		                                            startHarvest: result[index].start_harvest,
-		                                            finishHarvest: result[index].finish_harvest,
-		                                            startPlan: result[index].start_plan,
-		                                            finishPlan: result[index].finish_plan,
-		                                            user_id:result[index].user_id,
-		                                            is_notif : result[index].is_notif,
-		                                            price_min : result[index].price_min,
-		                                            price_max : result[index].price_max,
-		                                            comodity_type : result[index].comodity_type,
-		                                            comodity_height : result[index].comodity_height,
-		                                            comodity_weight : result[index].comodity_weight,
-		                                            desc : result[index].desc,
-		                                            is_priority : result[index].is_priority,
-		                                            grade : result[index].grade,
-		                                            origin : result[index].origin,
-		                                            process : result[index].process
+		                                     	if (priceMin!=0 && priceMax!=0) {
+		                                     			if(result[index].grade==grade && result[index].item_id==itemId && parseInt(result[index].price_min)>=priceMin && parseInt(result[index].price_min)<=priceMax){
+					                                        console.log('sama');
+					                                        Template7.global.arrDataComodity.push({
+					                                            id: result[index].id,
+					                                            item_id: result[index].item_id,
+					                                            name: result[index].name,
+					                                            image: result[index].image,
+					                                            total: result[index].total,
+					                                            item_type: result[index].type,
+					                                            farm_name : result[index].farm_name,
+					                                            startHarvest: result[index].start_harvest,
+					                                            finishHarvest: result[index].finish_harvest,
+					                                            startPlan: result[index].start_plan,
+					                                            finishPlan: result[index].finish_plan,
+					                                            user_id:result[index].user_id,
+					                                            is_notif : result[index].is_notif,
+					                                            price_min : result[index].price_min,
+					                                            price_max : result[index].price_max,
+					                                            comodity_type : result[index].comodity_type,
+					                                            comodity_height : result[index].comodity_height,
+					                                            comodity_weight : result[index].comodity_weight,
+					                                            desc : result[index].desc,
+					                                            is_priority : result[index].is_priority,
+					                                            grade : result[index].grade,
+					                                            origin : result[index].origin,
+					                                            process : result[index].process
 
 
-		                                        });
-		                                      }
+					                                        });
+					                                      }
+		                                     	}else{
+		                                     			if( result[index].grade==grade && result[index].item_id==itemId){
+					                                        console.log('sama');
+					                                        Template7.global.arrDataComodity.push({
+					                                            id: result[index].id,
+					                                            item_id: result[index].item_id,
+					                                            name: result[index].name,
+					                                            image: result[index].image,
+					                                            total: result[index].total,
+					                                            item_type: result[index].type,
+					                                            farm_name : result[index].farm_name,
+					                                            startHarvest: result[index].start_harvest,
+					                                            finishHarvest: result[index].finish_harvest,
+					                                            startPlan: result[index].start_plan,
+					                                            finishPlan: result[index].finish_plan,
+					                                            user_id:result[index].user_id,
+					                                            is_notif : result[index].is_notif,
+					                                            price_min : result[index].price_min,
+					                                            price_max : result[index].price_max,
+					                                            comodity_type : result[index].comodity_type,
+					                                            comodity_height : result[index].comodity_height,
+					                                            comodity_weight : result[index].comodity_weight,
+					                                            desc : result[index].desc,
+					                                            is_priority : result[index].is_priority,
+					                                            grade : result[index].grade,
+					                                            origin : result[index].origin,
+					                                            process : result[index].process
+
+
+					                                        });
+					                                      }
+		                                     	}
+		                                     
+
+		                                     }else{
+
+		                                     	if (priceMin!=0 && priceMax!=0) {
+		                                     		if(result[index].item_id==itemId && parseInt(result[index].price_min)>=priceMin && parseInt(result[index].price_min)<=priceMax){
+				                                        console.log('sama');
+				                                        Template7.global.arrDataComodity.push({
+				                                            id: result[index].id,
+				                                            item_id: result[index].item_id,
+				                                            name: result[index].name,
+				                                            image: result[index].image,
+				                                            total: result[index].total,
+				                                            item_type: result[index].type,
+				                                            farm_name : result[index].farm_name,
+				                                            startHarvest: result[index].start_harvest,
+				                                            finishHarvest: result[index].finish_harvest,
+				                                            startPlan: result[index].start_plan,
+				                                            finishPlan: result[index].finish_plan,
+				                                            user_id:result[index].user_id,
+				                                            is_notif : result[index].is_notif,
+				                                            price_min : result[index].price_min,
+				                                            price_max : result[index].price_max,
+				                                            comodity_type : result[index].comodity_type,
+				                                            comodity_height : result[index].comodity_height,
+				                                            comodity_weight : result[index].comodity_weight,
+				                                            desc : result[index].desc,
+				                                            is_priority : result[index].is_priority,
+				                                            grade : result[index].grade,
+				                                            origin : result[index].origin,
+				                                            process : result[index].process
+
+
+				                                        });
+				                                      }
+		                                     	}else{
+		                                     		if(result[index].item_id==itemId){
+				                                        console.log('sama');
+				                                        Template7.global.arrDataComodity.push({
+				                                            id: result[index].id,
+				                                            item_id: result[index].item_id,
+				                                            name: result[index].name,
+				                                            image: result[index].image,
+				                                            total: result[index].total,
+				                                            item_type: result[index].type,
+				                                            farm_name : result[index].farm_name,
+				                                            startHarvest: result[index].start_harvest,
+				                                            finishHarvest: result[index].finish_harvest,
+				                                            startPlan: result[index].start_plan,
+				                                            finishPlan: result[index].finish_plan,
+				                                            user_id:result[index].user_id,
+				                                            is_notif : result[index].is_notif,
+				                                            price_min : result[index].price_min,
+				                                            price_max : result[index].price_max,
+				                                            comodity_type : result[index].comodity_type,
+				                                            comodity_height : result[index].comodity_height,
+				                                            comodity_weight : result[index].comodity_weight,
+				                                            desc : result[index].desc,
+				                                            is_priority : result[index].is_priority,
+				                                            grade : result[index].grade,
+				                                            origin : result[index].origin,
+				                                            process : result[index].process
+
+
+				                                        });
+				                                      }
+		                                     	}
+		                                     	 
+		                                     }
+
+		                                     
 
 		                                    })
 

@@ -18,7 +18,10 @@
       "cordova-plugin-background-mode": {},
       "cordova-plugin-fcm": {},
       "cordova-plugin-compat": {},
-      "cordova-plugin-splashscreen": {}
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-customurlscheme": {
+        "URL_SCHEME": "catatani"
+      }
     }
   },
   "dependencies": {
@@ -28,6 +31,7 @@
     "cordova-plugin-buildinfo": "^1.1.0",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-crosswalk-webview": "~2.3.0",
+    "cordova-plugin-customurlscheme": "^4.3.0",
     "cordova-plugin-device": "^1.1.6",
     "cordova-plugin-fcm": "^2.1.2",
     "cordova-plugin-geolocation": "^2.4.3",

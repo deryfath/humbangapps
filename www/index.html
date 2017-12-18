@@ -1030,15 +1030,15 @@
                                 <div class="item-input" >
                                   <select class="minimal" style="margin-left:28px;"></select>
                                   <select style="font-size:14px;margin-top: -42px;" id="shop_comodity_type">
-                                    <option>Organik</option>
-                                    <option>Hidroponik</option>
-                                    <option>Konvensional</option>
+                                    <option value="organik">Organik</option>
+                                    <option value="hidroponik">Hidroponik</option>
+                                    <option value="konvesional">Konvensional</option>
                                   </select>
                                 </div>
                               </div>
                             </div>
                           </li>
-                          <li>
+                          <li id="shop_comodity_grade_div" style="display:none;">
                             <div class="item-content">
                               <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
                               <div class="item-inner" style="margin-left: 5px;">
@@ -1053,16 +1053,16 @@
                               </div>
                             </div>
                           </li>
-                        <li>
+                        <li style="display:none;">
                           <div class="item-content" style="margin-bottom: -5px;"><div class="item-media"><i class="icon f7-icons" style="font-size:24px;margin-right: 6px;">layers_fill</i>Kuantitas(Kg)  (maksimal:<div id="shop_comodity_max" style="font-weight: bold;"></div> Kg)
                           </div>
                         </li>
-                        <li>
+                        <li style="display:none;">
                           <div class="item-content">
                             <div class="item-input">
                               <div class="row">
                                 <div class="col-auto">
-                                    <input type="text" id="shop_comodity_quantity" style="font-size:15px;border: 1px solid #cfc1c1;height: 37px;text-align: center;margin-top: 10px;">
+                                    <input type="number" id="shop_comodity_quantity" style="font-size:15px;border: 1px solid #cfc1c1;height: 37px;text-align: center;margin-top: 10px;">
                                 </div>
                                 <div class="col-auto" style="width: 29%;margin-right: 49px;">
                               
@@ -1079,9 +1079,20 @@
                           <div class="item-content">
                             <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
                             <div class="item-inner" style="margin-left: 5px;">
-                              <div class="item-title label" style="width:49%;">Harga/Kg (Rp)</div>
+                              <div class="item-title label" style="width:49%;">Harga Min/Kg (Rp)</div>
                               <div class="item-input">
-                                <input type="text" id="shop_comodity_price" style="font-size:15px;">
+                                <input type="number" id="shop_comodity_price_min" style="font-size:15px;" value="0">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                         <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              <div class="item-title label" style="width:49%;">Harga Max/Kg (Rp)</div>
+                              <div class="item-input">
+                                <input type="number" id="shop_comodity_price_max" style="font-size:15px;" value="0">
                               </div>
                             </div>
                           </div>
@@ -1094,7 +1105,7 @@
                             <a href="#" class="button button-fill close-popup cancel-shop-comodity">Batal</a>
                           </div>
                           <div class="col-50">
-                            <a href="#" class="button button-fill submit-shop-comodity">Konfirmasi</a>
+                            <a href="#" class="button button-fill submit-shop-comodity">Cari</a>
                           </div>
                         </div>     
                   

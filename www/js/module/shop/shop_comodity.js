@@ -246,7 +246,8 @@ myApp.onPageInit('shop_comodity_list', function (page) {
 
 
 									document.getElementById('shop_comodity_quantity').value = 0;
-									document.getElementById('shop_comodity_price').value = "";
+									document.getElementById('shop_comodity_price_min').value = 0;
+									document.getElementById('shop_comodity_price_max').value = 0;
 
 									document.getElementById('title_shop_comodity').innerHTML = name;
 									document.getElementById('image_shop_comodity').src = image;
@@ -292,7 +293,8 @@ myApp.onPageInit('shop_comodity_list', function (page) {
 										var comodityType = $( "#shop_comodity_type option:selected" ).text();
 										var comodityGrade = $( "#shop_comodity_grade option:selected" ).text();
 										var comodityQuantity = document.getElementById('shop_comodity_quantity').value;
-										var comodityPrice = document.getElementById('shop_comodity_price').value;
+										var comodityPriceMin = document.getElementById('shop_comodity_price_min').value;
+										var comodityPriceMax = document.getElementById('shop_comodity_price_max').value;
 
 										
 										showLoading();
@@ -301,7 +303,7 @@ myApp.onPageInit('shop_comodity_list', function (page) {
 										setTimeout(function() {
 
 											mainView.router.load({
-											  url: 'view/shop/main_shop.html?itemId='+itemId+'&type='+comodityType+'&grade='+comodityGrade+'&quantity='+comodityQuantity+'&price='+comodityPrice,
+											  url: 'view/shop/main_shop.html?itemId='+itemId+'&type='+comodityType+'&grade='+comodityGrade+'&quantity='+comodityQuantity+'&priceMin='+comodityPriceMin+'&priceMax='+comodityPriceMax,
 											  animatePages: true
 											});
 
@@ -322,6 +324,14 @@ myApp.onPageInit('shop_comodity_list', function (page) {
 											if(Template7.global.userdata.usertype=="consumer"){
 												myApp.popup('.popup-shop-comodity-item');
 												
+
+												$('#shop_comodity_type').change(function() {
+											        if(this.value=="konvesional"){
+											        	$('#shop_comodity_grade_div').css('display','block');
+											        }else{
+											        	$('#shop_comodity_grade_div').css('display','none');
+											        }
+											    });
 
 
 

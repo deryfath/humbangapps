@@ -6,12 +6,13 @@ myApp.onPageInit('cart_shop_list', function (page) {
 	console.log(typeSearch);
 	console.log(gradeSearch);
 	console.log(quantitySearch);
-	console.log(priceSearch);
+	console.log(priceSearchMin);
+	console.log(priceSearchMax);
 	
 	$('.back-cart').click(function(){
 		$('#tabbar_home').css("display","none");
 		mainView.router.back({
-			url : 'view/shop/main_shop.html?itemId='+itemIdSearch+'&type='+typeSearch+'&grade='+gradeSearch+'&quantity='+quantitySearch+'&price='+priceSearch,
+			url : 'view/shop/main_shop.html?itemId='+itemIdSearch+'&type='+typeSearch+'&grade='+gradeSearch+'&quantity='+quantitySearch+'&priceMin='+priceSearchMin+'&priceMax='+priceSearchMax,
 			force : true,
 			reload : true
 		});

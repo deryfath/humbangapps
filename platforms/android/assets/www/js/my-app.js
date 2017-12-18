@@ -417,7 +417,7 @@ var mainView = myApp.addView('.view-main', {
             }else if(mainView.activePage.name=="cart_shop_list"){
                 $('#tabbar_home').css("display","none");
                 mainView.router.back({
-                    url : 'view/shop/main_shop.html?itemId='+itemIdSearch+'&type='+typeSearch+'&grade='+gradeSearch+'&quantity='+quantitySearch+'&price='+priceSearch,
+                    url : 'view/shop/main_shop.html?itemId='+itemIdSearch+'&type='+typeSearch+'&grade='+gradeSearch+'&quantity='+quantitySearch+'&priceMin='+priceSearchMin+'&priceMax='+priceSearchMax,
                     force : true,
                     reload : true
                 });

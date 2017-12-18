@@ -24,6 +24,13 @@
       "XWALK_MULTIPLEAPK": "true",
       "PACKAGE_NAME": "com.example.crossdov"
     },
+    "cordova-plugin-customurlscheme": {
+      "URL_SCHEME": "catatani",
+      "ANDROID_SCHEME": " ",
+      "ANDROID_HOST": " ",
+      "ANDROID_PATHPREFIX": "/",
+      "PACKAGE_NAME": "com.example.crossdov"
+    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.example.crossdov"
     },

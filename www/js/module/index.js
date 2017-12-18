@@ -211,13 +211,6 @@
 
 			//sending message FCM 
 
-			// var dataSend = {
-			// 	  "to" : "/test/send/fcm",
-			// 	  "data" : {
-			// 	   "message" : "tes123"
-			// 	  }
-			// 	}
-
 			// $.ajax({
 			// 	  method: "POST",
 			// 	  dataType: 'json',
@@ -236,7 +229,7 @@
 			// 	          "param1":"value1",  //Any data to be retrieved in the notification callback
 			// 	          "param2": "Prueba"
 			// 	        },
-			// 	        "to":"/topics/fcm", //Topic or single device
+			// 	        "to":"/topics/coba_1212900912_2992190", //Topic or single device
 			// 	        "priority":"high", //If not set, notification won't be delivered on completely closed iOS app
 			// 	        "restricted_package_name":"" //Optional. Set for application filtering
 			// 	      }
@@ -254,7 +247,7 @@
 			// 	    myApp.alert( token );
 			// 	});
 
-			// 	FCMPlugin.subscribeToTopic('/topics/fcm');
+			// 	FCMPlugin.subscribeToTopic('/topics/coba_1212900912_2992190');
 
 			// 	FCMPlugin.onNotification(function(data){
 			// 	    if(data.wasTapped){
@@ -560,164 +553,171 @@
 		var username = document.getElementById('username_login').value;
 		var password = document.getElementById('password_login').value;
 
-		checkLogin(username,password);
+		if(username=="" || password==""){
+			myApp.alert('Harap Lengkapi Isian form','Notifikasi');
 
-		//GET CART
-        getAllCart();
+		}else{
 
-		showLoading();
+			checkLogin(username,password);
 
-		setTimeout(function() {
+			//GET CART
+	        getAllCart();
 
-			// hideLoading();
+			showLoading();
 
-			if(Template7.global.lengthLogin == 0){
-				hideLoading();
-				myApp.alert("Username & password did not match", "notice");
-			}else{
-				myApp.closeModal('.popup-login');
+			setTimeout(function() {
 
-				document.getElementById('name_farmer_register').value = "";
-				document.getElementById('farm_name_register').value = "";
-				document.getElementById('certificate_register').value = "";
-				// document.getElementById('username_register').value = "";
-				document.getElementById('password_farmer_register').value = "";
-				document.getElementById('email_farmer_register').value = "";
-				document.getElementById('address_farmer_register').value = "";
-				document.getElementById('phone_farmer_register').value = "";
-				document.getElementById('password_login').value = "";
-				document.getElementById('username_login').value = "";
-				document.getElementById('name_consumer_register').value = "";
-				document.getElementById('password_consumer_register').value = "";
-				document.getElementById('email_consumer_register').value = "";
-				document.getElementById('address_consumer_register').value = "";
-				document.getElementById('phone_consumer_register').value = "";
-				$$('#tab_login').addClass('active');
-				$$('#tab_login_list').addClass('active');
-				$$('#tab_register').removeClass('active');
-				$$('#tab_register_list').removeClass('active');
-										
-				myApp.alert("Success Login", "notice");
-				if(Template7.global.userdata.usertype=="seller"){
-					$$('#panel_overlay').html(sellerHtmlElementPanel);
-					$('#command-home-button').html(landingPageSeller);
+				// hideLoading();
 
-					$("#seller_name_profile").text(Template7.global.userdata.fullname);
-					$("#seller_farm_profile").text(Template7.global.userdata.farm_name);
+				if(Template7.global.lengthLogin == 0){
+					hideLoading();
+					myApp.alert("Username & password did not match", "notice");
+				}else{
+					myApp.closeModal('.popup-login');
 
-					// $('#notification_seller_index').css('display','block');
-					// $('#notification_seller_index').click(function(){
-					// 	mainView.router.load({
-					// 	  url: 'view/seller/notification_seller.html',
-					// 	  animatePages: true
-					// 	});
-					// })
+					document.getElementById('name_farmer_register').value = "";
+					document.getElementById('farm_name_register').value = "";
+					document.getElementById('certificate_register').value = "";
+					// document.getElementById('username_register').value = "";
+					document.getElementById('password_farmer_register').value = "";
+					document.getElementById('email_farmer_register').value = "";
+					document.getElementById('address_farmer_register').value = "";
+					document.getElementById('phone_farmer_register').value = "";
+					document.getElementById('password_login').value = "";
+					document.getElementById('username_login').value = "";
+					document.getElementById('name_consumer_register').value = "";
+					document.getElementById('password_consumer_register').value = "";
+					document.getElementById('email_consumer_register').value = "";
+					document.getElementById('address_consumer_register').value = "";
+					document.getElementById('phone_consumer_register').value = "";
+					$$('#tab_login').addClass('active');
+					$$('#tab_login_list').addClass('active');
+					$$('#tab_register').removeClass('active');
+					$$('#tab_register_list').removeClass('active');
+											
+					myApp.alert("Login Berhasil", "Notifikasi");
+					if(Template7.global.userdata.usertype=="seller"){
+						$$('#panel_overlay').html(sellerHtmlElementPanel);
+						$('#command-home-button').html(landingPageSeller);
 
-					// $('#notification_comodity_index').css('display','block');
-					// $('#notification_comodity_index').click(function(){
-					// 	mainView.router.load({
-					// 	  url: 'view/seller/comodity_notification.html',
-					// 	  animatePages: true
-					// 	});
-					// })
-					setTimeout(function(){
-						//CHECK PESANAN /NOTIFIKASI
-						getCartItemByFarmNameAndUserId();
+						$("#seller_name_profile").text(Template7.global.userdata.fullname);
+						$("#seller_farm_profile").text(Template7.global.userdata.farm_name);
 
-						setTimeout(function() {
-							console.log('test');
+						// $('#notification_seller_index').css('display','block');
+						// $('#notification_seller_index').click(function(){
+						// 	mainView.router.load({
+						// 	  url: 'view/seller/notification_seller.html',
+						// 	  animatePages: true
+						// 	});
+						// })
+
+						// $('#notification_comodity_index').css('display','block');
+						// $('#notification_comodity_index').click(function(){
+						// 	mainView.router.load({
+						// 	  url: 'view/seller/comodity_notification.html',
+						// 	  animatePages: true
+						// 	});
+						// })
+						setTimeout(function(){
+							//CHECK PESANAN /NOTIFIKASI
+							getCartItemByFarmNameAndUserId();
+
+							setTimeout(function() {
+								console.log('test');
+								hideLoading();
+
+								// watchWeatherPosition();
+
+								// require(["js/later.js"], function(cron){
+								// 	var cronSched =   later.parse.recur().on('09:00:00').time();
+	       //                          var timer = later.setInterval(logTime, cronSched);
+	       //                          function logTime() {
+
+										startCronPerWeek();
+
+	       //                          }
+
+								// })
+
+								// run init non comodity priority
+								getCounterNotificationNonPriorityComodity();
+								
+								// CRON NOTIFICAITON NON COMODITY
+								runCronNonPriorityComodity();
+
+								if(Template7.global.arrDataCart.length > 0 ){
+									$('.notification-total').html(Template7.global.arrDataCart.length);
+								}else{
+									$('.notification-total').html('0');
+								}
+
+							}, 1000);
+						}, 500);
+
+						
+
+					}else{
+						if(Template7.global.timerCronComodity!=undefined){
+
+							Template7.global.timerCronComodity.clear();
+						}
+
+						$$('#panel_overlay').html(consumerHtmlElementPanel);
+						// $('#notification_seller_index').css('display','none');
+						// $('#notification_comodity_index').css('display','none');
+						$('#command-home-button').html(landingPageConsumer);
+
+						$("#consumer_name_profile").text(Template7.global.userdata.fullname);
+						$("#consumer_address_profile").text(Template7.global.userdata.address);
+
+						getAllCart();
+
+						setTimeout(function(){
 							hideLoading();
 
-							// watchWeatherPosition();
-
-							// require(["js/later.js"], function(cron){
-							// 	var cronSched =   later.parse.recur().on('09:00:00').time();
-       //                          var timer = later.setInterval(logTime, cronSched);
-       //                          function logTime() {
-
-									startCronPerWeek();
-
-       //                          }
-
-							// })
-
-							// run init non comodity priority
-							getCounterNotificationNonPriorityComodity();
-							
-							// CRON NOTIFICAITON NON COMODITY
-							runCronNonPriorityComodity();
-
-							if(Template7.global.arrDataCart.length > 0 ){
-								$('.notification-total').html(Template7.global.arrDataCart.length);
-							}else{
-								$('.notification-total').html('0');
-							}
+							$('.cart-landing-total').html(Template7.global.arrDataCart.length);
 
 						}, 1000);
-					}, 500);
 
-					
+						
 
-				}else{
-					if(Template7.global.timerCronComodity!=undefined){
-
-						Template7.global.timerCronComodity.clear();
 					}
 
-					$$('#panel_overlay').html(consumerHtmlElementPanel);
-					// $('#notification_seller_index').css('display','none');
-					// $('#notification_comodity_index').css('display','none');
-					$('#command-home-button').html(landingPageConsumer);
+					console.log('test '+Template7.global.lengthCart);	
 
-					$("#consumer_name_profile").text(Template7.global.userdata.fullname);
-					$("#consumer_address_profile").text(Template7.global.userdata.address);
+					//CHECK CART 
+					if(Template7.global.lengthCart>0){
 
-					getAllCart();
-
-					setTimeout(function(){
-						hideLoading();
-
-						$('.cart-landing-total').html(Template7.global.arrDataCart.length);
-
-					}, 1000);
-
-					
-
-				}
-
-				console.log('test '+Template7.global.lengthCart);	
-
-				//CHECK CART 
-				if(Template7.global.lengthCart>0){
-
-            		console.log('masuk update cart');
-					updateCartFreeUser();
-				}
-
-				if(mainView.activePage.name=="cart_shop_list"){
-
-					setTimeout(function(){
-						console.log('MASUK TIMEOUT CART SHOP');
-						mainView.router.reloadPage('view/shop/cart_shop.html');
-
-
-					}, 1200);	
-
-				}else if(mainView.activePage.name=="shop_comodity_list"){
-
-					if(Template7.global.userdata.usertype=="seller"){
-
-						myApp.alert("Anda Harus login/daftar sebagai Konsumen","Notifikasi");
-					}else{
-						myApp.popup('.popup-shop-comodity-item');
+	            		console.log('masuk update cart');
+						updateCartFreeUser();
 					}
+
+					if(mainView.activePage.name=="cart_shop_list"){
+
+						setTimeout(function(){
+							console.log('MASUK TIMEOUT CART SHOP');
+							mainView.router.reloadPage('view/shop/cart_shop.html');
+
+
+						}, 1200);	
+
+					}else if(mainView.activePage.name=="shop_comodity_list"){
+
+						if(Template7.global.userdata.usertype=="seller"){
+
+							myApp.alert("Anda Harus login/daftar sebagai Konsumen","Notifikasi");
+						}else{
+							myApp.popup('.popup-shop-comodity-item');
+						}
+					}
+
+					hideLoading();
+
 				}
 
-				hideLoading();
+			}, 1000);
 
-			}
-
-		}, 1000);
+		}
 		
 	})
 
@@ -752,157 +752,166 @@
 
 		var userVal = name.split(" ");	
 		console.log("userval "+userVal[0]);
-		
-		register(name,userVal[0],password,email,address,phone,usertype,farmName,comodityType,certificate);
 
-		console.log(Template7.global.lengthRegister);	
+		if(name=="" || farmName=="" || password=="" || email=="" || address==""){
+			myApp.alert('Harap Lengkapi Isian form','Notifikasi');
 
-		//GET CART
-		getAllCart();
-		
-		showLoading();
+		}else{
 
-		setTimeout(function() {
+			register(name,userVal[0],password,email,address,phone,usertype,farmName,comodityType,certificate);
 
-			// hideLoading();
+			console.log(Template7.global.lengthRegister);	
 
-			if(Template7.global.lengthRegister == 1){
-				hideLoading();
-				myApp.alert("Username already register", "notice");
-			}else{
-				myApp.closeModal('.popup-register-penjual');
+			//GET CART
+			getAllCart();
+			
+			showLoading();
 
-				document.getElementById('name_farmer_register').value = "";
-				document.getElementById('farm_name_register').value = "";
-				document.getElementById('certificate_register').value = "";
-				// document.getElementById('username_register').value = "";
-				document.getElementById('password_farmer_register').value = "";
-				document.getElementById('email_farmer_register').value = "";
-				document.getElementById('address_farmer_register').value = "";
-				document.getElementById('phone_farmer_register').value = "";
-				document.getElementById('password_login').value = "";
-				document.getElementById('username_login').value = "";
-				document.getElementById('name_consumer_register').value = "";
-				document.getElementById('password_consumer_register').value = "";
-				document.getElementById('email_consumer_register').value = "";
-				document.getElementById('address_consumer_register').value = "";
-				document.getElementById('phone_consumer_register').value = "";
-				$$('#tab_login').addClass('active');
-				$$('#tab_login_list').addClass('active');
-				$$('#tab_register').removeClass('active');
-				$$('#tab_register_list').removeClass('active');
-				
-				myApp.alert("Success register", "notice");
-				if(usertype=="seller"){
-					$$('#panel_overlay').html(sellerHtmlElementPanel);
-					$('#command-home-button').html(landingPageSeller);
+			setTimeout(function() {
 
-					$("#seller_name_profile").text(Template7.global.userdata.fullname);
-					$("#seller_farm_profile").text(Template7.global.userdata.farm_name);
+				// hideLoading();
 
-					// $('#notification_seller_index').css('display','block');
-					// $('#notification_seller_index').click(function(){
-					// 	mainView.router.load({
-					// 	  url: 'view/seller/notification_seller.html',
-					// 	  animatePages: true
-					// 	});
-					// })
+				if(Template7.global.lengthRegister == 1){
+					hideLoading();
+					myApp.alert("Username sudah pernah digunakan", "notifikasi");
+				}else{
+					myApp.closeModal('.popup-register-penjual');
 
-					// $('#notification_comodity_index').css('display','block');
-					// $('#notification_comodity_index').click(function(){
-					// 	mainView.router.load({
-					// 	  url: 'view/seller/comodity_notification.html',
-					// 	  animatePages: true
-					// 	});
-					// })
+					document.getElementById('name_farmer_register').value = "";
+					document.getElementById('farm_name_register').value = "";
+					document.getElementById('certificate_register').value = "";
+					// document.getElementById('username_register').value = "";
+					document.getElementById('password_farmer_register').value = "";
+					document.getElementById('email_farmer_register').value = "";
+					document.getElementById('address_farmer_register').value = "";
+					document.getElementById('phone_farmer_register').value = "";
+					document.getElementById('password_login').value = "";
+					document.getElementById('username_login').value = "";
+					document.getElementById('name_consumer_register').value = "";
+					document.getElementById('password_consumer_register').value = "";
+					document.getElementById('email_consumer_register').value = "";
+					document.getElementById('address_consumer_register').value = "";
+					document.getElementById('phone_consumer_register').value = "";
+					$$('#tab_login').addClass('active');
+					$$('#tab_login_list').addClass('active');
+					$$('#tab_register').removeClass('active');
+					$$('#tab_register_list').removeClass('active');
+					
+					myApp.alert("Registrasi Berhasil", "Notifikasi");
+					if(usertype=="seller"){
+						$$('#panel_overlay').html(sellerHtmlElementPanel);
+						$('#command-home-button').html(landingPageSeller);
 
-					setTimeout(function(){
-						//CHECK PESANAN /NOTIFIKASI
-						getCartItemByFarmNameAndUserId();
+						$("#seller_name_profile").text(Template7.global.userdata.fullname);
+						$("#seller_farm_profile").text(Template7.global.userdata.farm_name);
 
-						setTimeout(function() {
-							console.log('test');
+						// $('#notification_seller_index').css('display','block');
+						// $('#notification_seller_index').click(function(){
+						// 	mainView.router.load({
+						// 	  url: 'view/seller/notification_seller.html',
+						// 	  animatePages: true
+						// 	});
+						// })
+
+						// $('#notification_comodity_index').css('display','block');
+						// $('#notification_comodity_index').click(function(){
+						// 	mainView.router.load({
+						// 	  url: 'view/seller/comodity_notification.html',
+						// 	  animatePages: true
+						// 	});
+						// })
+
+						setTimeout(function(){
+							//CHECK PESANAN /NOTIFIKASI
+							getCartItemByFarmNameAndUserId();
+
+							setTimeout(function() {
+								console.log('test');
+								hideLoading();
+
+								if(Template7.global.arrDataCart.length > 0 ){
+									$('.notification-total').html(Template7.global.arrDataCart.length);
+								}else{
+									$('.notification-total').html('0');
+								}
+
+							}, 1000);
+						}, 500);
+
+						
+
+					}else{
+						hideLoading();
+						$$('#panel_overlay').html(consumerHtmlElementPanel);
+						// $('#notification_seller_index').css('display','none');
+						// $('#notification_comodity_index').css('display','none');
+
+						$('#command-home-button').html(landingPageConsumer);
+
+						$("#consumer_name_profile").text(Template7.global.userdata.fullname);
+						$("#consumer_address_profile").text(Template7.global.userdata.address);
+
+						getAllCart();
+
+						setTimeout(function(){
 							hideLoading();
 
-							if(Template7.global.arrDataCart.length > 0 ){
-								$('.notification-total').html(Template7.global.arrDataCart.length);
-							}else{
-								$('.notification-total').html('0');
-							}
+							$('.cart-landing-total').html(Template7.global.arrDataCart.length);
 
 						}, 1000);
-					}, 500);
 
-					
+					}
 
-				}else{
-					hideLoading();
-					$$('#panel_overlay').html(consumerHtmlElementPanel);
-					// $('#notification_seller_index').css('display','none');
-					// $('#notification_comodity_index').css('display','none');
+					//CHECK CART 
+					if(Template7.global.lengthCart>0){
+						updateCartFreeUser();
+					}
 
-					$('#command-home-button').html(landingPageConsumer);
+					if(mainView.activePage.name=="cart_shop_list"){
 
-					$("#consumer_name_profile").text(Template7.global.userdata.fullname);
-					$("#consumer_address_profile").text(Template7.global.userdata.address);
+						setTimeout(function(){
+							mainView.router.reloadPage('view/shop/cart_shop.html');
+						}, 1200);
+						
 
-					getAllCart();
+					}else if(mainView.activePage.name=="index"){
 
-					setTimeout(function(){
+						console.log(usertype);
 						hideLoading();
+						if(usertype=="seller"){
+							console.log('commodity choose first');
+							mainView.router.load({
+								url : 'view/seller/comodity_register_first.html',
+								force : true
+							});
+						}
+						// else{
+							// console.log('consumer profile');
+							// mainView.router.load({
+							// 	url : 'view/consumer/profile_consumer.html',
+							// 	force : true
+							// });
+						// }
+						
 
-						$('.cart-landing-total').html(Template7.global.arrDataCart.length);
+					}else if(mainView.activePage.name=="shop_comodity_list"){
 
-					}, 1000);
+						if(usertype=="seller"){
 
-				}
-
-				//CHECK CART 
-				if(Template7.global.lengthCart>0){
-					updateCartFreeUser();
-				}
-
-				if(mainView.activePage.name=="cart_shop_list"){
-
-					setTimeout(function(){
-						mainView.router.reloadPage('view/shop/cart_shop.html');
-					}, 1200);
-					
-
-				}else if(mainView.activePage.name=="index"){
-
-					console.log(usertype);
-					hideLoading();
-					if(usertype=="seller"){
-						console.log('commodity choose first');
-						mainView.router.load({
-							url : 'view/seller/comodity_register_first.html',
-							force : true
-						});
+							myApp.alert("Anda Harus login/daftar sebagai Konsumen","Notifikasi");
+						}else{
+							myApp.popup('.popup-shop-comodity-item');
+						}
 					}
-					// else{
-						// console.log('consumer profile');
-						// mainView.router.load({
-						// 	url : 'view/consumer/profile_consumer.html',
-						// 	force : true
-						// });
-					// }
-					
 
-				}else if(mainView.activePage.name=="shop_comodity_list"){
 
-					if(usertype=="seller"){
-
-						myApp.alert("Anda Harus login/daftar sebagai Konsumen","Notifikasi");
-					}else{
-						myApp.popup('.popup-shop-comodity-item');
-					}
 				}
 
+			}, 1000);
 
-			}
-
-		}, 1000);
+		}
+		
+		
 		
 		
 	})
@@ -920,158 +929,164 @@
 
 		var userVal = name.split(" ");	
 		console.log("userval "+userVal[0]);
+
+		if(name=="" || password=="" || email=="" || address=="" || phone==""){
+			myApp.alert('Harap Lengkapi Isian form','Notifikasi');
+
+		}else{
 		
-		register(name,userVal[0],password,email,address,phone,usertype,"","","");
+			register(name,userVal[0],password,email,address,phone,usertype,"","","");
 
-		console.log(Template7.global.lengthRegister);	
+			console.log(Template7.global.lengthRegister);	
 
-		//GET CART
-		getAllCart();
-		
-		showLoading();
+			//GET CART
+			getAllCart();
+			
+			showLoading();
 
-		setTimeout(function() {
+			setTimeout(function() {
 
-			// hideLoading();
+				// hideLoading();
 
-			if(Template7.global.lengthRegister == 1){
-				hideLoading();
-				myApp.alert("Username already register", "notice");
-			}else{
-				myApp.closeModal('.popup-register-pembeli');
+				if(Template7.global.lengthRegister == 1){
+					hideLoading();
+					myApp.alert("Username sudah pernah digunakan", "notifikasi");
+				}else{
+					myApp.closeModal('.popup-register-pembeli');
 
-				document.getElementById('name_farmer_register').value = "";
-				document.getElementById('farm_name_register').value = "";
-				document.getElementById('certificate_register').value = "";
-				// document.getElementById('username_register').value = "";
-				document.getElementById('password_farmer_register').value = "";
-				document.getElementById('email_farmer_register').value = "";
-				document.getElementById('address_farmer_register').value = "";
-				document.getElementById('phone_farmer_register').value = "";
-				document.getElementById('password_login').value = "";
-				document.getElementById('username_login').value = "";
-				document.getElementById('name_consumer_register').value = "";
-				document.getElementById('password_consumer_register').value = "";
-				document.getElementById('email_consumer_register').value = "";
-				document.getElementById('address_consumer_register').value = "";
-				document.getElementById('phone_consumer_register').value = "";
-				$$('#tab_login').addClass('active');
-				$$('#tab_login_list').addClass('active');
-				$$('#tab_register').removeClass('active');
-				$$('#tab_register_list').removeClass('active');
-				
-				myApp.alert("Success register", "notice");
-				if(usertype=="seller"){
-					$$('#panel_overlay').html(sellerHtmlElementPanel);
-					$('#command-home-button').html(landingPageSeller);
+					document.getElementById('name_farmer_register').value = "";
+					document.getElementById('farm_name_register').value = "";
+					document.getElementById('certificate_register').value = "";
+					// document.getElementById('username_register').value = "";
+					document.getElementById('password_farmer_register').value = "";
+					document.getElementById('email_farmer_register').value = "";
+					document.getElementById('address_farmer_register').value = "";
+					document.getElementById('phone_farmer_register').value = "";
+					document.getElementById('password_login').value = "";
+					document.getElementById('username_login').value = "";
+					document.getElementById('name_consumer_register').value = "";
+					document.getElementById('password_consumer_register').value = "";
+					document.getElementById('email_consumer_register').value = "";
+					document.getElementById('address_consumer_register').value = "";
+					document.getElementById('phone_consumer_register').value = "";
+					$$('#tab_login').addClass('active');
+					$$('#tab_login_list').addClass('active');
+					$$('#tab_register').removeClass('active');
+					$$('#tab_register_list').removeClass('active');
+					
+					myApp.alert("Success register", "notice");
+					if(usertype=="seller"){
+						$$('#panel_overlay').html(sellerHtmlElementPanel);
+						$('#command-home-button').html(landingPageSeller);
 
-					$("#seller_name_profile").text(Template7.global.userdata.fullname);
-					$("#seller_farm_profile").text(Template7.global.userdata.farm_name);
+						$("#seller_name_profile").text(Template7.global.userdata.fullname);
+						$("#seller_farm_profile").text(Template7.global.userdata.farm_name);
 
-					// $('#notification_seller_index').css('display','block');
-					// $('#notification_seller_index').click(function(){
-					// 	mainView.router.load({
-					// 	  url: 'view/seller/notification_seller.html',
-					// 	  animatePages: true
-					// 	});
-					// })
+						// $('#notification_seller_index').css('display','block');
+						// $('#notification_seller_index').click(function(){
+						// 	mainView.router.load({
+						// 	  url: 'view/seller/notification_seller.html',
+						// 	  animatePages: true
+						// 	});
+						// })
 
-					// $('#notification_comodity_index').css('display','block');
-					// $('#notification_comodity_index').click(function(){
-					// 	mainView.router.load({
-					// 	  url: 'view/seller/comodity_notification.html',
-					// 	  animatePages: true
-					// 	});
-					// })
+						// $('#notification_comodity_index').css('display','block');
+						// $('#notification_comodity_index').click(function(){
+						// 	mainView.router.load({
+						// 	  url: 'view/seller/comodity_notification.html',
+						// 	  animatePages: true
+						// 	});
+						// })
 
-					setTimeout(function(){
-						//CHECK PESANAN /NOTIFIKASI
-						getCartItemByFarmNameAndUserId();
+						setTimeout(function(){
+							//CHECK PESANAN /NOTIFIKASI
+							getCartItemByFarmNameAndUserId();
 
-						setTimeout(function() {
-							console.log('test');
+							setTimeout(function() {
+								console.log('test');
+								hideLoading();
+
+								if(Template7.global.arrDataCart.length > 0 ){
+									$('.notification-total').html(Template7.global.arrDataCart.length);
+								}else{
+									$('.notification-total').html('0');
+								}
+
+							}, 1000);
+						}, 500);
+
+						
+
+					}else{
+						hideLoading();
+						$$('#panel_overlay').html(consumerHtmlElementPanel);
+						// $('#notification_seller_index').css('display','none');
+						// $('#notification_comodity_index').css('display','none');
+
+						$('#command-home-button').html(landingPageConsumer);
+
+						$("#consumer_name_profile").text(Template7.global.userdata.fullname);
+						$("#consumer_address_profile").text(Template7.global.userdata.address);
+
+						getAllCart();
+
+						setTimeout(function(){
 							hideLoading();
 
-							if(Template7.global.arrDataCart.length > 0 ){
-								$('.notification-total').html(Template7.global.arrDataCart.length);
-							}else{
-								$('.notification-total').html('0');
-							}
+							$('.cart-landing-total').html(Template7.global.arrDataCart.length);
 
 						}, 1000);
-					}, 500);
 
-					
+					}
 
-				}else{
-					hideLoading();
-					$$('#panel_overlay').html(consumerHtmlElementPanel);
-					// $('#notification_seller_index').css('display','none');
-					// $('#notification_comodity_index').css('display','none');
+					//CHECK CART 
+					if(Template7.global.lengthCart>0){
+						updateCartFreeUser();
+					}
 
-					$('#command-home-button').html(landingPageConsumer);
+					if(mainView.activePage.name=="cart_shop_list"){
 
-					$("#consumer_name_profile").text(Template7.global.userdata.fullname);
-					$("#consumer_address_profile").text(Template7.global.userdata.address);
+						setTimeout(function(){
+							mainView.router.reloadPage('view/shop/cart_shop.html');
+						}, 1200);
+						
 
-					getAllCart();
+					}else if(mainView.activePage.name=="index"){
 
-					setTimeout(function(){
+						console.log(usertype);
 						hideLoading();
+						if(usertype=="seller"){
+							console.log('commodity choose first');
+							mainView.router.load({
+								url : 'view/seller/comodity_register_first.html',
+								force : true
+							});
+						}
+						// else{
+							// console.log('consumer profile');
+							// mainView.router.load({
+							// 	url : 'view/consumer/profile_consumer.html',
+							// 	force : true
+							// });
+						// }
+						
 
-						$('.cart-landing-total').html(Template7.global.arrDataCart.length);
+					}else if(mainView.activePage.name=="shop_comodity_list"){
 
-					}, 1000);
+						if(usertype=="seller"){
 
-				}
-
-				//CHECK CART 
-				if(Template7.global.lengthCart>0){
-					updateCartFreeUser();
-				}
-
-				if(mainView.activePage.name=="cart_shop_list"){
-
-					setTimeout(function(){
-						mainView.router.reloadPage('view/shop/cart_shop.html');
-					}, 1200);
-					
-
-				}else if(mainView.activePage.name=="index"){
-
-					console.log(usertype);
-					hideLoading();
-					if(usertype=="seller"){
-						console.log('commodity choose first');
-						mainView.router.load({
-							url : 'view/seller/comodity_register_first.html',
-							force : true
-						});
+							myApp.alert("Anda Harus login/daftar sebagai Konsumen","Notifikasi");
+						}else{
+							myApp.popup('.popup-shop-comodity-item');
+						}
 					}
-					// else{
-						// console.log('consumer profile');
-						// mainView.router.load({
-						// 	url : 'view/consumer/profile_consumer.html',
-						// 	force : true
-						// });
-					// }
-					
 
-				}else if(mainView.activePage.name=="shop_comodity_list"){
 
-					if(usertype=="seller"){
-
-						myApp.alert("Anda Harus login/daftar sebagai Konsumen","Notifikasi");
-					}else{
-						myApp.popup('.popup-shop-comodity-item');
-					}
 				}
 
-
-			}
-
-		}, 1000);
+			}, 1000);
 		
+		}
 		
 	})
 
