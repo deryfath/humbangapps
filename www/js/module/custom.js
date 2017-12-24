@@ -219,7 +219,7 @@ function comodity(item_id,name,image,total,priceMin,priceMax,start_harvest,finis
     insertComodity(postDataComodity);
 }
 
-function cartItem(item_id,name,seller_id,farm,image,price,total,totalMax,unit,delivery_time,special,cartTotal){
+function cartItem(item_id,name,seller_id,farm,image,price,total,totalMax,unit,delivery_time,special,cartTotal,addressUser){
     var postDataCart = {
             item_id : item_id,
             name : name,
@@ -232,7 +232,8 @@ function cartItem(item_id,name,seller_id,farm,image,price,total,totalMax,unit,de
             unit : unit,
             delivery_time : delivery_time,
             special : special,
-            cart_total : cartTotal
+            cart_total : cartTotal,
+            address : addressUser
     };
 
     console.log(postDataCart);
@@ -328,6 +329,57 @@ function getWeather(latitude,longitude) {
 function onWeatherError(error) {
     myApp.alert('code: ' + error.code + '\n' +
         'message: ' + error.message + '\n');
+}
+
+var notif_id = 101;
+
+function FCMSubscribeEvent(){
+
+    //FCM subscribe
+    document.addEventListener("deviceready", function () {
+
+        FCMPlugin.subscribeToTopic('/topics/fcm');
+
+        FCMPlugin.onNotification(function(data){
+            if(data.wasTapped){
+              //Notification was received on device tray and tapped by the user.
+              myApp.alert( JSON.stringify(data) );
+              myApp.alert( "TAPPED" );
+              
+            }else{
+                //Notification was received in foreground. Maybe the user needs to be notified.
+                 
+                 var dateFcm = new Date();
+
+                  myApp.modal({
+                                title:  'Notifikasi',
+                                text: 'Selamat, ada pesanan yang masuk...',
+                                
+                                buttons: [
+                                  {
+                                    text: 'Cek sekarang',
+                                    close:true,
+                                    onClick: function() {
+                                            mainView.router.loadPage('view/seller/notification_seller.html');
+                                            notif_id++;
+                                    }
+                                  }
+                                ]
+                              })
+                  
+                  cordova.plugins.notification.local.schedule({
+                        id: notif_id,
+                        title: 'Catatani',
+                        text: 'fcm notification',
+                        at: dateFcm,
+                        badge: 1
+                    });
+                  
+
+            }
+        });
+
+    })
 }
 
 function startCronNonComodity(){

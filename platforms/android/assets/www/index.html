@@ -252,7 +252,7 @@
                     <div class="col-20">
                     </div>
                     <div class="col-20" style="margin-right: -1px;margin-top: -2px;">
-                      <a href="#" style="background: #36a09a;border-color: transparent;color: white;font-weight: bold;" class="button close-popup">X</a>
+                      <a href="#" style="background: #36a09a;border-color: transparent;color: white;font-weight: bold;" id="close_login_dialog" class="button close-popup">X</a>
                     </div>
                   </div>  
 
@@ -272,263 +272,7 @@
             </div>
             
 
-            <!-- <p><div class="buttons-row" style="margin-left: -18px;margin-right: -18px;margin-top: -36px;margin-bottom: -20px;">
-              <a href="#tab_login_list" style="height: 48px;padding: 10px;" id="tab_login" class="button tab-link active"><i class="icon f7-icons">login</i><span>Login</span></a>
-              <a href="#tab_register_list" style="height: 48px;padding: 10px;" id="tab_register" class="button tab-link"><i class="icon f7-icons">compose</i><span>Register</span></a>
-            </div></p>
-            <p><div class="tabs">
-               <div class="tab active" id="tab_login_list">
-
-               <div class="list-block">
-                    <ul style="font-size:14px;">
-                      <li>
-                        <div class="item-content">
-                          <div class="item-media"><i class="icon f7-icons">person</i></div>
-                          <div class="item-inner">
-                            <div class="item-title label" style="width:41%;">Username</div>
-                            <div class="item-input">
-                              <input type="text" style="font-size:14px;" id="username_login" >
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="item-content">
-                          <div class="item-media"><i class="icon f7-icons">lock</i></div>
-                          <div class="item-inner">
-                            <div class="item-title label" style="width:41%;">Password</div>
-                            <div class="item-input">
-                              <input type="password" style="font-size:14px;" id="password_login" >
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      
-                    </ul>
-                    <div class="row" style="margin-top: 25px;">
-                          <div class="col-50">
-                            <a href="#" class="button close-popup" id="close_popup_login">Batal</a>
-                          </div>
-                          <div class="col-50">
-                            <a href="#" class="button button-fill" id="login_btn">Masuk</a>
-                          </div>
-                        </div>     
-
-                </div>
-
-               </div>
-
-               <div class="tab" id="tab_register_list">
-               <div class="list-block">
-
-                <p><div class="buttons-row theme-gray" style="margin-left: -9px;margin-right: -9px;margin-top: -28px;margin-bottom: -19px;">
-                <a href="#tab_farmer" style="height: 48px;padding: 10px;" id="tab_farmer_register" class="button tab-link active">Petani</a>
-                <a href="#tab_consumer" style="height: 48px;padding: 10px;" id="tab_consumer_register" class="button tab-link">Konsumen</a>
-              </div></p>
-
-              <p><div class="tabs">
-               <div class="tab active" id="tab_farmer">
-                  <div class="list-block">
-                     <ul style="font-size: 14px;">
-                   
-                        <li>
-                          <div class="item-content">
-                            <div class="item-media"><i class="icon f7-icons">person</i></div>
-                            <div class="item-inner">
-                              <div class="item-title label" style="width:49%;">Nama</div>
-                              <div class="item-input">
-                                <input type="text" style="font-size:14px;" id="name_farmer_register" >
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li id="farm_name_div">
-                            <div class="item-content">
-                              <div class="item-media"><i class="icon f7-icons">persons</i></div>
-                              <div class="item-inner">
-                                <div class="item-title label" style="width:49%;">Nama Usaha</div>
-                                <div class="item-input">
-                                  <input type="text" style="font-size:14px;" id="farm_name_register" >
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                         
-                       
-                        <li>
-                          <div class="item-content">
-                            <div class="item-media"><i class="icon f7-icons">lock</i></div>
-                            <div class="item-inner">
-                              <div class="item-title label" style="width:49%;">Password</div>
-                              <div class="item-input">
-                                <input type="password" style="font-size:14px;" id="password_farmer_register">
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                         <li>
-                            <div class="item-content">
-                              <div class="item-media"><i class="icon f7-icons">layers_fill</i></div>
-                              <div class="item-inner">
-                                <div class="item-title label" style="width:49%;">Komoditas</div>
-                                <div class="item-input" >
-                                  <select class="minimal" style="margin-left:28px;"></select>
-                                  <select style="font-size:14px;margin-top: -42px;" id="comodity_type_register">
-                                    <option>Organik</option>
-                                    <option>Hidroponik</option>
-                                    <option>Konvensional</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                          <li id="farm_name_div">
-                            <div class="item-content">
-                              <div class="item-media"><i class="icon f7-icons">document_text_fill</i></div>
-                              <div class="item-inner">
-                                <div class="item-title label" style="width:49%;">No. Sertifikat</div>
-                                <div class="item-input">
-                                  <input type="text" style="font-size:14px;" id="certificate_register" >
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        <li>
-                          <div class="item-content">
-                            <div class="item-media"><i class="icon f7-icons">email</i></div>
-                            <div class="item-inner">
-                              <div class="item-title label" style="width:49%;">E-mail</div>
-                              <div class="item-input">
-                                <input type="email" style="font-size:14px;" id="email_farmer_register" >
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="item-content">
-                            <div class="item-media"><i class="icon f7-icons">home</i></div>
-                            <div class="item-inner">
-                              <div class="item-title label" style="width:49%;">Alamat</div>
-                              <div class="item-input">
-                                <textarea style="font-size:14px;" id="address_farmer_register"></textarea>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="item-content">
-                            <div class="item-media"><i class="icon f7-icons">phone_round</i></div>
-                            <div class="item-inner">
-                              <div class="item-title label" style="width:49%;">No.Telp</div>
-                              <div class="item-input">
-                                <input type="text" style="font-size:14px;" id="phone_farmer_register" >
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                         
-                      </ul>
-                       <div class="row" style="margin-top: 25px;">
-                            <div class="col-50">
-                              <a href="#" class="button close-popup" id="close_popup_login">Batal</a>
-                            </div>
-                            <div class="col-50">
-                              <a href="#" class="button button-fill" id="register_farmer_btn">Daftar</a>
-                            </div>
-                          </div>  
-
-                    </div> 
-               </div>
-               <div class="tab" id="tab_consumer">
-                    <div class="list-block">
-                  <ul style="font-size: 14px;">
-                      <li style="display:none;">
-                        <input type="text" style="font-size:14px;" id="user_type_consumer_register" value="consumer" >
-                      </li>
-                      <li>
-                        <div class="item-content">
-                          <div class="item-media"><i class="icon f7-icons">person</i></div>
-                          <div class="item-inner">
-                            <div class="item-title label" style="width:49%;">Nama</div>
-                            <div class="item-input">
-                              <input type="text" style="font-size:14px;" id="name_consumer_register" >
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    
-                      <li>
-                        <div class="item-content">
-                          <div class="item-media"><i class="icon f7-icons">lock</i></div>
-                          <div class="item-inner">
-                            <div class="item-title label" style="width:49%;">Password</div>
-                            <div class="item-input">
-                              <input type="password" style="font-size:14px;" id="password_consumer_register">
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="item-content">
-                          <div class="item-media"><i class="icon f7-icons">email</i></div>
-                          <div class="item-inner">
-                            <div class="item-title label" style="width:49%;">E-mail</div>
-                            <div class="item-input">
-                              <input type="email" style="font-size:14px;" id="email_consumer_register" >
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="item-content">
-                          <div class="item-media"><i class="icon f7-icons">home</i></div>
-                          <div class="item-inner">
-                            <div class="item-title label" style="width:49%;">Alamat</div>
-                            <div class="item-input">
-                              <textarea style="font-size:14px;" id="address_consumer_register"></textarea>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="item-content">
-                          <div class="item-media"><i class="icon f7-icons">phone_round</i></div>
-                          <div class="item-inner">
-                            <div class="item-title label" style="width:49%;">No.Telp</div>
-                            <div class="item-input">
-                              <input type="text" style="font-size:14px;" id="phone_consumer_register" >
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                       
-                    </ul>
-                     <div class="row" style="margin-top: 25px;">
-                          <div class="col-50">
-                            <a href="#" class="button close-popup" id="close_popup_login">Batal</a>
-                          </div>
-                          <div class="col-50">
-                            <a href="#" class="button button-fill" id="register_consumer_btn">Daftar</a>
-                          </div>
-                        </div>     
-
-                </div>
-
-               </div>
-
-               </div>
-               </p>
-
-
-                     
-
-                </div>
-
-               </div>
-
-          
-          </div></p> -->
-          <!-- </div> -->
+         
         </div>
 
 
@@ -551,7 +295,7 @@
                         <div class="col-20">
                         </div>
                         <div class="col-20" style="margin-right: -1px;margin-top: -2px;">
-                          <a href="#" style="background: #36a09a;border-color: transparent;color: white;font-weight: bold;" class="button close-popup">X</a>
+                          <a href="#" style="background: #36a09a;border-color: transparent;color: white;font-weight: bold;" id="close_register_dialog" class="button close-popup">X</a>
                         </div>
                       </div>  
 
@@ -593,7 +337,7 @@
                     <div class="col-20">
                     </div>
                     <div class="col-20" style="margin-right: -1px;margin-top: -2px;">
-                      <a href="#" style="background: #36a09a;border-color: transparent;color: white;font-weight: bold;" class="button close-popup">X</a>
+                      <a href="#" style="background: #36a09a;border-color: transparent;color: white;font-weight: bold;" class="button close-popup" id="close_register_penjual">X</a>
                     </div>
                   </div>  
 
@@ -731,7 +475,7 @@
                     <div class="col-20">
                     </div>
                     <div class="col-20" style="margin-right: -1px;margin-top: -2px;">
-                      <a href="#" style="background: #36a09a;border-color: transparent;color: white;font-weight: bold;" class="button close-popup">X</a>
+                      <a href="#" style="background: #36a09a;border-color: transparent;color: white;font-weight: bold;" id="close_register_pembeli" class="button close-popup">X</a>
                     </div>
                   </div>  
 
@@ -1297,6 +1041,73 @@
        <div class="popup popup-shop-item">
            <div id="main_shop_item_list"></div>
        </div>
+
+       <!-- POP UP NOTIFICATION SELLER ORDER -->
+        <div class="popup popup-seller-notification-order">
+          <div class="content-block">
+              <div id="title_notification_order" style="font-size: 18px;text-align: center;margin-bottom: -23px;font-weight: bold;margin-top: -18px;"></div> <div class="item-media close-popup" style="text-align: right;margin-bottom: -25px;"><i class="icon f7-icons" style="font-size:24px;">close_round</i></div>
+                        
+            <p>
+
+               <div class="list-block">
+                      <ul style="font-size: 14px;">
+                        
+                        <li style="text-align: center;">
+                          <img id="image_notification_order" style="margin-top: 10px;border-radius: 11px;max-width:60%;">
+                        </li>
+                       
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              <div class="item-title label" style="width:49%;">Tanggal Kirim</div>
+                              <div class="item-input">
+                                <input type="text" id="date_notification_order" style="font-size:15px;" readonly>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                         <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              <div class="item-title label" style="width:49%;">Total</div>
+                              <div class="item-input">
+                                <input type="text" id="total_notification_order" style="font-size:15px;" readonly>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons" style="font-size:24px;">layers_fill</i></div>
+                            <div class="item-inner" style="margin-left: 5px;">
+                              <div class="item-title label" style="width:49%;">Alamat</div>
+                              <div class="item-input">
+                                <textarea type="text" id="address_notification_order" style="font-size:15px;" readonly></textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        
+                        </ul>
+
+                        <div class="row" style="margin-top: 25px;">
+                          <div class="col-50">
+                            <a href="#" class="button button-fill cancel-order-notification">Tolak</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#" class="button button-fill submit-order-notification">Setuju</a>
+                          </div>
+                        </div>     
+                  
+                  </div>
+              
+              </p>
+         
+
+          </div>
+      </div>
 
 
         <!-- FAB SHOPPING -->

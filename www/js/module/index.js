@@ -202,6 +202,7 @@
 
 	var cartNotificationInterval = 0;
 
+
 	//CHECK SESSION
 	getSession();
 
@@ -209,57 +210,32 @@
 
 	setTimeout(function() {
 
-			//sending message FCM 
+			//sending message FCM
 
-			// $.ajax({
-			// 	  method: "POST",
-			// 	  dataType: 'json',
-			// 	  headers: {'Content-Type': 'application/json', 'Authorization': 'key=AIzaSyCxX4Csq2T-RVkNqZkYtTXFaV0qcKI04uk'},
-			// 	  url: "https://fcm.googleapis.com/fcm/send",
-			// 	  data: JSON.stringify(
-			// 	      {
-			// 	        "notification":{
-			// 	          "title":"Title",  //Any value
-			// 	          "body": "Body",  //Any value
-			// 	          "sound": "default", //If you want notification sound
-			// 	          "click_action": "FCM_PLUGIN_ACTIVITY",  //Must be present for Android
-			// 	          "icon": "fcm_push_icon"  //White icon Android resource
-			// 	        },
-			// 	        "data":{
-			// 	          "param1":"value1",  //Any data to be retrieved in the notification callback
-			// 	          "param2": "Prueba"
-			// 	        },
-			// 	        "to":"/topics/coba_1212900912_2992190", //Topic or single device
-			// 	        "priority":"high", //If not set, notification won't be delivered on completely closed iOS app
-			// 	        "restricted_package_name":"" //Optional. Set for application filtering
-			// 	      }
-			// 	    )
-			// 	}).success(function(data){
-			// 	  console.log(data);
-			// 	}).error(function(data){
-			// 	  alert("Error: " + JSON.stringify(data));
-			// 	});
+				// $.ajax({
+				//   method: "POST",
+				//   dataType: 'json',
+				//   headers: {'Content-Type': 'application/json', 'Authorization': 'key=AIzaSyCxX4Csq2T-RVkNqZkYtTXFaV0qcKI04uk'},
+				//   url: "https://fcm.googleapis.com/fcm/send",
+				//   data: JSON.stringify(
+				//       {
+				    
+				//         "data":{
+				//           "message":"value1",  //Any data to be retrieved in the notification callback
+				//         },
+				//         "to":"/topics/fcm", //Topic or single device
+				//       }
+				//     )
+				// }).success(function(data){
+				//   console.log(data);
+				// }).error(function(data){
+				//   alert("Error: " + JSON.stringify(data));
+				// });
 
-			// //FCM
-			// document.addEventListener("deviceready", function () {
+				 
+					
 
-			// 	FCMPlugin.getToken(function(token){
-			// 	    myApp.alert( token );
-			// 	});
 
-			// 	FCMPlugin.subscribeToTopic('/topics/coba_1212900912_2992190');
-
-			// 	FCMPlugin.onNotification(function(data){
-			// 	    if(data.wasTapped){
-			// 	      //Notification was received on device tray and tapped by the user.
-			// 	      alert( JSON.stringify(data) );
-			// 	    }else{
-			// 	      //Notification was received in foreground. Maybe the user needs to be notified.
-			// 	      alert( JSON.stringify(data) );
-			// 	    }
-			// 	});
-
-			// })
 
 			// hideLoading();
 
@@ -291,8 +267,9 @@
 					// 	  animatePages: true
 					// 	});
 					// })
+					
+					// FCMSubscribeEvent();
 
-					setTimeout(function(){
 						//CHECK PESANAN /NOTIFIKASI
 						getCartItemByFarmNameAndUserId();
 
@@ -337,13 +314,62 @@
 							
 
 							if(Template7.global.arrDataCart.length > 0 ){
+								
 								$('.notification-total').html(Template7.global.arrDataCart.length);
+								
+								var dateNotification = new Date();
+
+				                myApp.modal({
+				                                title:  'Notifikasi',
+				                                text: 'Selamat, ada pesanan yang masuk...',
+				                                
+				                                buttons: [
+				                                  {
+				                                    text: 'Cek sekarang',
+				                                    close:true,
+				                                    onClick: function() {
+				                                            mainView.router.loadPage('view/seller/notification_seller.html');
+				                                    }
+				                                  }
+				                                ]
+				                              })
+				                  
+				                  cordova.plugins.notification.local.schedule({
+				                        id: 101,
+				                        title: 'Catatani',
+				                        text: 'Notifikasi Pesanan Baru',
+				                        at: dateNotification,
+				                        badge: 1
+				                    });
+
+				                  cordova.plugins.notification.local.on('click', function (notification) {
+
+                                    if(notification.id==101){
+
+                                    	myApp.modal({
+				                                title:  'Notifikasi',
+				                                text: 'Selamat, ada pesanan yang masuk...',
+				                                
+				                                buttons: [
+				                                  {
+				                                    text: 'Cek sekarang',
+				                                    close:true,
+				                                    onClick: function() {
+				                                            mainView.router.loadPage('view/seller/notification_seller.html');
+				                                    }
+				                                  }
+				                                ]
+				                              })
+                                    }
+
+                                })
+
+
 							}else{
 								$('.notification-total').html('0');
 							}
 
 						}, 1000);
-					}, 400);
 
 					
 
@@ -547,6 +573,76 @@
 		myApp.popup('.popup-register-penjual');
 	})
 
+	$('#close_register_penjual').click(function(){
+		document.getElementById('password_login').value = "";
+		document.getElementById('username_login').value = "";
+		document.getElementById('name_consumer_register').value = "";
+		document.getElementById('password_consumer_register').value = "";
+		document.getElementById('email_consumer_register').value = "";
+		document.getElementById('address_consumer_register').value = "";
+		document.getElementById('phone_consumer_register').value = "";
+		document.getElementById('name_farmer_register').value = "";
+		document.getElementById('farm_name_register').value = "";
+		document.getElementById('password_farmer_register').value = "";
+		document.getElementById('certificate_register').value = "";
+		document.getElementById('email_farmer_register').value = "";
+		document.getElementById('address_farmer_register').value = "";
+		document.getElementById('phone_farmer_register').value = "";
+	})
+
+	$('#close_register_pembeli').click(function(){
+		document.getElementById('password_login').value = "";
+		document.getElementById('username_login').value = "";
+		document.getElementById('name_consumer_register').value = "";
+		document.getElementById('password_consumer_register').value = "";
+		document.getElementById('email_consumer_register').value = "";
+		document.getElementById('address_consumer_register').value = "";
+		document.getElementById('phone_consumer_register').value = "";
+		document.getElementById('name_farmer_register').value = "";
+		document.getElementById('farm_name_register').value = "";
+		document.getElementById('password_farmer_register').value = "";
+		document.getElementById('certificate_register').value = "";
+		document.getElementById('email_farmer_register').value = "";
+		document.getElementById('address_farmer_register').value = "";
+		document.getElementById('phone_farmer_register').value = "";
+	})
+
+	$('#close_login_dialog').click(function(){
+		
+		document.getElementById('password_login').value = "";
+		document.getElementById('username_login').value = "";
+		document.getElementById('name_consumer_register').value = "";
+		document.getElementById('password_consumer_register').value = "";
+		document.getElementById('email_consumer_register').value = "";
+		document.getElementById('address_consumer_register').value = "";
+		document.getElementById('phone_consumer_register').value = "";
+		document.getElementById('name_farmer_register').value = "";
+		document.getElementById('farm_name_register').value = "";
+		document.getElementById('password_farmer_register').value = "";
+		document.getElementById('certificate_register').value = "";
+		document.getElementById('email_farmer_register').value = "";
+		document.getElementById('address_farmer_register').value = "";
+		document.getElementById('phone_farmer_register').value = "";
+	})
+
+	$('#close_register_dialog').click(function(){
+		
+		document.getElementById('password_login').value = "";
+		document.getElementById('username_login').value = "";
+		document.getElementById('name_consumer_register').value = "";
+		document.getElementById('password_consumer_register').value = "";
+		document.getElementById('email_consumer_register').value = "";
+		document.getElementById('address_consumer_register').value = "";
+		document.getElementById('phone_consumer_register').value = "";
+		document.getElementById('name_farmer_register').value = "";
+		document.getElementById('farm_name_register').value = "";
+		document.getElementById('password_farmer_register').value = "";
+		document.getElementById('certificate_register').value = "";
+		document.getElementById('email_farmer_register').value = "";
+		document.getElementById('address_farmer_register').value = "";
+		document.getElementById('phone_farmer_register').value = "";
+	})
+
 
 	$('#login_btn').click(function(){
 
@@ -618,7 +714,9 @@
 						// 	  animatePages: true
 						// 	});
 						// })
-						setTimeout(function(){
+
+						// FCMSubscribeEvent();
+
 							//CHECK PESANAN /NOTIFIKASI
 							getCartItemByFarmNameAndUserId();
 
@@ -647,12 +745,59 @@
 
 								if(Template7.global.arrDataCart.length > 0 ){
 									$('.notification-total').html(Template7.global.arrDataCart.length);
+																	
+									var dateNotification = new Date();
+
+					                myApp.modal({
+					                                title:  'Notifikasi',
+					                                text: 'Selamat, ada pesanan yang masuk...',
+					                                
+					                                buttons: [
+					                                  {
+					                                    text: 'Cek sekarang',
+					                                    close:true,
+					                                    onClick: function() {
+					                                            mainView.router.loadPage('view/seller/notification_seller.html');
+					                                    }
+					                                  }
+					                                ]
+					                              })
+					                  
+					                  cordova.plugins.notification.local.schedule({
+					                        id: 101,
+					                        title: 'Catatani',
+					                        text: 'Notifikasi Pesanan Baru',
+					                        at: dateNotification,
+					                        badge: 1
+					                    });
+
+					                    cordova.plugins.notification.local.on('click', function (notification) {
+
+		                                    if(notification.id==101){
+
+		                                    	myApp.modal({
+						                                title:  'Notifikasi',
+						                                text: 'Selamat, ada pesanan yang masuk...',
+						                                
+						                                buttons: [
+						                                  {
+						                                    text: 'Cek sekarang',
+						                                    close:true,
+						                                    onClick: function() {
+						                                            mainView.router.loadPage('view/seller/notification_seller.html');
+						                                    }
+						                                  }
+						                                ]
+						                              })
+		                                    }
+
+		                                })
+
 								}else{
 									$('.notification-total').html('0');
 								}
 
 							}, 1000);
-						}, 500);
 
 						
 
@@ -732,7 +877,7 @@
 	// 	 	$('#farm_name_div').hide();
 	// 	 }
 	// });
-
+	
 	
 
 
@@ -773,7 +918,7 @@
 
 				if(Template7.global.lengthRegister == 1){
 					hideLoading();
-					myApp.alert("Username sudah pernah digunakan", "notifikasi");
+					myApp.alert("Nama dan Password sudah pernah digunakan", "notifikasi");
 				}else{
 					myApp.closeModal('.popup-register-penjual');
 
@@ -821,7 +966,8 @@
 						// 	});
 						// })
 
-						setTimeout(function(){
+						// FCMSubscribeEvent();
+
 							//CHECK PESANAN /NOTIFIKASI
 							getCartItemByFarmNameAndUserId();
 
@@ -831,12 +977,59 @@
 
 								if(Template7.global.arrDataCart.length > 0 ){
 									$('.notification-total').html(Template7.global.arrDataCart.length);
+																	
+									var dateNotification = new Date();
+
+					                myApp.modal({
+					                                title:  'Notifikasi',
+					                                text: 'Selamat, ada pesanan yang masuk...',
+					                                
+					                                buttons: [
+					                                  {
+					                                    text: 'Cek sekarang',
+					                                    close:true,
+					                                    onClick: function() {
+					                                            mainView.router.loadPage('view/seller/notification_seller.html');
+					                                    }
+					                                  }
+					                                ]
+					                              })
+					                  
+					                  cordova.plugins.notification.local.schedule({
+					                        id: 101,
+					                        title: 'Catatani',
+					                        text: 'Notifikasi Pesanan Baru',
+					                        at: dateNotification,
+					                        badge: 1
+					                    });
+
+					                  	  cordova.plugins.notification.local.on('click', function (notification) {
+
+			                                    if(notification.id==101){
+
+			                                    	myApp.modal({
+							                                title:  'Notifikasi',
+							                                text: 'Selamat, ada pesanan yang masuk...',
+							                                
+							                                buttons: [
+							                                  {
+							                                    text: 'Cek sekarang',
+							                                    close:true,
+							                                    onClick: function() {
+							                                            mainView.router.loadPage('view/seller/notification_seller.html');
+							                                    }
+							                                  }
+							                                ]
+							                              })
+			                                    }
+
+			                                })
+
 								}else{
 									$('.notification-total').html('0');
 								}
 
 							}, 1000);
-						}, 500);
 
 						
 
@@ -950,7 +1143,7 @@
 
 				if(Template7.global.lengthRegister == 1){
 					hideLoading();
-					myApp.alert("Username sudah pernah digunakan", "notifikasi");
+					myApp.alert("nama dan password sudah pernah digunakan", "notifikasi");
 				}else{
 					myApp.closeModal('.popup-register-pembeli');
 
@@ -998,7 +1191,8 @@
 						// 	});
 						// })
 
-						setTimeout(function(){
+						// FCMSubscribeEvent();
+
 							//CHECK PESANAN /NOTIFIKASI
 							getCartItemByFarmNameAndUserId();
 
@@ -1008,12 +1202,59 @@
 
 								if(Template7.global.arrDataCart.length > 0 ){
 									$('.notification-total').html(Template7.global.arrDataCart.length);
+																	
+									var dateNotification = new Date();
+
+					                myApp.modal({
+					                                title:  'Notifikasi',
+					                                text: 'Selamat, ada pesanan yang masuk...',
+					                                
+					                                buttons: [
+					                                  {
+					                                    text: 'Cek sekarang',
+					                                    close:true,
+					                                    onClick: function() {
+					                                            mainView.router.loadPage('view/seller/notification_seller.html');
+					                                    }
+					                                  }
+					                                ]
+					                              })
+					                  
+					                  cordova.plugins.notification.local.schedule({
+					                        id: 101,
+					                        title: 'Catatani',
+					                        text: 'Notifikasi Pesanan Baru',
+					                        at: dateNotification,
+					                        badge: 1
+					                    });
+
+					                  	  cordova.plugins.notification.local.on('click', function (notification) {
+
+			                                    if(notification.id==101){
+
+			                                    	myApp.modal({
+							                                title:  'Notifikasi',
+							                                text: 'Selamat, ada pesanan yang masuk...',
+							                                
+							                                buttons: [
+							                                  {
+							                                    text: 'Cek sekarang',
+							                                    close:true,
+							                                    onClick: function() {
+							                                            mainView.router.loadPage('view/seller/notification_seller.html');
+							                                    }
+							                                  }
+							                                ]
+							                              })
+			                                    }
+
+			                                })
+
 								}else{
 									$('.notification-total').html('0');
 								}
 
 							}, 1000);
-						}, 500);
 
 						
 

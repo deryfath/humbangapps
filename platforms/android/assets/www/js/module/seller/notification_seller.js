@@ -108,18 +108,117 @@ myApp.onPageInit('notification_seller_list', function (page) {
 
 			  	$('.confirm_notification').click(function(){
 
-			  		showLoading();
-			  		setTimeout(function(){
-			  			hideLoading();
-						mainView.router.reloadPage('view/seller/notification_seller.html');
+			  		myApp.popup('.popup-seller-notification-order');
 
-					}, 1000);
-					
-					var id = $(this).data('id');
-					console.log(id);
-					
-					updateStatusCart("disetujui",id);
-					showLoading();
+			  		var id = $(this).data('id');
+			  		var name = $(this).data('name');
+			  		var image = $(this).data('image');
+			  		var total = $(this).data('total');
+			  		var delivery = $(this).data('delivery');
+			  		var address = $(this).data('address');
+
+			  		console.log(id);
+			  		console.log(name);
+			  		console.log(total);
+			  		console.log(delivery);
+			  		console.log(address);
+
+			  		document.getElementById('title_notification_order').innerHTML = name;
+			  		document.getElementById('image_notification_order').src = image;
+			  		document.getElementById('date_notification_order').value = delivery;
+			  		document.getElementById('total_notification_order').value = total;
+			  		document.getElementById('address_notification_order').value = address;
+
+			  		$('.submit-order-notification').unbind('click').click(function(){
+
+			  			myApp.closeModal('.popup-seller-notification-order');
+
+				  		showLoading();
+				  		setTimeout(function(){
+				  			hideLoading();
+							mainView.router.reloadPage('view/seller/notification_seller.html');
+
+						}, 1000);
+						
+						
+						updateStatusCart("disetujui",id);
+						showLoading();
+
+			  		})
+
+			  		$('.cancel-order-notification').unbind('click').click(function(){
+
+			  			myApp.closeModal('.popup-seller-notification-order');
+
+			  			myApp.modal({
+						    title: 'Alasan Menolak Pesanan?',
+						    afterText:  '<div class="list-block">'+
+										  '<ul>'+
+										    '<li>'+
+										      '<label class="label-radio item-content">'+
+										        '<input type="radio" name="radio-notification-order" value="Books" checked="checked">'+
+										        '<div class="item-inner">'+
+										          '<div class="item-title">Pengiriman Terlalu Jauh</div>'+
+										        '</div>'+
+										      '</label>'+
+										    '</li>'+
+										    '<li>'+
+										      '<label class="label-radio item-content">'+
+										        '<input type="radio" name="radio-notification-order" value="Movies">'+
+										        '<div class="item-inner">'+
+										          '<div class="item-title">Hasil Panen tidak cukup</div>'+
+										        '</div>'+
+										      '</label>'+
+										    '</li>'+
+										    '<li>'+
+		                                          '<label class="label-radio item-content">'+
+		                                            '<input type="radio" name="radio-notification-order" value="lainnya">'+
+		                                            '<div class="item-inner">'+
+		                                              '<div class="item-title">lainnya</div>'+
+		                                              
+		                                            '</div>'+
+		                                          '</label>'+
+		                                           '<div class="item-input notif-lain-order"  style="display:none;">'+
+		                                            '<textarea id="cancel_order_other" type="text" name="name" style="box-shadow: 0 0 3px #1c1c1c;padding: 9px;    margin-left: 15px;width: 87%;"></textarea>'+ 
+		                                        '</div>'+   
+		                                        '</li>'+
+										  '</ul>'+
+										'</div>',
+						    buttons: [{
+						        text: 'konfirmasi!',
+						        bold: true,
+						        onClick: function () {
+						          
+							          myApp.alert('pesanan telah ditolak!!','Notifikasi');
+							          showLoading();
+								  		setTimeout(function(){
+								  			hideLoading();
+											mainView.router.reloadPage('view/seller/notification_seller.html');
+
+										}, 1000);
+										
+										console.log(id);			
+										updateStatusCart("ditolak",id);
+										showLoading();
+
+							        }
+							     }]
+							  })
+
+							 $('input:radio[name="radio-notification-order"]').change(
+                               function(){
+                                    if (this.checked && this.value == 'lainnya') {
+                                        console.log('test');
+                                        $('.notif-lain-order').css('display','block');
+                                        document.getElementById('cancel_order_other').value = "";
+                                    }else{
+                                    	document
+                                        $('.notif-lain-order').css('display','none');
+                                    }
+                                });
+
+			  		})
+
 
 					
 

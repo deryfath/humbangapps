@@ -44,6 +44,7 @@ var mainView = myApp.addView('.view-main', {
 
 });
 
+
     document.addEventListener('deviceready',function(event) {
         document.addEventListener('backbutton', function(e) {
             // Logic to be executed on back button event

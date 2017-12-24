@@ -2582,7 +2582,7 @@ function insertCart(postData){
             if(Object.keys(result).length>0){
               $$.each(result, function (index, value) {
 
-                   if(result[index].seller_id==postData.seller_id && result[index].item_id==postData.item_id && result[index].delivery_time==postData.delivery_time && result[index].special==postData.special && result[index].trx_id=="" && result[index].status=="" && result[index].device_id == device.uuid ){ //&& result[index].device_id == device.uuid
+                   if(result[index].seller_id==postData.seller_id && result[index].item_id==postData.item_id && result[index].delivery_time==postData.delivery_time && result[index].special==postData.special && result[index].trx_id=="" && result[index].status=="" && result[index].device_id == device.uuid){ //&& result[index].device_id == device.uuid
                       isSame = true;
                       comodityIdTmp = result[index].id;
                       totalTmp = result[index].total;
@@ -2720,7 +2720,8 @@ function insertCartExt(postData,userID){
                   trx_id : trxID,
                   user_id : userID,
                   device_id : deviceId,
-                  unit_kg : postData.unit
+                  unit_kg : postData.unit,
+                  address_user : postData.address
                 }
 
       $.ajax({
@@ -3277,7 +3278,7 @@ function updateTrxIdCartByUserid(trxID,cartID,deliveryStatus){
               $$.each(result, function (index, value) {
                 console.log(result[index].cart_id);
 
-                if(result[index].cart_id == cartID && result[index].device_id == device.uuid){
+                if(result[index].cart_id == cartID ){ //&& result[index].device_id == device.uuid
 
                    var dataSend = {
                      trx_id : trxID,
@@ -3548,8 +3549,8 @@ function getCartItemByFarmNameAndUserId(){
             if(Object.keys(result).length>0){
               $$.each(result, function (index, value) {
                 console.log(result[index].seller_id);
-
-                if(result[index].seller_id==userId && result[index].device_id == device.uuid && result[index].farm==farmName && result[index].status=="diterima"){
+                // && result[index].device_id == device.uuid
+                if(result[index].seller_id==userId && result[index].device_id == device.uuid  && result[index].farm==farmName && result[index].status=="diterima"){
 
                     // dateSplit = result[index].created_time.split(" ");
                     // splitDate.push(dateSplit[0]);
@@ -3574,6 +3575,7 @@ function getCartItemByFarmNameAndUserId(){
                         status: result[index].status,
                         special: result[index].special,
                         delivery_time: result[index].delivery_time,
+                        address: result[index].address_user,
                         created_time: result[index].created_time,
                         sort_date: newDatetime
                       });   
@@ -3741,6 +3743,7 @@ function insertTransaction(total,paymentMethod){
     //   console.log('ERROR: ' + JSON.stringify(err.message));
     // });
     
+
 
     var dataSend = {
                 trx_id : orderID,

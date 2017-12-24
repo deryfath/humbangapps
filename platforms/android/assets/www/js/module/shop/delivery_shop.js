@@ -75,6 +75,9 @@ myApp.onPageInit('delivery_shop_list', function (page) {
 
 		  var emailId = makeid();
 		  var emailHtmlElement = "";
+		  var dateNotification = new Date();
+		  var newDateNotif = dateNotification.getDate()+"/"+(dateNotification.getMonth()+1)+"/"+dateNotification.getFullYear()+" "+dateNotification.getHours()+":"+dateNotification.getMinutes()+":"+dateNotification.getSeconds();
+		  console.log(newDateNotif);
 
 		  var styleRow = "";
 
@@ -304,6 +307,7 @@ myApp.onPageInit('delivery_shop_list', function (page) {
                     '<p>Nama&emsp;&emsp;&emsp;&emsp;: <strong>'+Template7.global.userdata.fullname+'</strong></p>'+
                     '<p>Pembayaran&emsp;: <strong>'+paymentVal+'</strong></p>'+
                     '<p>Alamat&emsp;&emsp;&emsp;&nbsp;&nbsp;: <strong>'+Template7.global.userdata.address+'</strong></p>'+
+                    '<p>Tanggal Pembelian&nbsp;: <strong>'+newDateNotif+'</strong></p>'+
 
                   '</div>'+
                 '</div>'+

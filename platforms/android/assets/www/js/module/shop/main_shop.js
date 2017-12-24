@@ -1001,10 +1001,14 @@ myApp.onPageInit('main_shop_list', function (page) {
 
 						console.log(document.getElementById('cart_total').innerHTML);	
 
-						cartTotalTmp = document.getElementById('cart_total').innerHTML;				
+						cartTotalTmp = document.getElementById('cart_total').innerHTML;	
+
+						addressUser = Template7.global.userdata.address;
+
+						console.log(addressUser);			
 						
 						//INSERT TO CART
-				  		cartItem(id,name,sellerId,farm,img,price,total,stockCal,quantityKg,delivery_time,specialRequest,cartTotalTmp);
+				  		cartItem(id,name,sellerId,farm,img,price,total,stockCal,quantityKg,delivery_time,specialRequest,cartTotalTmp,addressUser);
 
 						$('.flip-container-shop-'+id).toggleClass('flipped');
 
@@ -1289,8 +1293,10 @@ myApp.onPageInit('main_shop_list', function (page) {
 
 			  		console.log(specialRequest);
 
-			  		//INSERT TO CART
-			  		cartItem(id,name,sellerId,farm,image,price,total,stock,"Kg",delivery_time,specialRequest);
+			  		addressUser = Template7.global.userdata.address;			
+						
+					//INSERT TO CART
+			  		cartItem(id,name,sellerId,farm,img,price,total,stockCal,quantityKg,delivery_time,specialRequest,cartTotalTmp,addressUser);
 
 			  		mainView.router.reloadPage('view/shop/main_shop.html');
 
