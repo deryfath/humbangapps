@@ -1,0 +1,48 @@
+<script id="purchase_detail_template" type="text/template7">
+	<div class="list-block media-list">
+	    <ul>
+
+	    {{#each data}}
+
+	      <li>
+	        <div class="item-content">
+	          <div class="item-inner">
+	            <div class="item-title-row">
+	              <div class="item-title">{{product_name}}</div>
+
+	            </div>
+	            <div class="item-subtitle">Tanggal Beli : {{create_date}}</div>
+
+	            <div class="item-subtitle">Harga/Kg : {{price_unit_display}}</div>
+	            <div class="item-subtitle">Kuantitas : {{product_qty}}</div>
+	            <div class="item-subtitle">Kualitas : 
+                            <div class="rating-stars rebuy-stars" style="font-size: 5px;margin-top:-14px;margin-left: 20px;">
+                                <ul id="stars">
+                                  <li class="star" title="Poor" data-value="1">
+                                    <i class="fa fa-star fa-fw"></i>
+                                  </li>
+                                  <li class="star" title="Fair" data-value="2">
+                                    <i class="fa fa-star fa-fw"></i>
+                                  </li>
+                                  <li class="star" title="Good" data-value="3">
+                                    <i class="fa fa-star fa-fw"></i>
+                                  </li>
+                                  <li class="star" title="Excellent" data-value="4">
+                                    <i class="fa fa-star fa-fw"></i>
+                                  </li>
+                                  <li class="star" title="WOW!!!" data-value="5">
+                                    <i class="fa fa-star fa-fw"></i>
+                                  </li>
+                                </ul>
+                              </div>
+                     </div>
+	          </div>
+	        </div>
+	      </li>
+
+	      {{/each}}
+	    </ul>
+	  </div>
+
+
+</script>

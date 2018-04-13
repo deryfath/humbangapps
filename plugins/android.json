@@ -7,52 +7,21 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-background-mode": {
-      "PACKAGE_NAME": "com.example.crossdov"
-    },
-    "cordova-plugin-buildinfo": {
-      "PACKAGE_NAME": "com.example.crossdov"
-    },
     "cordova-plugin-camera": {
-      "PACKAGE_NAME": "com.example.crossdov"
-    },
-    "cordova-plugin-crosswalk-webview": {
-      "XWALK_VERSION": "23+",
-      "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
-      "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
-      "XWALK_MODE": "embedded",
-      "XWALK_MULTIPLEAPK": "true",
-      "PACKAGE_NAME": "com.example.crossdov"
-    },
-    "cordova-plugin-customurlscheme": {
-      "URL_SCHEME": "catatani",
-      "ANDROID_SCHEME": " ",
-      "ANDROID_HOST": " ",
-      "ANDROID_PATHPREFIX": "/",
-      "PACKAGE_NAME": "com.example.crossdov"
+      "PACKAGE_NAME": "com.example.humbang"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.example.crossdov"
-    },
-    "cordova-plugin-fcm": {
-      "PACKAGE_NAME": "com.example.crossdov"
+      "PACKAGE_NAME": "com.example.humbang"
     },
     "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.example.crossdov"
+      "PACKAGE_NAME": "com.example.humbang"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.example.crossdov"
+      "PACKAGE_NAME": "com.example.humbang"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.example.crossdov"
-    },
-    "de.appplant.cordova.plugin.local-notification": {
-      "PACKAGE_NAME": "com.example.crossdov"
+      "PACKAGE_NAME": "com.example.humbang"
     }
   },
-  "dependent_plugins": {
-    "cordova-plugin-app-event": {
-      "PACKAGE_NAME": "com.example.crossdov"
-    }
-  }
+  "dependent_plugins": {}
 }

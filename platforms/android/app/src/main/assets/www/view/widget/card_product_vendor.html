@@ -1,0 +1,51 @@
+<script id="card-product-vendor-template" type="text/template7">
+<div class="content-block-inner" >
+
+  <div class="card-grid" id="card-product-vendor">
+
+    {{#each data}} 
+
+        {{#if add_first}}
+
+            <div class="card-wrap-comodity add-new-comodity" style="text-align:center;margin-top: 50px;">
+              <i class="icon f7-icons" style="font-size: 51px;margin-bottom: 10px;">add_round_fill</i><br><span>Tambah <br>Komoditas</span></div>
+
+
+        {{else}}
+
+                  <div class="card-wrap-comodity card-product-vendor-init" data-productid="{{id}}" data-productname="{{x_tipe_produk}}" data-name="{{name}}" data-kategori="{{x_kategori_produk}}">
+                       
+                        <div class="card" style="margin-right:1px;margin-left:4px;border-top-right-radius: 2px;border-top-left-radius: 2px;">
+                          
+
+                          <img src="{{image_display}}" style="margin-bottom: -5px;border-top-left-radius: 4px;border-top-right-radius: 4px;"/>
+                          <div class="card-footer" style="height: 0vh;">
+                              <div class="list-block media-list">
+                                <ul>
+                                  <li class="item-content">
+                                    <div class="item-inner" style="margin-left:-21px;">
+                                      <div class="item-title-row" >
+                                        <div class="item-title comodity-title" style="width: 42vw;font-size: 12px;font-weight: bolder;">{{name}}</div>
+                                      </div>
+                                      <div class="item-subtitle comodity-type" style="font-size:11px;">{{x_kategori_produk}}</div>
+                                    
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                            
+                        </div>
+                      </div>
+              
+          {{/if}}
+
+      {{/each}}
+
+
+    </div>
+
+</div>
+
+
+</script>

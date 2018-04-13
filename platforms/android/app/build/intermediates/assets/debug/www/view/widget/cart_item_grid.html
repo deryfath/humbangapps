@@ -1,0 +1,81 @@
+<script id="cart-item-grid-template" type="text/template7">
+
+<div class="content-block-inner" >
+
+{{#each data}}
+
+	<div class="card demo-card-header-pic">
+
+              
+              <div style="position: absolute;margin-top: 31%;background: black;width: 50%;font-size: large;opacity: 0.75;color: white;z-index: 99;">{{price_show}} /Kg</div>
+              
+
+                <div style="background-image:url({{image}});height: 38vw;" valign="bottom" class="card-header color-white no-border"></div>
+                <div class="card-content" style="    height: 29vh;">
+                  <div class="card-content-inner">
+                    <p class="color-gray" style="font-size: x-large;text-align: center;font-weight: bold;margin-top: -15px;">{{name}}</p>
+                    <p style="margin-top: -28px;text-align: center;">{{farm}}</p>
+                    <p style="margin-top: -8px;">
+                        <div class="list-block" style="font-size: smaller;margin-top: -27px;">
+                          <ul>
+                            <li>
+                              <div class="item-content">
+                                <div class="item-media"><i class="icon f7-icons">tabs_fill</i></div>
+                                <div class="item-inner">
+                                  <div class="item-title label">Kuantitas</div>
+
+                                  {{#if unit_kg}}
+
+                                    <div class="item-input">
+                                       <input type="text" style="font-size:small;font-weight:bold;" id="total_cart_{{cart_id}}" value="{{total}}">
+                                    </div>Kg
+
+                                  {{else}}
+
+                                    <div class="item-input">
+                                       <input type="text" style="font-size:small;font-weight:bold;" id="total_cart_{{cart_id}}" value="{{total}}">
+                                    </div>
+
+                                  {{/if}}
+
+                                  <p class="buttons-row">
+                                     <a class="button button-small button-round button-fill color-red inc-cart-qty" data-id="{{cart_id}}" data-unitkg="{{unit_kg}}" data-cartuid="{{id}}" data-comodityid="{{comodity_id}}" data-itemid="{{item_id}}" data-name="{{name}}" data-sellerid="{{seller_id}}" data-delivery="{{delivery_time}}" data-max="{{max_stock}}" data-special="{{special}}" style="margin-left: 11px;">+</a>
+                                      <a class="button button-small button-round button-fill color-black dec-cart-qty" data-id="{{cart_id}}" data-unitkg="{{unit_kg}}" data-cartuid="{{id}}" data-comodityid="{{comodity_id}}" data-itemid="{{item_id}}" data-name="{{name}}" data-sellerid="{{seller_id}}" data-max="{{max_stock}}" data-delivery="{{delivery_time}}" data-special="{{special}}">-</a>
+                                  </p>  
+                                </div>
+                              </div>
+                            </li>
+                             <li>
+                              <div class="item-content">
+                                <div class="item-media"><i class="icon f7-icons">calendar_fill</i></div>
+                                <div class="item-inner">
+                                  <div class="item-title label" style="width: 37%;">Tanggal Kirim</div>
+                                  <div class="item-input">
+                                    <input type="text" style="font-size:small;font-weight:bold;" data-id="{{cart_id}}" data-cartuid="{{id}}" data-comodityid="{{comodity_id}}" data-delivery="{{delivery_time}}" data-itemid="{{item_id}}" data-sellerid="{{seller_id}}" data-special="{{special}}" class="delivery-time-cart" id="delivery_time_cart_{{cart_id}}"value="{{delivery_time}}" >
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+
+                          </ul>
+                        </div>
+                    </p>
+                    
+                  </div>
+                </div>
+
+                <div class="card-footer" style="margin-top: -15px;background: #1e3446;">
+                  
+                  <a href="#" style="font-weight: bolder;color: white;font-size:larger;">{{price_subtotal_show}}</a>
+
+                  <a href="#" class="remove_item_cart" data-id="{{cart_id}}" data-unitkg="{{unit_kg}}" data-cartuid="{{id}}" data-comodityid="{{comodity_id}}" data-itemid="{{item_id}}" data-name="{{name}}" data-sellerid="{{seller_id}}" data-special="{{special}}" data-delivery="{{delivery_time}}"><i class="icon f7-icons" style="    color: #ac3129;">close_round_fill</i></a>
+                </div>
+
+              </div>
+
+          {{/each}}
+
+</div>
+
+
+</script>

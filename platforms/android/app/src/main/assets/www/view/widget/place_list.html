@@ -1,0 +1,23 @@
+<script id="place_list_template" type="text/template7">
+	  <div class="content-block-title">Lokasi Market Terdekat Saya</div>
+
+      <div class="list-block media-list">
+        <ul >
+          {{#each data}}
+	          <li>
+	           <a href="#" class="item-link item-content place-list-btn" data-title="{{name}}" data-address="{{vicinity}}">
+			        <div class="item-inner">
+			          <div class="item-title-row">
+			            <div class="item-title">{{name}}</div>
+			          </div>
+			          <div class="item-subtitle">{{vicinity}}</div>
+			        </div>
+			      </a>
+	          </li>
+         	{{/each}}
+          
+        </ul>
+      </div>
+
+
+</script>

@@ -1,0 +1,48 @@
+<div class="navbar">
+  <div class="navbar-inner" style="background: #2f3031;">
+    <div class="left"><a href="index.html" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+    <div class="center sliding" style="color:white;">Daftar Pembelian</div>
+    <div class="right">
+        
+    </div>
+   
+
+  </div>
+</div>
+
+<div class="pages navbar-through toolbar-through">
+          <!-- Page, data-page contains page name-->
+    <div class="page no-swipeback" data-page="purchase_page">
+
+            <form data-search-list=".list-block-search" class="searchbar searchbar-init search-purchase">
+              <div class="searchbar-input">
+                <input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>
+              </div><a href="#" class="searchbar-cancel">Cancel</a>
+            </form>
+
+            <!-- Search Bar overlay -->
+            <div class="searchbar-overlay"></div>
+
+            <!-- Scrollable page content-->
+            <div class="page-content infinite-scroll infinite-purchase-list" id="purchase_page" style="overflow-x: hidden;max-width: 100%;">
+
+                 <div class="content-block searchbar-not-found">
+                  <div class="content-block-inner">Nothing found</div>
+                </div>
+
+                 <div class="content-block-inner" >
+                    
+                    <!-- <p><a href="#" class="button button-fill" id="purchase_menu">Beli</a></p> -->
+
+                    <div id="list_purchase" class="list-block-search searchbar-found" style="margin-top: -31px;"></div> 
+                    <div id="item_purchase" class="list-block-search searchbar-found"></div>
+                    <input type="hidden" name="total_data">
+
+                </div>
+               
+
+            </div>
+    </div>
+
+
+</div>

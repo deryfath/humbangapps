@@ -1,0 +1,24 @@
+<script id="purchase_list_template" type="text/template7">
+
+      <div class="list-block media-list">
+        <ul id="purchase_ul">
+          {{#each data}}
+	          <li>
+	            <a href="view/seller/purchase_detail.html?create_date={{create_date}}&vendor_name={{vendor_name}}&id={{id}}&title={{name}}&total={{price_display}}&purchase_order_line={{purchase_detail_id}}" class="item-link item-content">
+	              <div class="item-inner">
+	                <div class="item-title-row">
+	                  <div class="item-title" style="font-weight:bold;">{{name}}</div>
+	                  <div class="item-after">{{price_display}}</div>
+	                </div>
+	                <div class="item-subtitle">{{vendor_name}}</div>
+	                <div class="item-text">{{create_date}}</div>
+	              </div>
+	            </a>
+	          </li>
+         	{{/each}}
+          
+        </ul>
+      </div>
+
+
+</script>

@@ -1,0 +1,78 @@
+<script id="card-vendor-purchase-template" type="text/template7">
+ 
+
+<div class="content-block-inner">
+
+      <div class="card-grid " id="card-comodity-purchase-vendor">
+
+                          
+                  {{#each data}}
+
+                      {{#if add_first}}
+
+                          <div class="card-wrap-comodity add-new-vendor-purchase" style="text-align:center;margin-top: 50px;">
+                                           <i class="icon f7-icons" style="font-size: 51px;margin-bottom: 10px;">add_round_fill</i><br><span>Tambah Penjual</span>
+                                                     
+                                               
+                                  </div>
+
+
+                      {{else}}
+
+
+
+                          <div class="card-wrap-comodity vendor-purchase" data-vendor="{{name}}" data-partner="{{id}}">
+                           
+                            <div class="card" style="margin-right:1px;margin-left:4px;border-top-right-radius: 2px;border-top-left-radius: 2px;">
+
+                            <div class="rating-stars client-stars" style="font-size: 5px;">
+                                <ul id="stars" style="margin-top: 9px;text-align: center;">
+                                  <li class="star" title="Poor" data-value="1">
+                                    <i class="fa fa-star fa-fw"></i>
+                                  </li>
+                                  <li class="star" title="Fair" data-value="2">
+                                    <i class="fa fa-star fa-fw"></i>
+                                  </li>
+                                  <li class="star" title="Good" data-value="3">
+                                    <i class="fa fa-star fa-fw"></i>
+                                  </li>
+                                  <li class="star" title="Excellent" data-value="4">
+                                    <i class="fa fa-star fa-fw"></i>
+                                  </li>
+                                  <li class="star" title="WOW!!!" data-value="5">
+                                    <i class="fa fa-star fa-fw"></i>
+                                  </li>
+                                </ul>
+                              </div>
+
+                              <img id="img_choose" src="img/user-2935527_1280.png" style="margin-bottom: -5px;border-top-left-radius: 4px;border-top-right-radius: 4px;">
+                              <div class="card-footer" style="height: 0vh;">
+                                  <div class="list-block media-list">
+                                    <ul>
+                                      <li class="item-content">
+                                        <div class="item-inner" style="margin-left:-21px;">
+                                          <div class="item-title-row">
+                                            <div class="item-title" style="width: 42vw;font-size: 12px;font-weight: bolder;">{{name_view}}</div>
+                                          </div>
+                                          <div class="item-subtitle vendor-phone" style="font-size:11px;">{{phone}}</div>
+                                        </div>
+                                      </li>
+                                      
+                                    </ul>
+                                  </div>
+                                </div> 
+                               
+                             </div>
+                           </div>
+
+                      {{/if}}
+                          	
+                {{/each}}
+
+        </div>
+
+</div>
+
+	
+
+</script>
